@@ -6,7 +6,7 @@
 #    By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/22 13:21:39 by abessa-m          #+#    #+#              #
-#    Updated: 2024/10/22 13:53:27 by abessa-m         ###   ########.fr        #
+#    Updated: 2024/10/22 17:31:14 by abessa-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,10 @@ test:
 	@echo "Testing the function X"
 	cc -Wall -Werror -Wextra ft_isalpha.c
 
-
+bonus: all
+	
 $(NAME):
+	@echo "TODO"
 
 all:
 	
@@ -43,6 +45,6 @@ clean:
 	rm -f *.o
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f *.a
 
 re: fclean all
