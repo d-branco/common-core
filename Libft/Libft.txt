@@ -1,0 +1,36 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Libft.txt                                          :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/10/22 13:24:24 by abessa-m          #+#    #+#              #
+#    Updated: 2024/10/22 14:00:20 by abessa-m         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+- [ ]  isalpha
+- [ ]  isdigit
+- [ ]  isalnum
+
+- [ ]  toupper
+- [ ]  tolower
+
+- [ ]  isascii- [ ]  strchr
+- [ ]  isprint- [ ]  strrchr
+
+- [ ]  strlen
+- [ ]  strncmp
+- [ ]  bzero- [ ]  memchr
+- [ ]  memset
+- [ ]  memcpy- [ ]  memcmp
+- [ ]  memmove
+- [ ]  strnstr
+- [ ]  strlcpy
+- [ ]  strlcat
+- [ ]  atoi
+
+In order to implement the two following functions, you will use malloc():
+- [ ]  calloc
+- [ ]  strdup
