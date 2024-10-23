@@ -6,13 +6,18 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 13:54:33 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/22 19:29:34 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/23 10:09:35 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// 1 is TRUE
+// Reimplements isalpha()
+// `man isalpha`
+
 // 0 is FALSE
-char	ft_isalpha(char c)
+// 1 is TRUE
+//	c as an int is also considered TRUE
+//		as int, by definition, are different from NULL
+int	ft_isalpha(int c)
 {
 	if (ft_isupper(c) ||  ft_islower(c))
 		return (c);
@@ -21,7 +26,7 @@ char	ft_isalpha(char c)
 }
 
 // Checks if the char is an uppercase letter
-static int	ft_isupper(char c)
+static int	ft_isupper(int c)
 {
 	if (c >= 'A' && c <= 'Z')
 		return (c);
@@ -29,7 +34,7 @@ static int	ft_isupper(char c)
 		return (0);
 }
 
-static int	ft_islower(char c)
+static int	ft_islower(int c)
 {
 	if (c >= 'a' && c <= 'z')
 		return (c);

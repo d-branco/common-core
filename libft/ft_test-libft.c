@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_test-libft.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 08:10:20 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/23 10:12:28 by abessa-m         ###   ########.fr       */
+/*   Created: 2024/10/23 13:33:40 by abessa-m          #+#    #+#             */
+/*   Updated: 2024/10/23 13:42:17 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// usage: #include "libft.h"
+#include "libft.h"
 
-#ifndef LIBFT_H
-# define LIBFT_H
+int	isalpha_test(void);
 
-int	ft_isalpha(int c);
+int	main(int argc, char **argv)
+{
+	if (argc != 2)
+		return (1);
+	else // assuming ft_isalpha.c
+	{
+		isalpha_test();
+	}
+}
 
-#endif
+int	isalpha_test(void)
+{
+	if (ft_isalpha('a') == 'a')
+		printf("isalpha works\n");
+	return (0);
+}
