@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha_copy.c                                  :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 13:54:33 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/23 17:11:54 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/23 19:15:59 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// Reimplements isalpha()
-// `man isalpha`
+// Reimplements isdigit()
+// `man isdigit`
 
 // 0 is FALSE
 // anything else is TRUE
-int	ft_isalpha(int c)
+int	ft_isdigit(int c)
 {
-	if ((c >= 'A' && c <= 'Z')
-		|| (c >= 'a' && c <= 'z'))
+	if (c >= '0' && c <= '9')
 		return (c);
 	else
 		return (0);
