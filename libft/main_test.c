@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:33:40 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/23 19:21:00 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/23 19:33:20 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 static int	test_isalpha();
 static int	test_isdigit();
+static int	test_isalnum();
 
 int	main(int argc, char **argv)
 {
@@ -31,6 +32,8 @@ int	main(int argc, char **argv)
 			aval = test_isalpha();
 		if (!strcmp(argv[i], "ft_isdigit.c"))
 			aval = test_isdigit();
+		if (!strcmp(argv[i], "ft_isalnum.c"))
+			aval = test_isalnum();
 
 
 		if (aval == 1)
@@ -42,6 +45,18 @@ int	main(int argc, char **argv)
 		i++;
 	}
 }
+
+static int	test_isalnum()
+{
+		if
+		((ft_isalpha('a') == 'a')
+		&& (ft_isalpha('D') == 'D')
+		&& (ft_isdigit('\0') == '0')
+		&& (ft_isdigit('4') == '4')
+		&& (ft_isdigit('\n') == 0))
+		return (1);
+	return (-1);
+	}
 
 static int	test_isdigit()
 {
