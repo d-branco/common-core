@@ -1,23 +1,34 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    Makesrc                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/22 13:21:39 by abessa-m          #+#    #+#              #
-#    Updated: 2024/10/23 14:35:45 by abessa-m         ###   ########.fr        #
+#    Updated: 2024/10/23 16:58:06 by abessa-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # := means simple assignment
 NAME := libft.a
 
+CC = cc
+CFLAGS = -Wall -Werror -Wextra
+
+OBJS = $(SRCS:.c=.o)
+
+%.o: %.c
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJS):
+	@cc -Wall -Werror -Wextra $(SRCS)
+
 SRCS = $(MANDATORY1)
 # $(MANDATORY2) $(BONUS) $(PERSONAL)
 
-MANDATORY1 = ft_isalpha.c
-#ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
+MANDATORY1 = ft_isalpha.c ft_isalpha_copy.c\
+#	ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 	ft_strlen.c ft_strlen.c ft_strlcpy.c ft_strlcat.c strchr.c strrchr.c ft_strncmp.c strnstr.c\
 	ft_toupper.c ft_tolower.c \
 	memset.c memcpy.c memmove.c memchr.c memcmp.c \
@@ -36,18 +47,27 @@ MANDATORY1 = ft_isalpha.c
 #test:
 #	TODO How to test all of this?"
 
+test: re
+	@for src in $(SRCS); do \
+		norminette $$src | grep -q "Error!" && echo "\033[41m$$src: norminette detected an error!\033[0m" || echo "\033[0;32m$$src: norminette signals all clear\033[0m"; \
+		cc -Wall -Werror -Wextra ft_test-libft.c -L. -lft -o a.out; \
+		@valgrind --leak-check=full --show-leak-kinds=all ./a.out $$src 2>&1 | grep -q "definitely lost" && echo "\033[41m$$src: Memory leak detected!\033[0m" || echo "\033[0;32m$$src: no memory leak\033[0m"; \
+		./a.out $$src; \
+	done
+	@rm -f a.out
+
 all: $(NAME)
 
-$(NAME):
-	ar r $(NAME) $(OBJS)
-
-$(OBJS):
-	cc -Wall -Werror -Wextra $(SRCS)
+$(NAME): $(OBJS)
+	@ar rcs $(NAME) $(OBJS)
+	@rm -f $(OBJS)
 
 clean:
-	rm -f $(OBJS)
+	@rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: clean fclean re test
