@@ -6,45 +6,62 @@
 #    By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/22 13:21:39 by abessa-m          #+#    #+#              #
-#    Updated: 2024/10/22 17:31:14 by abessa-m         ###   ########.fr        #
+#    Updated: 2024/10/23 08:10:02 by abessa-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #you must submit a Makefile
-#	which will compile your source files to the required output with the flags:
-#	-Wall, -Wextra and -Werror, use cc, and
-#	your Makefile must not relink.
+#	TODO which will compile your source files to the required output with the flags:
+#	DONE FLAGS-Wall, -Wextra and -Werror, use cc, and
+#	TODO your Makefile must not relink.
 
 #Your Makefile must at least contain the rules
-#	$(NAME),
-#	all,
-#	clean,
-#	fclean and
-#	re.
+#	DONE $(NAME),
+#	DONE all,
+#	TODO clean,
+#	TODO fclean and
+#	TODO re.
 
 #Norm
-#	The $(NAME), clean, fclean, re and all rules are mandatory.
-#	If the makefile relinks, the project will be considered non-functional.
-#	In the case of a multibinary project, in addition to the above rules, you must have a rule that compiles both binaries as well as a specific rule for each binary compiled.
-#	In the case of a project that calls a function from a non-system library (e.g.: libft), your makefile must compile this library automatically.
-#	All source files you need to compile your project must be explicitly named in your Makefile.
+#	TODO If the makefile relinks, the project will be considered non-functional.
+#	TODO All source files you need to compile your project must be explicitly named in your Makefile.
+
+# := means simple assignment
+NAME := libft.a
+
+$(SRCS) = $(MANDATORY1) $(MANDATORY2) $(BONUS) $(PERSONAL)
+
+$(MANDATORY1) = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
+				ft_strlen.c ft_strlen.c ft_strlcpy.c ft_strlcat.c strchr.c strrchr.c ft_strncmp.c strnstr.c\
+				ft_toupper.c ft_tolower.c \
+				memset.c memcpy.c memmove.c memchr.c memcmp.c \
+				bzero.c \
+				atoi.c
+
+$(MANDATORY2)
+	TODO aditional functions
+
+$(BONUS)
+	TODO or delete"
+
+$(PERSONAL)
+	TODO or remove
 
 test:
-	@echo "Testing the function X"
-	cc -Wall -Werror -Wextra ft_isalpha.c
+	TODO How to test all of this?"
 
-bonus: all
-	
+all: $(NAME)
+
 $(NAME):
-	@echo "TODO"
+	ar r $(NAME) $(OBJS)
 
-all:
-	
+$(OBJS):
+	cc -Wall -Werror -Wextra $(SRCS)
 
 clean:
-	rm -f *.o
+	rm -f $(OBJS)
 
 fclean: clean
-	rm -f *.a
+	rm -f $(NAME)
 
 re: fclean all
