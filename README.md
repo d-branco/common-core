@@ -1,6 +1,39 @@
 # 42 common core
 Common Core repository from 42 school
 
+## libft - current project
+
+|Part | function | state | tests|
+|-----|----------|-------|------ |
+|libc|[isalpha](https://github.com/d-branco/common-core/blob/main/libft/ft_isalpha.c)|DONE|TODO|
+|libc|isdigit|DONE|TODO|
+|libc|isalnum|DONE|TODO|
+
+	TODO Find a way to easily test a file as it is done.
+		it ought to be tested for 
+	TODO not having a main
+	DONE following the norm
+	TODO handling the NULL input
+	DONE valgrind
+
+## Makefile
+
+##### you must submit a Makefile
+	TODO it must compile all source files to the root with the flags:
+	DONE FLAGS -Wall, -Wextra and -Werror, use cc, and
+	TODO your Makefile must not relink.
+
+#### Your Makefile must at least contain the rules
+	DONE $(NAME),
+	DONE all,
+	DONE clean,
+	DONE fclean and
+	DONE re.
+
+#### Norm
+	TODO All source files you need to compile your project must be explicitly named in your Makefile.
+
+
 # Cyphertext
 
 ## Original
