@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 08:10:20 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/23 19:26:17 by abessa-m         ###   ########.fr       */
+/*   Created: 2024/10/23 19:23:45 by abessa-m          #+#    #+#             */
+/*   Updated: 2024/10/23 19:27:23 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// usage: #include "libft.h"
+// Reimplements isalnum()
+// `man isalnum`
 
-#ifndef LIBFT_H
-# define LIBFT_H
+//isalnum()
+//	checks for an alphanumeric character;
+//	it is equivalent to (isalpha(c) || isdigit(c)).
 
-int	ft_isalpha(int c);
-int	ft_isdigit(int c);
-int	ft_isalpha(int c);
+#include "libft.h"
 
-#endif
+int	ft_isalnum(int c)
+{
+	if (ft_isalpha(c) || ft_isdigit(c))
+		return (c);
+	else
+		return (0);
+}
