@@ -15,6 +15,7 @@
 #include <string.h>
 #include "libft.h"
 #include <ctype.h>
+#include <unistd.h>
 
 static int		test_isalpha();
 static int		test_isdigit();
@@ -23,6 +24,7 @@ static int		test_isascii();
 static void		print_result(char *message);
 static void		print_caution(char *message);
 static void		print_warning(char *file_name, char *message);
+static void		suspense();
 
 int	main(int argc, char **argv)
 {
@@ -217,6 +219,7 @@ static int	test_isalpha()
 
 static void	print_result(char *message){
 	printf("	\033[0;32m%s\033[0m\n", message);
+	suspense();
 }
 
 static void	print_caution(char *message){
@@ -225,4 +228,10 @@ static void	print_caution(char *message){
 
 static void	print_warning(char *file_name, char *message){
 	printf("	\033[0;93m%s: %s\033[0m\n", file_name, message);
+	suspense();
+}
+
+static void	suspense()
+{
+	usleep(200000);
 }
