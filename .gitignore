@@ -1,6 +1,11 @@
 # CLion
 .idea/
 
+# audio files
+*.wav
+*.mp3
+
+
 # Prerequisites
 *.d
 
