@@ -3,47 +3,42 @@ Common Core repository from 42 school
 
 ## libft - current project
 
-|Part |library | function | state | tests|
-|-----|-------|----------|-------|------ |
-|libc|ctype.h |[ft_isalpha](https://github.com/d-branco/common-core/blob/main/libft/ft_isalpha.c)|DONE|DONE|
-|libc|ctype.h |[ft_isdigit](https://github.com/d-branco/common-core/blob/main/libft/ft_isdigit.c)|DONE|DONE|
-|libc|ctype.h |[ft_isdigit](https://github.com/d-branco/common-core/blob/main/libft/ft_isdigit.c)|DONE|DONE|
-|libc|ctype.h |ft_isascii|TODO|TODO|
-|libc|ctype.h |ft_isprint|TODO|TODO|
-|libc|ctype.h |ft_toupper|TODO|TODO|
-|libc|ctype.h |ft_tolower|TODO|TODO|
-|libc|string.h |ft_strlen|TODO|TODO|
-|libc|string.h |ft_memset|TODO|TODO|
-|libc|string.h |ft_bzero|TODO|TODO|
-|libc|string.h |ft_memcpy|TODO|TODO|
-|libc|string.h |ft_memmove|TODO|TODO|
-|libc|string.h |ft_strlcpy|TODO|TODO|
-|libc|string.h |ft_strlcat|TODO|TODO|
-|libc|string.h |ft_strchar|TODO|TODO|
-|libc|string.h |ft_strrchr|TODO|TODO|
-|libc|string.h |ft_strncmp|TODO|TODO|
-|libc|string.h |ft_memchr|TODO|TODO|
-|libc|string.h |ft_memcmp|TODO|TODO|
-|libc|string.h |ft_strnstr|TODO|TODO|
-|libc|stdlib.h |ft_atoi|TODO|TODO|
-|libc|stdlib.h |ft_calloc|TODO|TODO|
-|libc|stdlib.h |ft_strdup|TODO|TODO|
-|additional||ft_substr|TODO|TODO|
-|additional||ft_strjoin|TODO|TODO|
-|additional||ft_strtrim|TODO|TODO|
-|additional||ft_split|TODO|TODO|
-|additional||ft_itoa|TODO|TODO|
-|additional||ft_strmapi|TODO|TODO|
-|additional||ft_striteri|TODO|TODO|
-|additional||ft_putchar_fd|TODO|TODO|
-|additional||fft_putstr_fdTODO|TODO|
-|additional||ft_putendl_fd|TODO|TODO|
-|additional||ft_putnbr_fd|TODO|TODO|
-
-
-
-
-
+|Part      |library  | function    | state | tests|
+|----------|---------|-------------|-------|------|
+|libc      |ctype.h  |ft_isalpha   | DONE  | DONE |
+|libc      |ctype.h  |ft_isdigit   | DONE  | DONE |
+|libc      |ctype.h  |ft_isdigit   | DONE  | DONE |
+|libc      |ctype.h  |ft_isascii   | TODO  | TODO |
+|libc      |ctype.h  |ft_isprint   | TODO  | TODO |
+|libc      |ctype.h  |ft_toupper   | TODO  | TODO |
+|libc      |ctype.h  |ft_tolower   | TODO  | TODO |
+|libc      |string.h |ft_strlen    | TODO  | TODO |
+|libc      |string.h |ft_memset    | TODO  | TODO |
+|libc      |string.h |ft_bzero     | TODO  | TODO |
+|libc      |string.h |ft_memcpy    | TODO  | TODO |
+|libc      |string.h |ft_memmove   | TODO  | TODO |
+|libc      |string.h |ft_strlcpy   | TODO  | TODO |
+|libc      |string.h |ft_strlcat   | TODO  | TODO |
+|libc      |string.h |ft_strchar   | TODO  | TODO |
+|libc      |string.h |ft_strrchr   | TODO  | TODO |
+|libc      |string.h |ft_strncmp   | TODO  | TODO |
+|libc      |string.h |ft_memchr    | TODO  | TODO |
+|libc      |string.h |ft_memcmp    | TODO  | TODO |
+|libc      |string.h |ft_strnstr   | TODO  | TODO |
+|libc      |stdlib.h |ft_atoi      | TODO  | TODO |
+|libc      |stdlib.h |ft_calloc    | TODO  | TODO |
+|libc      |stdlib.h |ft_strdup    | TODO  | TODO |
+|additional|         |ft_substr    | TODO  | TODO |
+|additional|         |ft_strjoin   | TODO  | TODO |
+|additional|         |ft_strtrim   | TODO  | TODO |
+|additional|         |ft_split     | TODO  | TODO |
+|additional|         |ft_itoa      | TODO  | TODO |
+|additional|         |ft_strmapi   | TODO  | TODO |
+|additional|         |ft_striteri  | TODO  | TODO |
+|additional|         |ft_putchar_fd| TODO  | TODO |
+|additional|         |fft_putstr_fd| TODO  | TODO |
+|additional|         |ft_putendl_fd| TODO  | TODO |
+|additional|         |ft_putnbr_fd | TODO  | TODO |
 
 	TODO Find a way to easily test a file as it is done.
 		it ought to be tested for 
