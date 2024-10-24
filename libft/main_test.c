@@ -10,21 +10,20 @@
 /*																			*/
 /* ************************************************************************** */
 
-
 #include <stdio.h>
 #include <string.h>
 #include "libft.h"
 #include <ctype.h>
 #include <unistd.h>
 
-static int		test_isalpha();
-static int		test_isdigit();
-static int		test_isalnum();
-static int		test_isascii();
+static int		test_isalpha(void);
+static int		test_isdigit(void);
+static int		test_isalnum(void);
+static int		test_isascii(void);
 static void		print_result(char *message);
 static void		print_caution(char *message);
 static void		print_warning(char *file_name, char *message);
-static void		suspense();
+static void		suspense(void);
 
 int	main(int argc, char **argv)
 {
@@ -51,7 +50,8 @@ int	main(int argc, char **argv)
 	}
 }
 
-static int	test_isascii(){
+static int	test_isascii(void)
+{
 	int	i;
 
 	i = 0;
@@ -90,11 +90,11 @@ static int	test_isascii(){
 		i++;
 	}
 	print_result("Handles negative values.");
-
 	return (1);
 }
 
-static int test_isalnum(){
+static int	test_isalnum(void)
+{
 	int	i;
 
 	i = '0';
@@ -129,9 +129,9 @@ static int test_isalnum(){
 	i = -10;
 	while (i <= 127)
 	{
-		if (!((i >= '0' && i <= '9') || 
-			  (i >= 'A' && i <= 'Z') || 
-			  (i >= 'a' && i <= 'z')))
+		if (!((i >= '0' && i <= '9')
+				|| (i >= 'A' && i <= 'Z')
+				|| (i >= 'a' && i <= 'z')))
 		{
 			if (!!ft_isalnum(i) != !!isalnum(i))
 			{
@@ -142,12 +142,13 @@ static int test_isalnum(){
 		}
 		i++;
 	}
-	print_result("Handles negatives, special characters and non-alphanumerics correctly.");
+	print_result("Handles negatives, "
+		"special characters and non-alphanumerics correctly.");
 	return (1);
 }
 
-
-static int test_isdigit(){
+static int	test_isdigit(void)
+{
 	int	i;
 
 	i = '0';
@@ -163,9 +164,9 @@ static int test_isdigit(){
 	}
 	print_result("Prints all the digit ascii characters.");
 	i = -10;
-	while (i <= 127)  // Extended to cover full ASCII range
+	while (i <= 127)
 	{
-		if (i < '0' || i > '9')  // Only test non-digit characters
+		if (i < '0' || i > '9')
 		{
 			if (!!ft_isdigit(i) != !!isdigit(i))
 			{
@@ -176,12 +177,12 @@ static int test_isdigit(){
 		}
 		i++;
 	}
-	print_result("Handles negatives, special characters and non-digits correctly.");
+	print_result("Handles negatives,"
+		" special characters and non-digits correctly.");
 	return (1);
 }
 
-
-static int	test_isalpha()
+static int	test_isalpha(void)
 {
 	int	i;
 
@@ -217,21 +218,24 @@ static int	test_isalpha()
 	return (1);
 }
 
-static void	print_result(char *message){
+static void	print_result(char *message)
+{
 	printf("	\033[0;32m%s\033[0m\n", message);
 	suspense();
 }
 
-static void	print_caution(char *message){
+static void	print_caution(char *message)
+{
 	printf("	\033[41m%s\033[0m\n", message);
 }
 
-static void	print_warning(char *file_name, char *message){
+static void	print_warning(char *file_name, char *message)
+{
 	printf("	\033[0;93m%s: %s\033[0m\n", file_name, message);
 	suspense();
 }
 
-static void	suspense()
+static void	suspense(void)
 {
 	usleep(200000);
 }
