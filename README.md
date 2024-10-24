@@ -33,6 +33,29 @@ Common Core repository from 42 school
 #### Norm
 	TODO All source files you need to compile your project must be explicitly named in your Makefile.
 
+## TODO Tree extension
+```json
+    "todo-tree.general.tags": [
+    "TODO",
+    "DONE",
+
+    "[ ]",
+    "[x]",
+    ],
+    "todo-tree.highlights.customHighlight": {
+    "DONE":{
+        "foreground": "#64dd17",
+        "background":"#008800"
+    },
+    "[ ]":{
+        "foreground": "#f44336",
+        "background": "#592c2c",
+    },
+    "TODO":{
+        "foreground": "#f44336",
+        "background": "#592c2c",
+    },
+```
 
 # Cyphertext
 
