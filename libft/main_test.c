@@ -1,18 +1,18 @@
 /* ************************************************************************** */
-/*																			*/
-/*														:::	  ::::::::   */
-/*   main_test.c										:+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: abessa-m <abessa-m@student.42porto.com>	+#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2024/10/23 13:33:40 by abessa-m		  #+#	#+#			 */
-/*   Updated: 2024/10/24 13:00:05 by abessa-m		 ###   ########.fr	   */
-/*																			*/
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main_test.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/23 13:33:40 by abessa-m          #+#    #+#             */
+/*   Updated: 2024/10/24 19:31:39 by abessa-m         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdio.h>
 #include <string.h>
-#include "libft.h"
 #include <ctype.h>
 #include <unistd.h>
 
