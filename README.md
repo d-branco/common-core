@@ -9,7 +9,7 @@ Common Core repository from 42 school
 |libc      |ctype.h  |ft_isdigit   | DONE  | DONE |
 |libc      |ctype.h  |ft_isdigit   | DONE  | DONE |
 |libc      |ctype.h  |ft_isascii   | DONE  | DONE |
-|libc      |ctype.h  |ft_isprint   | TODO  | TODO |
+|libc      |ctype.h  |ft_isprint   | DONE  | TODO |
 |libc      |ctype.h  |ft_toupper   | TODO  | TODO |
 |libc      |ctype.h  |ft_tolower   | TODO  | TODO |
 |libc      |string.h |ft_strlen    | TODO  | TODO |
