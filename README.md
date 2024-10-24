@@ -6,8 +6,8 @@ Common Core repository from 42 school
 |Part |library | function | state | tests|
 |-----|-------|----------|-------|------ |
 |libc|ctype.h |[isalpha](https://github.com/d-branco/common-core/blob/main/libft/ft_isalpha.c)|DONE|DONE|
-|libc|ctype.h |isdigit|DONE|DONE|
-|libc|ctype.h |isalnum|DONE|DONE|
+|libc|ctype.h |[isdigit](https://github.com/d-branco/common-core/blob/main/libft/ft_isdigit.c)|DONE|DONE|
+|libc|ctype.h |[isdigit](https://github.com/d-branco/common-core/blob/main/libft/ft_isdigit.c)|DONE|DONE|
 
 	TODO Find a way to easily test a file as it is done.
 		it ought to be tested for 
