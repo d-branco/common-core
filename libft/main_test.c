@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:33:40 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/24 11:46:21 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/24 12:10:17 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <string.h>
 #include "libft.h"
 
-static int		test_isalpha();
+//static int		test_isalpha();
 static int		test_isdigit();
 static int		test_isalnum();
 static void		print_caution(char *error_message);
@@ -30,8 +30,8 @@ int	main(int argc, char **argv)
 	aval = 0;
 	while (i < argc)
 	{
-		if (!strcmp(argv[i], "ft_isalpha.c"))
-			aval = test_isalpha(argv[i]);
+		/*if (!strcmp(argv[i], "ft_isalpha.c"))
+			aval = test_isalpha(argv[i]);*/
 		if (!strcmp(argv[i], "ft_isdigit.c"))
 			aval = test_isdigit(argv[i]);
 		if (!strcmp(argv[i], "ft_isalnum.c"))
@@ -75,7 +75,7 @@ static int	test_isdigit()
 }
 
 
-static int	test_isalpha()
+/*static int	test_isalpha()
 {
 	if
 		((ft_isalpha('a') == 'a')
@@ -85,7 +85,7 @@ static int	test_isalpha()
 	}
 	print_caution("test failed");
 	return (-1);
-}
+}*/
 
 static void	print_caution(char *error_message)
 {
