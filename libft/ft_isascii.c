@@ -14,9 +14,9 @@
 //	the ASCII character set.
 
 // checks if the character is between 0 and 127 inclusive.
-int	ft_isascii(int c)
+int	ft_isascii(int chr)
 {
-	if (c >= 0 && c <= 127)
+	if (chr >= 0 && chr <= 127)
 		return (1);
 	return (0);
 }
