@@ -36,7 +36,7 @@ Common Core repository from 42 school
 |additional|         |ft_strmapi   | TODO  | TODO |
 |additional|         |ft_striteri  | TODO  | TODO |
 |additional|         |ft_putchar_fd| TODO  | TODO |
-|additional|         |fft_putstr_fd| TODO  | TODO |
+|additional|         |ft_putstr_fd | TODO  | TODO |
 |additional|         |ft_putendl_fd| TODO  | TODO |
 |additional|         |ft_putnbr_fd | TODO  | TODO |
 
