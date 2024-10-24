@@ -43,7 +43,7 @@ Ynetr pbjf trarebfvgl pbzrf jvgu punegf naq sbhe oybaqr ungf gb qrsl hccre teniv
 
 ## Decrypted with `rot 18`
 
-[ror 13 + 5](https://en.wikipedia.org/wiki/ROT13)
+[rot 13 + 5](https://en.wikipedia.org/wiki/ROT13)
 
 >Each project of the 42 Common Core contains an encoded hint. For each circle, only one project provides the correct hint needed for the next circle. This challenge is individual, there is only a prize for one student winner providing all decoded essages. Any advantaged people can play, like current or former staff, but the prize will remain symbolic. The hint for this first project is:
 
