@@ -19,6 +19,7 @@
 static int		test_isalpha();
 static int		test_isdigit();
 static int		test_isalnum();
+static int		test_isascii();
 static void		print_result(char *message);
 static void		print_caution(char *message);
 static void		print_warning(char *file_name, char *message);
@@ -38,6 +39,8 @@ int	main(int argc, char **argv)
 			aval = test_isdigit(argv[i]);
 		if (!strcmp(argv[i], "ft_isalnum.c"))
 			aval = test_isalnum(argv[i]);
+		if (!strcmp(argv[i], "ft_isascii.c"))
+			aval = test_isascii(argv[i]);
 
 
 		if (aval == 0)
@@ -46,9 +49,51 @@ int	main(int argc, char **argv)
 	}
 }
 
-static int test_isalnum()
-{
-	int i;
+static int	test_isascii(){
+	int	i;
+
+	i = 0;
+	while (i <= 127)
+	{
+		if (ft_isascii(i) != 1)
+		{
+			print_caution("FAILED on valid ASCII character!");
+			printf("(ASCII: %i)", i);
+			return (-1);
+		}
+		i++;
+	}
+	print_result("Identifies all valid ASCII values (0-127).");
+	i = 128;
+	while (i <= 255)
+	{
+		if (ft_isascii(i) != 0)
+		{
+			print_caution("FAILED on value above ASCII range!");
+			printf("(Value: %i)", i);
+			return (-1);
+		}
+		i++;
+	}
+	print_result("Handles values above ASCII range (128-255).");
+	i = -128;
+	while (i < 0)
+	{
+		if (ft_isascii(i) != 0)
+		{
+			print_caution("FAILED on negative value!");
+			printf("(Value: %i)", i);
+			return (-1);
+		}
+		i++;
+	}
+	print_result("Handles negative values.");
+
+	return (1);
+}
+
+static int test_isalnum(){
+	int	i;
 
 	i = '0';
 	while (i <= '9')
@@ -100,9 +145,8 @@ static int test_isalnum()
 }
 
 
-static int test_isdigit()
-{
-	int i;
+static int test_isdigit(){
+	int	i;
 
 	i = '0';
 	while (i <= '9')
@@ -171,17 +215,14 @@ static int	test_isalpha()
 	return (1);
 }
 
-static void	print_result(char *message)
-{
+static void	print_result(char *message){
 	printf("	\033[0;32m%s\033[0m\n", message);
 }
 
-static void	print_caution(char *message)
-{
+static void	print_caution(char *message){
 	printf("	\033[41m%s\033[0m\n", message);
 }
 
-static void	print_warning(char *file_name, char *message)
-{
+static void	print_warning(char *file_name, char *message){
 	printf("	\033[0;93m%s: %s\033[0m\n", file_name, message);
 }
