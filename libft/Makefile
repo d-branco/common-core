@@ -29,8 +29,8 @@ $(OBJS):
 SRCS = $(MANDATORY1)
 # $(MANDATORY2) $(BONUS) $(PERSONAL)
 
-MANDATORY1 = ft_isalpha.c ft_isdigit.c ft_isalnum.c \
-#	ft_isascii.c ft_isprint.c \
+MANDATORY1 = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c \
+#	 ft_isprint.c \
 	ft_strlen.c ft_strlen.c ft_strlcpy.c ft_strlcat.c strchr.c strrchr.c ft_strncmp.c strnstr.c\
 	ft_toupper.c ft_tolower.c \
 	memset.c memcpy.c memmove.c memchr.c memcmp.c \
@@ -67,6 +67,7 @@ $(NAME): $(OBJS)
 
 clean:
 	@rm -f $(OBJS)
+	clear
 
 fclean: clean
 	@rm -f $(NAME)
