@@ -50,8 +50,9 @@ MANDATORY1 = ft_isalpha.c ft_isdigit.c ft_isalnum.c \
 #	TODO How to test all of this?"
 
 test: re
+	clear
 	@for src in $(SRCS); do \
-		norminette $$src | grep -q "Error!" && echo "$$src:\033[41m    norminette ERROR!\033[0m | " || printf "$$src:\033[0;32m    norminette OK\033[0m | "; \
+		norminette $$src | grep -q "Error!" && echo "$$src:\033[41m  norminette ERROR!\033[0m | " || printf "$$src:\033[0;32m  norminette OK\033[0m | "; \
 		cc -Wall -Werror -Wextra $(TEST) -L. -lft -o a.out; \
 		@valgrind --leak-check=full --show-leak-kinds=all ./a.out $$src 2>&1 | grep -q "definitely lost" && echo "\033[41mvalgrind ERROR!\033[0m" || echo "\033[0;32mvalgrind OK\033[0m"; \
 		./a.out $$src; \
