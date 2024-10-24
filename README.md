@@ -3,11 +3,11 @@ Common Core repository from 42 school
 
 ## libft - current project
 
-|Part | function | state | tests|
-|-----|----------|-------|------ |
-|libc|[isalpha](https://github.com/d-branco/common-core/blob/main/libft/ft_isalpha.c)|DONE|DONE|
-|libc|isdigit|DONE|DONE|
-|libc|isalnum|DONE|DONE|
+|Part |library | function | state | tests|
+|-----|-------|----------|-------|------ |
+|libc|[isalpha](https://github.com/d-branco/common-core/blob/main/libft/ft_isalpha.c)|ctype.h |DONE|DONE|
+|libc|isdigit|ctype.h |DONE|DONE|
+|libc|isalnum|ctype.h |DONE|DONE|
 
 	TODO Find a way to easily test a file as it is done.
 		it ought to be tested for 
@@ -33,29 +33,6 @@ Common Core repository from 42 school
 #### Norm
 	TODO All source files you need to compile your project must be explicitly named in your Makefile.
 
-## TODO Tree extension
-```json
-    "todo-tree.general.tags": [
-    "TODO",
-    "DONE",
-
-    "[ ]",
-    "[x]",
-    ],
-    "todo-tree.highlights.customHighlight": {
-    "DONE":{
-        "foreground": "#64dd17",
-        "background":"#008800"
-    },
-    "[ ]":{
-        "foreground": "#f44336",
-        "background": "#592c2c",
-    },
-    "TODO":{
-        "foreground": "#f44336",
-        "background": "#592c2c",
-    },
-```
 
 # Cyphertext
 
