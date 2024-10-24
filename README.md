@@ -5,9 +5,9 @@ Common Core repository from 42 school
 
 |Part |library | function | state | tests|
 |-----|-------|----------|-------|------ |
-|libc|[isalpha](https://github.com/d-branco/common-core/blob/main/libft/ft_isalpha.c)|ctype.h |DONE|DONE|
-|libc|isdigit|ctype.h |DONE|DONE|
-|libc|isalnum|ctype.h |DONE|DONE|
+|libc|ctype.h |[isalpha](https://github.com/d-branco/common-core/blob/main/libft/ft_isalpha.c)|DONE|DONE|
+|libc|ctype.h |isdigit|DONE|DONE|
+|libc|ctype.h |isalnum|DONE|DONE|
 
 	TODO Find a way to easily test a file as it is done.
 		it ought to be tested for 
