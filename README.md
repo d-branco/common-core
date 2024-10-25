@@ -5,15 +5,15 @@ Common Core repository from 42 school
 
 |Part      |library  | function    | state | tests|
 |----------|---------|-------------|-------|------|
-|libc      |ctype.h  |ft_isalpha   |:white_check_mark:  |:white_check_mark:  |
-|libc      |ctype.h  |ft_isdigit   |:white_check_mark:  |:white_check_mark:  |
-|libc      |ctype.h  |ft_isdigit   |:white_check_mark:  |:white_check_mark:  |
-|libc      |ctype.h  |ft_isascii   |:white_check_mark:  |:white_check_mark:  |
-|libc      |ctype.h  |ft_isprint   |:white_check_mark:  |:white_check_mark:  |
-|libc      |ctype.h  |ft_toupper   |:white_check_mark:  |:white_check_mark:  |
-|libc      |ctype.h  |ft_tolower   |:white_check_mark:  |:white_check_mark:  |
-|libc      |string.h |ft_strlen    |:white_check_mark:  |:white_check_mark:  |
-|libc      |string.h |ft_memset    |         :octocat:  |               :x:  |
+|libc      |ctype.h  |ft_isalpha   |:white_check_mark:  |:white_check_mark::white_check_mark::white_check_mark:|
+|libc      |ctype.h  |ft_isdigit   |:white_check_mark:  |:white_check_mark::white_check_mark::white_check_mark:|
+|libc      |ctype.h  |ft_isdigit   |:white_check_mark:  |:white_check_mark::white_check_mark::white_check_mark:|
+|libc      |ctype.h  |ft_isascii   |:white_check_mark:  |:white_check_mark::white_check_mark::white_check_mark:|
+|libc      |ctype.h  |ft_isprint   |:white_check_mark:  |:white_check_mark::white_check_mark::white_check_mark:|
+|libc      |ctype.h  |ft_toupper   |:white_check_mark:  |:white_check_mark::white_check_mark::white_check_mark:|
+|libc      |ctype.h  |ft_tolower   |:white_check_mark:  |:white_check_mark::white_check_mark::white_check_mark:|
+|libc      |string.h |ft_strlen    |:white_check_mark:  |:white_check_mark::white_check_mark::white_check_mark:|
+|libc      |string.h |ft_memset    |         :octocat:  |:white_check_mark::white_check_mark:             :x:  |
 |libc      |string.h |ft_bzero     |:black_large_square:|:black_large_square:|
 |libc      |string.h |ft_memcpy    |:black_large_square:|:black_large_square:|
 |libc      |string.h |ft_memmove   |:black_large_square:|:black_large_square:|
