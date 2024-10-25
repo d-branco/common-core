@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:33:40 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/25 14:36:30 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/25 16:30:58 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static int		test_isprint(void);
 static int		test_tolower(void);
 static int		test_toupper(void);
 static int		test_strlen(void);
+static int		test_memset(void);
 
 int	main(int argc, char **argv)
 {
@@ -55,12 +56,89 @@ int	main(int argc, char **argv)
 			aval = test_toupper();
 		if (!strcmp(argv[i], "ft_strlen.c"))
 			aval = test_strlen();
+		if (!strcmp(argv[i], "ft_memset.c"))
+			aval = test_memset();
 
 
 		if (aval == 0)
 			print_warning(argv[i], "has no test yet!");
 		i++;
 	}
+}
+
+static int	test_memset(void)
+{
+	char	buf1[50];
+	char	buf2[50];
+	int		int_buf1[10];
+	int		int_buf2[10];
+	char	*result1;
+	int		i;
+
+	result1 = ft_memset(buf1, 'A', 10);
+	memset(buf2, 'A', 10);
+	if (memcmp(buf1, buf2, 10) != 0 || result1 != buf1)
+	{
+		print_caution("FAILED basic character filling!");
+		return (-1);
+	}
+	print_result("Basic character filling works correctly.");
+	result1 = ft_memset(buf1, 0, 20);
+	memset(buf2, 0, 20);
+	if (memcmp(buf1, buf2, 20) != 0 || result1 != buf1)
+	{
+		print_caution("FAILED zero filling!");
+		return (-1);
+	}
+	print_result("Zero filling works correctly.");
+	result1 = ft_memset(buf1, 0xFF, 15);
+	memset(buf2, 0xFF, 15);
+	if (memcmp(buf1, buf2, 15) != 0 || result1 != buf1)
+	{
+		print_caution("FAILED non-character value filling!");
+		return (-1);
+	}
+	print_result("Non-character value filling works correctly.");
+	result1 = ft_memset(buf1, 'X', 1);
+	memset(buf2, 'X', 1);
+	if (memcmp(buf1, buf2, 1) != 0 || result1 != buf1)
+	{
+		print_caution("FAILED small size test!");
+		return (-1);
+	}
+	print_result("Small size handling works correctly.");
+	ft_memset(int_buf1, 0, sizeof(int) * 10);
+	memset(int_buf2, 0, sizeof(int) * 10);
+	if (memcmp(int_buf1, int_buf2, sizeof(int) * 10) != 0)
+	{
+		print_caution("FAILED integer array filling!");
+		return (-1);
+	}
+	print_result("Integer array filling works correctly.");
+	memset(buf1, 'Z', 50);  // Fill entire buffer first
+	memset(buf2, 'Z', 50);
+	result1 = ft_memset(buf1, 'Y', 25);  // Fill half
+	memset(buf2, 'Y', 25);
+	if (memcmp(buf1, buf2, 50) != 0 || result1 != buf1)
+	{
+		print_caution("FAILED partial buffer fill!");
+		return (-1);
+	}
+	print_result("Partial buffer filling works correctly.");
+	i = 0;
+	while (i < 10)
+	{
+		ft_memset(buf1 + i, 'A' + i, 1);
+		memset(buf2 + i, 'A' + i, 1);
+		i++;
+	}
+	if (memcmp(buf1, buf2, 10) != 0)
+	{
+		print_caution("FAILED different values in same buffer!");
+		return (-1);
+	}
+	print_result("Different values in same buffer works correctly.");
+	return (1);
 }
 
 static int	test_strlen(void)

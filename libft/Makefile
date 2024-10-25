@@ -6,7 +6,7 @@
 #    By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/22 13:21:39 by abessa-m          #+#    #+#              #
-#    Updated: 2024/10/25 10:04:01 by abessa-m         ###   ########.fr        #
+#    Updated: 2024/10/25 16:16:10 by abessa-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,10 +33,10 @@ SRCS = $(MANDATORY1)
 
 MANDATORY1 = ft_isalpha.c ft_isdigit.c ft_isalnum.c \
 	ft_isascii.c ft_isprint.c ft_toupper.c ft_tolower.c \
-	ft_strlen.c ft_strlcpy.c ft_strlcat.c strchr.c strrchr.c ft_strncmp.c strnstr.c \
-	memset.c memcpy.c memmove.c memchr.c memcmp.c \
-	bzero.c \
-	atoi.c
+	ft_strlen.c ft_strlcpy.c ft_strlcat.c ft_strchr.c ft_strrchr.c ft_strncmp.c ft_strnstr.c \
+	ft_memset.c ft_memcpy.c ft_memmove.c ft_memchr.c ft_memcmp.c \
+	ft_bzero.c \
+	ft_atoi.c
 
 #MANDATORY2 = 0
 #	TODO aditional functions
