@@ -5,14 +5,14 @@ Common Core repository from 42 school
 
 |Part      |library  | function    | state | tests|
 |----------|---------|-------------|-------|------|
-|libc      |ctype.h  |ft_isalpha   | :white_check_mark:  | DONE |
-|libc      |ctype.h  |ft_isdigit   | DONE  | DONE |
-|libc      |ctype.h  |ft_isdigit   | DONE  | DONE |
-|libc      |ctype.h  |ft_isascii   | DONE  | DONE |
-|libc      |ctype.h  |ft_isprint   | DONE  | DONE |
-|libc      |ctype.h  |ft_toupper   | DONE  | DONE |
-|libc      |ctype.h  |ft_tolower   | DONE  | DONE |
-|libc      |string.h |ft_strlen    | DONE  | DONE |
+|libc      |ctype.h  |ft_isalpha   | :white_check_mark:  | :white_check_mark: |
+|libc      |ctype.h  |ft_isdigit   | :white_check_mark:  | :white_check_mark: |
+|libc      |ctype.h  |ft_isdigit   | :white_check_mark:  | :white_check_mark: |
+|libc      |ctype.h  |ft_isascii   | :white_check_mark:  | :white_check_mark: |
+|libc      |ctype.h  |ft_isprint   | :white_check_mark:  | :white_check_mark: |
+|libc      |ctype.h  |ft_toupper   | :white_check_mark:  | :white_check_mark: |
+|libc      |ctype.h  |ft_tolower   | :white_check_mark:  | :white_check_mark: |
+|libc      |string.h |ft_strlen    | :white_check_mark:  | :white_check_mark: |
 |libc      |string.h |ft_memset    | TODO  | TODO |
 |libc      |string.h |ft_bzero     | TODO  | TODO |
 |libc      |string.h |ft_memcpy    | TODO  | TODO |
