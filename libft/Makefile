@@ -6,7 +6,7 @@
 #    By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/22 13:21:39 by abessa-m          #+#    #+#              #
-#    Updated: 2024/10/23 16:58:06 by abessa-m         ###   ########.fr        #
+#    Updated: 2024/10/25 07:48:15 by abessa-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,6 +62,9 @@ all: $(NAME)
 
 # usage print-SRCS
 print-%: ; @echo '$(subst ','\'',$*=$($*))'
+	@echo ' value = $(value $*)' 
+	@echo ' origin = $(origin $*)'
+	@echo ' flavor = $(flavor $*)'
 # original:
 # print-%: ; @echo $*=$($*)
 
