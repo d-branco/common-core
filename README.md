@@ -13,32 +13,32 @@ Common Core repository from 42 school
 |libc      |ctype.h  |ft_toupper   | :white_check_mark:  | :white_check_mark: |
 |libc      |ctype.h  |ft_tolower   | :white_check_mark:  | :white_check_mark: |
 |libc      |string.h |ft_strlen    | :white_check_mark:  | :white_check_mark: |
-|libc      |string.h |ft_memset    | TODO  | TODO |
-|libc      |string.h |ft_bzero     | TODO  | TODO |
-|libc      |string.h |ft_memcpy    | TODO  | TODO |
-|libc      |string.h |ft_memmove   | TODO  | TODO |
-|libc      |string.h |ft_strlcpy   | TODO  | TODO |
-|libc      |string.h |ft_strlcat   | TODO  | TODO |
-|libc      |string.h |ft_strchar   | TODO  | TODO |
-|libc      |string.h |ft_strrchr   | TODO  | TODO |
-|libc      |string.h |ft_strncmp   | TODO  | TODO |
-|libc      |string.h |ft_memchr    | TODO  | TODO |
-|libc      |string.h |ft_memcmp    | TODO  | TODO |
-|libc      |string.h |ft_strnstr   | TODO  | TODO |
-|libc      |stdlib.h |ft_atoi      | TODO  | TODO |
-|libc      |stdlib.h |ft_calloc    | TODO  | TODO |
-|libc      |stdlib.h |ft_strdup    | TODO  | TODO |
-|additional|         |ft_substr    | TODO  | TODO |
-|additional|         |ft_strjoin   | TODO  | TODO |
-|additional|         |ft_strtrim   | TODO  | TODO |
-|additional|         |ft_split     | TODO  | TODO |
-|additional|         |ft_itoa      | TODO  | TODO |
-|additional|         |ft_strmapi   | TODO  | TODO |
-|additional|         |ft_striteri  | TODO  | TODO |
-|additional|         |ft_putchar_fd| TODO  | TODO |
-|additional|         |ft_putstr_fd | TODO  | TODO |
-|additional|         |ft_putendl_fd| TODO  | TODO |
-|additional|         |ft_putnbr_fd | TODO  | TODO |
+|libc      |string.h |ft_memset    |:square:|      |
+|libc      |string.h |ft_bzero     |:green_square:|      |
+|libc      |string.h |ft_memcpy    |:blue_square:|      |
+|libc      |string.h |ft_memmove   |       |      |
+|libc      |string.h |ft_strlcpy   |       |      |
+|libc      |string.h |ft_strlcat   |       |      |
+|libc      |string.h |ft_strchar   |       |      |
+|libc      |string.h |ft_strrchr   |       |      |
+|libc      |string.h |ft_strncmp   |       |      |
+|libc      |string.h |ft_memchr    |       |      |
+|libc      |string.h |ft_memcmp    |       |      |
+|libc      |string.h |ft_strnstr   |       |      |
+|libc      |stdlib.h |ft_atoi      |       |      |
+|libc      |stdlib.h |ft_calloc    |       |      |
+|libc      |stdlib.h |ft_strdup    |       |      |
+|additional|         |ft_substr    |       |      |
+|additional|         |ft_strjoin   |       |      |
+|additional|         |ft_strtrim   |       |      |
+|additional|         |ft_split     |       |      |
+|additional|         |ft_itoa      |       |      |
+|additional|         |ft_strmapi   |       |      |
+|additional|         |ft_striteri  |       |      |
+|additional|         |ft_putchar_fd|       |      |
+|additional|         |ft_putstr_fd |       |      |
+|additional|         |ft_putendl_fd|       |      |
+|additional|         |ft_putnbr_fd |       |      |
 
 	TODO Find a way to easily test a file as it is done.
 		it ought to be tested for 

@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:33:40 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/25 13:49:16 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/25 14:36:30 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static int	test_strlen(void)
             "por mares nunca dantes navegadosm, passaram ainda alem da Taprobana.";
 	char	*special_chars = "Hello\n\t\r\v\f World!";
 	char	*numbers = "-127 +0 42 225";
-	char	str_with_NULL[20] = "Something\0hidden";
+	char	str_with_null[20] = "Something\0hidden";
 
 	if (ft_strlen(empty_str) != strlen(empty_str))
 	{
@@ -113,11 +113,11 @@ static int	test_strlen(void)
 		return (-1);
 	}
 	print_result("Handles numeric characters correctly.");
-	if (ft_strlen(str_with_NULL) != strlen(str_with_NULL))
+	if (ft_strlen(str_with_null) != strlen(str_with_null))
 	{
 		print_caution("FAILED on string with NULL terminator in middle!");
 		printf("	(Expected: %lu, Got: %lu)\n",
-			strlen(str_with_NULL), ft_strlen(str_with_NULL));
+			strlen(str_with_null), ft_strlen(str_with_null));
 		return (-1);
 	}
 	print_result("Handles embedded NULL terminator correctly.");
@@ -446,6 +446,5 @@ static void	print_warning(char *file_name, char *message)
 
 static void	suspense(void)
 {
-	//usleep(200000);
-	usleep(2);
+	usleep(200000);
 }
