@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 08:10:20 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/25 10:28:59 by abessa-m         ###   ########.fr       */
+/*   Created: 2024/10/25 09:52:51 by abessa-m          #+#    #+#             */
+/*   Updated: 2024/10/25 10:27:42 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// usage: #include "libft.h"
+//#include <stddef.h>
+//ypedef typeof(sizeof(0)) size_t;
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
+// for the definition of size_t as
+// typedef typeof(sizeof(0)) size_t;
 
-typedef typeof(sizeof(0))	t_size_t;
-
-int			ft_isalpha(int c);
-int			ft_isdigit(int c);
-int			ft_isalnum(int c);
-int			ft_isascii(int c);
-int			ft_isprint(int c);
-int			ft_toupper(int c);
-int			ft_tolower(int c);
-t_size_t	ft_strlen(const char *s);
-
-#endif
+t_size_t	ft_strlen(const char *s)
+{
+	if (s)
+		return (0);
+	return (0);
+}
