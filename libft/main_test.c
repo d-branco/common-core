@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:33:40 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/25 10:41:17 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/25 13:49:16 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,13 +134,13 @@ static int	test_toupper(void)
 		if (ft_toupper(i) != (i - 32))
 		{
 			print_caution("FAILED to convert lowercase to uppercase!");
-			printf("	(Character: %c, ASCII: %i)", i, i);
+			printf("	(Character: %c, ASCII: %i)\n", i, i);
 			return (-1);
 		}
 		i++;
 	}
 	print_result("Converts all lowercase letters to uppercase.");
-	i = -128;
+	i = -1;
 	while (i <= 127)
 	{
 		if (i < 'a' || i > 'z')
@@ -180,13 +180,13 @@ static int	test_tolower(void)
 		if (ft_tolower(i) != (i + 32))
 		{
 			print_caution("FAILED to convert uppercase to lowercase!");
-			printf("	(Character: %c, ASCII: %i)", i, i);
+			printf("	(Character: %c, ASCII: %i)\n", i, i);
 			return (-1);
 		}
 		i++;
 	}
 	print_result("Converts all uppercase letters to lowercase.");
-	i = -128;
+	i = -1;
 	while (i <= 127)
 	{
 		if (i < 'A' || i > 'Z')
@@ -446,5 +446,6 @@ static void	print_warning(char *file_name, char *message)
 
 static void	suspense(void)
 {
-	usleep(200000);
+	//usleep(200000);
+	usleep(2);
 }
