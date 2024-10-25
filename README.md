@@ -13,32 +13,32 @@ Common Core repository from 42 school
 |libc      |ctype.h  |ft_toupper   |:white_check_mark:  |:white_check_mark::white_check_mark::white_check_mark:|
 |libc      |ctype.h  |ft_tolower   |:white_check_mark:  |:white_check_mark::white_check_mark::white_check_mark:|
 |libc      |string.h |ft_strlen    |:white_check_mark:  |:white_check_mark::white_check_mark::white_check_mark:|
-|libc      |string.h |ft_memset    |         :octocat:  |:white_check_mark::white_check_mark:             :x:  |
-|libc      |string.h |ft_bzero     |:black_large_square:|:black_large_square:|
-|libc      |string.h |ft_memcpy    |:black_large_square:|:black_large_square:|
-|libc      |string.h |ft_memmove   |:black_large_square:|:black_large_square:|
-|libc      |string.h |ft_strlcpy   |:black_large_square:|:black_large_square:|
-|libc      |string.h |ft_strlcat   |:black_large_square:|:black_large_square:|
-|libc      |string.h |ft_strchar   |:black_large_square:|:black_large_square:|
-|libc      |string.h |ft_strrchr   |:black_large_square:|:black_large_square:|
-|libc      |string.h |ft_strncmp   |:black_large_square:|:black_large_square:|
-|libc      |string.h |ft_memchr    |:black_large_square:|:black_large_square:|
-|libc      |string.h |ft_memcmp    |:black_large_square:|:black_large_square:|
-|libc      |string.h |ft_strnstr   |:black_large_square:|:black_large_square:|
-|libc      |stdlib.h |ft_atoi      |:black_large_square:|:black_large_square:|
-|libc      |stdlib.h |ft_calloc    |:black_large_square:|:black_large_square:|
-|libc      |stdlib.h |ft_strdup    |:black_large_square:|:black_large_square:|
-|additional|         |ft_substr    |:black_large_square:|:black_large_square:|
-|additional|         |ft_strjoin   |:black_large_square:|:black_large_square:|
-|additional|         |ft_strtrim   |:black_large_square:|:black_large_square:|
-|additional|         |ft_split     |:black_large_square:|:black_large_square:|
-|additional|         |ft_itoa      |:black_large_square:|:black_large_square:|
-|additional|         |ft_strmapi   |:black_large_square:|:black_large_square:|
-|additional|         |ft_striteri  |:black_large_square:|:black_large_square:|
-|additional|         |ft_putchar_fd|:black_large_square:|:black_large_square:|
-|additional|         |ft_putstr_fd |:black_large_square:|:black_large_square:|
-|additional|         |ft_putendl_fd|:black_large_square:|:black_large_square:|
-|additional|         |ft_putnbr_fd |:black_large_square:|:black_large_square:|
+|libc      |string.h |ft_memset    |:white_check_mark:  |:white_check_mark::white_check_mark::white_check_mark:|
+|libc      |string.h |ft_bzero     |:black_large_square:|:black_large_square::black_large_square::black_large_square:|
+|libc      |string.h |ft_memcpy    |:black_large_square:|:black_large_square::black_large_square::black_large_square:|
+|libc      |string.h |ft_memmove   |:black_large_square:|:black_large_square::black_large_square::black_large_square:|
+|libc      |string.h |ft_strlcpy   |:black_large_square:|:black_large_square::black_large_square::black_large_square:|
+|libc      |string.h |ft_strlcat   |:black_large_square:|:black_large_square::black_large_square::black_large_square:|
+|libc      |string.h |ft_strchar   |:black_large_square:|:black_large_square::black_large_square::black_large_square:|
+|libc      |string.h |ft_strrchr   |:black_large_square:|:black_large_square::black_large_square::black_large_square:|
+|libc      |string.h |ft_strncmp   |:black_large_square:|:black_large_square::black_large_square::black_large_square:|
+|libc      |string.h |ft_memchr    |:black_large_square:|:black_large_square::black_large_square::black_large_square:|
+|libc      |string.h |ft_memcmp    |:black_large_square:|:black_large_square::black_large_square::black_large_square:|
+|libc      |string.h |ft_strnstr   |:black_large_square:|:black_large_square::black_large_square::black_large_square:|
+|libc      |stdlib.h |ft_atoi      |:black_large_square:|:black_large_square::black_large_square::black_large_square:|
+|libc      |stdlib.h |ft_calloc    |:black_large_square:|:black_large_square::black_large_square::black_large_square:|
+|libc      |stdlib.h |ft_strdup    |:black_large_square:|:black_large_square::black_large_square::black_large_square:|
+|additional|         |ft_substr    |:black_large_square:|:black_large_square::black_large_square::black_large_square:|
+|additional|         |ft_strjoin   |:black_large_square:|:black_large_square::black_large_square::black_large_square:|
+|additional|         |ft_strtrim   |:black_large_square:|:black_large_square::black_large_square::black_large_square:|
+|additional|         |ft_split     |:black_large_square:|:black_large_square::black_large_square::black_large_square:|
+|additional|         |ft_itoa      |:black_large_square:|:black_large_square::black_large_square::black_large_square:|
+|additional|         |ft_strmapi   |:black_large_square:|:black_large_square::black_large_square::black_large_square:|
+|additional|         |ft_striteri  |:black_large_square:|:black_large_square::black_large_square::black_large_square:|
+|additional|         |ft_putchar_fd|:black_large_square:|:black_large_square::black_large_square::black_large_square:|
+|additional|         |ft_putstr_fd |:black_large_square:|:black_large_square::black_large_square::black_large_square:|
+|additional|         |ft_putendl_fd|:black_large_square:|:black_large_square::black_large_square::black_large_square:|
+|additional|         |ft_putnbr_fd |:black_large_square:|:black_large_square::black_large_square::black_large_square:|
 
 	TODO Find a way to easily test a file as it is done.
 		it ought to be tested for 

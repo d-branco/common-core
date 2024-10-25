@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:33:40 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/25 16:30:58 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/25 17:24:39 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,76 +68,105 @@ int	main(int argc, char **argv)
 
 static int	test_memset(void)
 {
-	char	buf1[50];
-	char	buf2[50];
-	int		int_buf1[10];
-	int		int_buf2[10];
-	char	*result1;
-	int		i;
+	unsigned char	buf1[100];
+	unsigned char	buf2[100];
+	int				int_buf1[10];
+	int				int_buf2[10];
+	void			*result1;
+	size_t			test_sizes[] = {1, 2, 4, 8, 16, 32, 64};
+	int				test_values[] = {0x00, 0xFF, 0xAA, 0x55, 'a', '0', '\n'};
+	size_t			i;
+	size_t			j;
 
-	result1 = ft_memset(buf1, 'A', 10);
-	memset(buf2, 'A', 10);
-	if (memcmp(buf1, buf2, 10) != 0 || result1 != buf1)
-	{
-		print_caution("FAILED basic character filling!");
-		return (-1);
-	}
-	print_result("Basic character filling works correctly.");
-	result1 = ft_memset(buf1, 0, 20);
-	memset(buf2, 0, 20);
-	if (memcmp(buf1, buf2, 20) != 0 || result1 != buf1)
-	{
-		print_caution("FAILED zero filling!");
-		return (-1);
-	}
-	print_result("Zero filling works correctly.");
-	result1 = ft_memset(buf1, 0xFF, 15);
-	memset(buf2, 0xFF, 15);
-	if (memcmp(buf1, buf2, 15) != 0 || result1 != buf1)
-	{
-		print_caution("FAILED non-character value filling!");
-		return (-1);
-	}
-	print_result("Non-character value filling works correctly.");
-	result1 = ft_memset(buf1, 'X', 1);
-	memset(buf2, 'X', 1);
-	if (memcmp(buf1, buf2, 1) != 0 || result1 != buf1)
-	{
-		print_caution("FAILED small size test!");
-		return (-1);
-	}
-	print_result("Small size handling works correctly.");
-	ft_memset(int_buf1, 0, sizeof(int) * 10);
-	memset(int_buf2, 0, sizeof(int) * 10);
-	if (memcmp(int_buf1, int_buf2, sizeof(int) * 10) != 0)
-	{
-		print_caution("FAILED integer array filling!");
-		return (-1);
-	}
-	print_result("Integer array filling works correctly.");
-	memset(buf1, 'Z', 50);  // Fill entire buffer first
-	memset(buf2, 'Z', 50);
-	result1 = ft_memset(buf1, 'Y', 25);  // Fill half
-	memset(buf2, 'Y', 25);
-	if (memcmp(buf1, buf2, 50) != 0 || result1 != buf1)
-	{
-		print_caution("FAILED partial buffer fill!");
-		return (-1);
-	}
-	print_result("Partial buffer filling works correctly.");
+	memset(buf1, 0x55, sizeof(buf1));
+	memset(buf2, 0x55, sizeof(buf2));
 	i = 0;
-	while (i < 10)
+	while (i < sizeof(test_sizes) / sizeof(test_sizes[0]))
 	{
-		ft_memset(buf1 + i, 'A' + i, 1);
-		memset(buf2 + i, 'A' + i, 1);
+		j = 0;
+		while (j < sizeof(test_values) / sizeof(test_values[0]))
+		{
+			result1 = ft_memset(buf1, test_values[j], test_sizes[i]);
+			memset(buf2, test_values[j], test_sizes[i]);
+			if (result1 != buf1)
+			{
+				print_caution("FAILED: Return value is incorrect!");
+				printf("(Size: %zu, Value: 0x%02x)\n", 
+					test_sizes[i], test_values[j]);
+				return (-1);
+			}
+			if (memcmp(buf1, buf2, test_sizes[i]) != 0)
+			{
+				print_caution("FAILED: Memory content mismatch!");
+				printf("(Size: %zu, Value: 0x%02x)\n", 
+					test_sizes[i], test_values[j]);
+				return (-1);
+			}
+			if (buf1[test_sizes[i]] != 0x55)
+			{
+				print_caution("FAILED: Buffer overflow detected!");
+				printf("(Size: %zu, Value: 0x%02x)\n", 
+					test_sizes[i], test_values[j]);
+				return (-1);
+			}
+			j++;
+		}
 		i++;
 	}
-	if (memcmp(buf1, buf2, 10) != 0)
+	print_result("Passed various sizes and values tests.");
+	for (i = 0; i < 8; i++)
 	{
-		print_caution("FAILED different values in same buffer!");
+		result1 = ft_memset(buf1 + i, 0x42, 32);
+		memset(buf2 + i, 0x42, 32);
+		
+		if (memcmp(buf1 + i, buf2 + i, 32) != 0 || result1 != (buf1 + i))
+		{
+			print_caution("FAILED: Alignment test!");
+			printf("(Offset: %zu)\n", i);
+			return (-1);
+		}
+	}
+	print_result("Passed alignment tests.");
+	result1 = ft_memset(int_buf1, 0, sizeof(int_buf1));
+	memset(int_buf2, 0, sizeof(int_buf2));
+	if (memcmp(int_buf1, int_buf2, sizeof(int_buf1)) != 0 || 
+		result1 != int_buf1)
+	{
+		print_caution("FAILED: Integer array test!");
 		return (-1);
 	}
-	print_result("Different values in same buffer works correctly.");
+	print_result("Passed integer array test.");
+	for (i = 0; i < 10; i++)
+	{
+		result1 = ft_memset(buf1 + i, 'A' + i, 1);
+		memset(buf2 + i, 'A' + i, 1);
+		
+		if (memcmp(buf1, buf2, i + 1) != 0 || result1 != (buf1 + i))
+		{
+			print_caution("FAILED: Sequential writes test!");
+			printf("(Position: %zu)\n", i);
+			return (-1);
+		}
+	}
+	print_result("Passed sequential writes test.");
+	unsigned char edge_values[] = {
+		0x00, 0x01, 0x7F, 0x80, 0xFF, // Edge values
+		'A', 'Z', 'a', 'z', '0', '9', // ASCII ranges
+		'\t', '\n', '\r', ' ' // Special characters
+	};
+	for (i = 0; i < sizeof(edge_values); i++)
+	{
+		result1 = ft_memset(buf1, edge_values[i], 8);
+		memset(buf2, edge_values[i], 8);
+		
+		if (memcmp(buf1, buf2, 8) != 0 || result1 != buf1)
+		{
+			print_caution("FAILED: Edge values test!");
+			printf("(Value: 0x%02x)\n", edge_values[i]);
+			return (-1);
+		}
+	}
+	print_result("Passed edge values test.");
 	return (1);
 }
 
@@ -145,8 +174,10 @@ static int	test_strlen(void)
 {
 	char	*empty_str = "";
 	char	*normal_str = "Quarenta e dois.";
-	char	*long_str = "As armas e os baroes assinaldados, que da ocidental praia lusitana,"
-            "por mares nunca dantes navegadosm, passaram ainda alem da Taprobana.";
+	char	*long_str = "As armas e os baroes assinaldados, "
+				"que da ocidental praia lusitana,"
+				"por mares nunca dantes navegadosm, "
+				"passaram ainda alem da Taprobana.";
 	char	*special_chars = "Hello\n\t\r\v\f World!";
 	char	*numbers = "-127 +0 42 225";
 	char	str_with_null[20] = "Something\0hidden";
