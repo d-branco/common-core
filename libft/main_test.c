@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:33:40 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/25 09:15:04 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/25 09:35:31 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,18 @@
 #include <ctype.h>
 #include <unistd.h>
 
-static int		test_isalpha(void);
-static int		test_isdigit(void);
-static int		test_isalnum(void);
-static int		test_isascii(void);
 static void		print_result(char *message);
 static void		print_caution(char *message);
 static void		print_warning(char *file_name, char *message);
 static void		suspense(void);
+static int		test_isalpha(void);
+static int		test_isdigit(void);
+static int		test_isalnum(void);
+static int		test_isascii(void);
+static int		test_isprint(void);
+static int		test_tolower(void);
+static int		test_toupper(void);
+static int		test_strlen(void);
 
 int	main(int argc, char **argv)
 {
@@ -42,12 +46,222 @@ int	main(int argc, char **argv)
 			aval = test_isalnum();
 		if (!strcmp(argv[i], "ft_isascii.c"))
 			aval = test_isascii();
+		if (!strcmp(argv[i], "ft_isprint.c"))
+			aval = test_isprint();
+		if (!strcmp(argv[i], "ft_tolower.c"))
+			aval = test_tolower();
+		if (!strcmp(argv[i], "ft_toupper.c"))
+			aval = test_toupper();
+		if (!strcmp(argv[i], "ft_strlen.c"))
+			aval = test_strlen();
 
 
 		if (aval == 0)
 			print_warning(argv[i], "has no test yet!");
 		i++;
 	}
+}
+
+static int	test_strlen(void)
+{
+	char	*empty_str = "";
+	char	*normal_str = "Quarenta e dois.";
+	char	*long_str = "As armas e os baroes assinaldados, que da ocidental praia lusitana,"
+            "por mares nunca dantes navegadosm, passaram ainda alem da Taprobana.";
+	char	*special_chars = "Hello\n\t\r\v\f World!";
+	char	*numbers = "-127 +0 42 225";
+	char	str_with_null[20] = "Something\0hidden";
+
+	if (ft_strlen(empty_str) != strlen(empty_str))
+	{
+		print_caution("FAILED on empty string!");
+		printf("(Expected: %lu, Got: %lu)",
+			strlen(empty_str), ft_strlen(empty_str));
+		return (-1);
+	}
+	print_result("Handles empty string correctly.");
+
+	if (ft_strlen(normal_str) != strlen(normal_str))
+	{
+		print_caution("FAILED on normal string!");
+		printf("(Expected: %lu, Got: %lu)",
+			strlen(normal_str), ft_strlen(normal_str));
+		return (-1);
+	}
+	print_result("Handles normal string correctly.");
+
+	if (ft_strlen(long_str) != strlen(long_str))
+	{
+		print_caution("FAILED on long string!");
+		printf("(Expected: %lu, Got: %lu)",
+			strlen(long_str), ft_strlen(long_str));
+		return (-1);
+	}
+	print_result("Handles long string correctly.");
+
+	if (ft_strlen(special_chars) != strlen(special_chars))
+	{
+		print_caution("FAILED on string with special characters!");
+		printf("(Expected: %lu, Got: %lu)",
+			strlen(special_chars), ft_strlen(special_chars));
+		return (-1);
+	}
+	print_result("Handles special characters correctly.");
+
+	if (ft_strlen(numbers) != strlen(numbers))
+	{
+		print_caution("FAILED on string with numbers!");
+		printf("(Expected: %lu, Got: %lu)",
+			strlen(numbers), ft_strlen(numbers));
+		return (-1);
+	}
+	print_result("Handles numeric characters correctly.");
+
+	if (ft_strlen(str_with_null) != strlen(str_with_null))
+	{
+		print_caution("FAILED on string with null terminator in middle!");
+		printf("(Expected: %lu, Got: %lu)",
+			strlen(str_with_null), ft_strlen(str_with_null));
+		return (-1);
+	}
+	print_result("Handles embedded null terminator correctly.");
+
+	return (1);
+}
+
+static int	test_toupper(void)
+{
+	int	i;
+
+	i = 'a';
+	while (i <= 'z')
+	{
+		if (ft_toupper(i) != (i - 32))
+		{
+			print_caution("FAILED to convert lowercase to uppercase!");
+			printf("(Character: %c, ASCII: %i)", i, i);
+			return (-1);
+		}
+		i++;
+	}
+	print_result("Converts all lowercase letters to uppercase.");
+	i = -128;
+	while (i <= 127)
+	{
+		if (i < 'a' || i > 'z')
+		{
+			if (ft_toupper(i) != toupper(i))
+			{
+				print_caution("FAILED on non-lowercase character!");
+				printf("(ASCII: %i)\n", i);
+				return (-1);
+			}
+		}
+		i++;
+	}
+	print_result("Leaves non-lowercase characters unchanged.");
+	i = 128;
+	while (i <= 255)
+	{
+		if (ft_toupper(i) != toupper(i))
+		{
+			print_caution("FAILED on extended ASCII character!");
+			printf("(ASCII: %i)\n", i);
+			return (-1);
+		}
+		i++;
+	}
+	print_result("Handles extended ASCII characters correctly.");
+	return (1);
+}
+
+static int	test_tolower(void)
+{
+	int	i;
+
+	i = 'A';
+	while (i <= 'Z')
+	{
+		if (ft_tolower(i) != (i + 32))
+		{
+			print_caution("FAILED to convert uppercase to lowercase!");
+			printf("(Character: %c, ASCII: %i)", i, i);
+			return (-1);
+		}
+		i++;
+	}
+	print_result("Converts all uppercase letters to lowercase.");
+	i = -128;
+	while (i <= 127)
+	{
+		if (i < 'A' || i > 'Z')
+		{
+			if (ft_tolower(i) != tolower(i))
+			{
+				print_caution("FAILED on non-uppercase character!");
+				printf("(ASCII: %i)\n", i);
+				return (-1);
+			}
+		}
+		i++;
+	}
+	print_result("Leaves non-uppercase characters unchanged.");
+	i = 128;
+	while (i <= 255)
+	{
+		if (ft_tolower(i) != tolower(i))
+		{
+			print_caution("FAILED on extended ASCII character!");
+			printf("(ASCII: %i)\n", i);
+			return (-1);
+		}
+		i++;
+	}
+	print_result("Handles extended ASCII characters correctly.");
+	return (1);
+}
+
+static int	test_isprint(void)
+{
+	int	i;
+
+	i = 32;
+	while (i <= 126)
+	{
+		if (!!ft_isprint(i) != !!isprint(i))
+		{
+			print_caution("FAILED on printable character!");
+			printf("(ASCII: %i)\n", i);
+			return (-1);
+		}
+		i++;
+	}
+	print_result("Handles all printable characters (32-126).");
+	i = -128;
+	while (i < 32)
+	{
+		if (!!ft_isprint(i) != !!isprint(i))
+		{
+			print_caution("FAILED on non-printable character!");
+			printf("(ASCII: %i)\n", i);
+			return (-1);
+		}
+		i++;
+	}
+	print_result("Handles control characters and negatives correctly.");
+	i = 127;
+	while (i <= 255)
+	{
+		if (!!ft_isprint(i) != !!isprint(i))
+		{
+			print_caution("FAILED on extended ASCII character!");
+			printf("(ASCII: %i)\n", i);
+			return (-1);
+		}
+		i++;
+	}
+	print_result("Handles extended ASCII characters correctly.");
+	return (1);
 }
 
 static int	test_isascii(void)
@@ -60,7 +274,7 @@ static int	test_isascii(void)
 		if (ft_isascii(i) != 1)
 		{
 			print_caution("FAILED on valid ASCII character!");
-			printf("(ASCII: %i)", i);
+			printf("(ASCII: %i)\n", i);
 			return (-1);
 		}
 		i++;
@@ -136,7 +350,7 @@ static int	test_isalnum(void)
 			if (!!ft_isalnum(i) != !!isalnum(i))
 			{
 				print_caution("FAILED on non-alphanumeric character!");
-				printf("(ASCII: %i)", i);
+				printf("(ASCII: %i)\n", i);
 				return (-1);
 			}
 		}
@@ -171,7 +385,7 @@ static int	test_isdigit(void)
 			if (!!ft_isdigit(i) != !!isdigit(i))
 			{
 				print_caution("FAILED on non-digit character!");
-				printf("(ASCII: %i)", i);
+				printf("(ASCII: %i)\n", i);
 				return (-1);
 			}
 		}
@@ -209,7 +423,7 @@ static int	test_isalpha(void)
 		if (!!ft_isalpha(i) != !!isalpha(i))
 		{
 			print_caution("FAILED on non-alphabetic character!");
-			printf("(ASCII: %i)", i);
+			printf("(ASCII: %i)\n", i);
 			return (-1);
 		}
 		i++;
