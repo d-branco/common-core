@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:33:40 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/24 19:31:39 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/24 20:13:36 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ int	main(int argc, char **argv)
 	while (i < argc)
 	{
 		if (!strcmp(argv[i], "ft_isalpha.c"))
-			aval = test_isalpha(argv[i]);
+			aval = test_isalpha();
 		if (!strcmp(argv[i], "ft_isdigit.c"))
-			aval = test_isdigit(argv[i]);
+			aval = test_isdigit();
 		if (!strcmp(argv[i], "ft_isalnum.c"))
-			aval = test_isalnum(argv[i]);
+			aval = test_isalnum();
 		if (!strcmp(argv[i], "ft_isascii.c"))
-			aval = test_isascii(argv[i]);
+			aval = test_isascii();
 
 
 		if (aval == 0)

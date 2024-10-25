@@ -1,7 +1,7 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makesrc                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
@@ -59,6 +59,11 @@ test: re
 	@rm -f a.out
 
 all: $(NAME)
+
+# usage print-SRCS
+print-%: ; @echo '$(subst ','\'',$*=$($*))'
+# original:
+# print-%: ; @echo $*=$($*)
 
 $(NAME): $(OBJS)
 	@ar rcs $(NAME) $(OBJS)
