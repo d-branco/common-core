@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 09:52:51 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/25 10:27:42 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/25 10:40:08 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@
 
 t_size_t	ft_strlen(const char *s)
 {
-	if (s)
-		return (0);
-	return (0);
+	int	j;
+
+	j = 0;
+	while (s[j] != '\0')
+		j++;
+	return (j);
 }
