@@ -6,7 +6,7 @@
 #    By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/22 13:21:39 by abessa-m          #+#    #+#              #
-#    Updated: 2024/10/25 07:48:15 by abessa-m         ###   ########.fr        #
+#    Updated: 2024/10/25 07:56:13 by abessa-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,12 +41,6 @@ MANDATORY1 = ft_isalpha.c ft_isdigit.c ft_isalnum.c \
 #
 #BONUS = 0
 #	TODO or delete"
-#
-#PERSONAL = 0
-#	TODO or remove
-#
-#test:
-#	TODO How to test all of this?"
 
 test: re
 	clear
@@ -60,7 +54,7 @@ test: re
 
 all: $(NAME)
 
-# usage print-SRCS
+# example usage: print-SRCS
 print-%: ; @echo '$(subst ','\'',$*=$($*))'
 	@echo ' value = $(value $*)' 
 	@echo ' origin = $(origin $*)'
