@@ -15,7 +15,6 @@
 // DESCRIPTION
 //	Copies n bytes from memory area src to memory area dest.
 //	The memory areas must not overlap.
-//
 // RETURN VALUE
 //	The memcpy() function returns a pointer to dest.
 
