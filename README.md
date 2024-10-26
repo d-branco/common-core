@@ -19,7 +19,7 @@ Common Core repository from 42 school
 | libc       | string.h | ft_memmove    | :black_large_square: | :black_large_square::black_large_square::black_large_square: |
 | libc       | string.h | ft_strlcpy    | :black_large_square: | :black_large_square::black_large_square::black_large_square: |
 | libc       | string.h | ft_strlcat    | :black_large_square: | :black_large_square::black_large_square::black_large_square: |
-| libc       | string.h | ft_strchar    | :black_large_square: | :black_large_square::black_large_square::black_large_square: |
+| libc       | string.h | ft_strchr     |            :octocat: | :black_large_square::black_large_square::black_large_square: |
 | libc       | string.h | ft_strrchr    | :black_large_square: | :black_large_square::black_large_square::black_large_square: |
 | libc       | string.h | ft_strncmp    | :black_large_square: | :black_large_square::black_large_square::black_large_square: |
 | libc       | string.h | ft_memchr     | :black_large_square: | :black_large_square::black_large_square::black_large_square: |
