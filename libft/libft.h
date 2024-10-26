@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 08:10:20 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/26 10:32:47 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/26 11:25:57 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ int			ft_tolower(int c);
 t_size_t	ft_strlen(const char *s);
 void		*ft_memset(void *s, int c, t_size_t n);
 void		*ft_memcpy(void *dest, const void *src, t_size_t n);
-char		*strchr(const char *s, int c);
+char		*ft_strchr(const char *s, int c);
 
 #endif

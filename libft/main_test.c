@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:33:40 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/25 17:24:39 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/26 12:56:33 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static int		test_toupper(void);
 static int		test_strlen(void);
 static int		test_memset(void);
 static int		test_memcpy(void);
+static int		test_strchr(void);
 
 int	main(int argc, char **argv)
 {
@@ -61,6 +62,8 @@ int	main(int argc, char **argv)
 			aval = test_memset();
 		if (!strcmp(argv[i], "ft_memcpy.c"))
 			aval = test_memcpy();
+		if (!strcmp(argv[i], "ft_strchr.c"))
+			aval = test_strchr();
 
 
 		if (aval == 0)
@@ -69,95 +72,167 @@ int	main(int argc, char **argv)
 	}
 }
 
+static int	test_strchr(void)
+{
+	const char	*test_str = "Hello, World!";
+	const char	*empty_str = "";
+	char		str_with_nulls[] = "Hello\0Hidden\0Text";
+	const char	*repeated_chars = "Hello, Hello!";
+	const char	*special_chars = "Line1\nLine2\tTab\rReturn";
+	char		c;
+	int			i;
+
+	if (ft_strchr(test_str, 'H') != strchr(test_str, 'H'))
+	{
+		print_caution("FAILED to find first character!");
+		printf("(String: \"%s\", Char: 'H')", test_str);
+		return (-1);
+	}
+	print_result("Finds first character correctly.");
+	if (ft_strchr(test_str, 'W') != strchr(test_str, 'W'))
+	{
+		print_caution("FAILED to find middle character!");
+		printf("(String: \"%s\", Char: 'W')", test_str);
+		return (-1);
+	}
+	print_result("Finds middle character correctly.");
+	if (ft_strchr(test_str, '!') != strchr(test_str, '!'))
+	{
+		print_caution("FAILED to find last character!");
+		printf("(String: \"%s\", Char: '!')", test_str);
+		return (-1);
+	}
+	print_result("Finds last character correctly.");
+	if (ft_strchr(test_str, '\0') != strchr(test_str, '\0'))
+	{
+		print_caution("FAILED to find null terminator!");
+		printf("(String: \"%s\", Char: '\\0')", test_str);
+		return (-1);
+	}
+	print_result("Finds null terminator correctly.");
+	if (ft_strchr(test_str, 'Z') != strchr(test_str, 'Z'))
+	{
+		print_caution("FAILED on character not in string!");
+		printf("(String: \"%s\", Char: 'Z')", test_str);
+		return (-1);
+	}
+	print_result("Handles character not in string correctly.");
+	if (ft_strchr(empty_str, 'A') != strchr(empty_str, 'A'))
+	{
+		print_caution("FAILED on empty string!");
+		printf("(String: \"\", Char: 'A')");
+		return (-1);
+	}
+	print_result("Handles empty string correctly.");
+	if (ft_strchr(str_with_nulls, 'H') != strchr(str_with_nulls, 'H'))
+	{
+		print_caution("FAILED with embedded null!");
+		return (-1);
+	}
+	print_result("Handles string with embedded nulls correctly.");
+	if (ft_strchr(repeated_chars, 'H') != strchr(repeated_chars, 'H'))
+	{
+		print_caution("FAILED with repeated characters!");
+		printf("(String: \"%s\", Char: 'H')", repeated_chars);
+		return (-1);
+	}
+	print_result("Handles repeated characters correctly.");
+	for (c = '\0'; c < 127; c++)
+	{
+		if (ft_strchr(special_chars, c) != strchr(special_chars, c))
+		{
+			print_caution("FAILED with special character!");
+			printf("(String: \"%s\", Char: '0x%x')", special_chars, c);
+			return (-1);
+		}
+	}
+	print_result("Handles special characters correctly.");
+	for (i = -128; i <= 127; i++)
+	{
+		if (ft_strchr(test_str, i) != strchr(test_str, i))
+		{
+			print_caution("FAILED with ASCII value!");
+			printf("(String: \"%s\", Value: %d)", test_str, i);
+			return (-1);
+		}
+	}
+	print_result("Handles all ASCII values correctly.");
+	return (1);
+}
 static int test_memcpy(void)
 {
-    char            str1[100] = "Testing string";
-    char            str2[100];
-    int             numbers1[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    int             numbers2[10];
-    unsigned char   bytes1[50];
-    unsigned char   bytes2[50];
-    void            *result;
-    size_t          test_sizes[] = {0, 1, 4, 8, 16, 32};
-    size_t          i;
+	char			str1[100] = "Testing string";
+	char			str2[100];
+	int				numbers1[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+	int				numbers2[10];
+	unsigned char	bytes1[50];
+	unsigned char	bytes2[50];
+	void			*result;
+	size_t			test_sizes[] = {0, 1, 4, 8, 16, 32};
+	size_t			i;
 
-    // Test 1: Basic string copy
-    result = ft_memcpy(str2, str1, strlen(str1) + 1);
-    if (result != str2 || strcmp(str1, str2) != 0)
-    {
-        print_caution("FAILED: Basic string copy test!");
-        printf("   (Original: %s, Copy: %s)\n", str1, str2);
-        return (-1);
-    }
-    print_result("Passed basic string copy test.");
-
-    // Test 2: Array of integers
-    result = ft_memcpy(numbers2, numbers1, sizeof(numbers1));
-    if (result != numbers2 || memcmp(numbers1, numbers2, sizeof(numbers1)) != 0)
-    {
-        print_caution("FAILED: Integer array copy test!");
-        return (-1);
-    }
-    print_result("Passed integer array copy test.");
-
-    // Test 3: Various sizes with pattern
-    for (i = 0; i < sizeof(bytes1); i++)
-        bytes1[i] = (unsigned char)i;
-
-    for (i = 0; i < sizeof(test_sizes)/sizeof(test_sizes[0]); i++)
-    {
-        result = ft_memcpy(bytes2, bytes1, test_sizes[i]);
-        if (result != bytes2 || memcmp(bytes1, bytes2, test_sizes[i]) != 0)
-        {
-            print_caution("FAILED: Variable size test!");
-            printf("   (Size: %zu)\n", test_sizes[i]);
-            return (-1);
-        }
-    }
-    print_result("Passed variable size tests.");
-
-    // Test 4: NULL pointers with size 0
-    result = ft_memcpy(NULL, NULL, 0);
-    if (result != NULL)
-    {
-        print_caution("FAILED: NULL pointers with size 0 test!");
-        return (-1);
-    }
-    print_result("Passed NULL pointer with size 0 test.");
-
-    // Test 5: Alignment tests
-    for (i = 0; i < 8; i++)
-    {
-        memset(bytes1, 0x55, sizeof(bytes1));
-        memset(bytes2, 0x55, sizeof(bytes2));
-        result = ft_memcpy(bytes2 + i, bytes1, 16);
-
-        if (result != (bytes2 + i) || memcmp(bytes2 + i, bytes1, 16) != 0)
-        {
-            print_caution("FAILED: Alignment test!");
-            printf("   (Offset: %zu)\n", i);
-            return (-1);
-        }
-    }
-    print_result("Passed alignment tests.");
-
-    // Test 6: Edge values
-    unsigned char edge_values[] = {0x00, 0xFF, 0xAA, 0x55};
-    for (i = 0; i < sizeof(edge_values); i++)
-    {
-        memset(bytes1, edge_values[i], 8);
-        result = ft_memcpy(bytes2, bytes1, 8);
-
-        if (result != bytes2 || memcmp(bytes1, bytes2, 8) != 0)
-        {
-            print_caution("FAILED: Edge values test!");
-            printf("   (Value: 0x%02x)\n", edge_values[i]);
-            return (-1);
-        }
-    }
-    print_result("Passed edge values test.");
-
-    return (1);
+	result = ft_memcpy(str2, str1, strlen(str1) + 1);
+	if (result != str2 || strcmp(str1, str2) != 0)
+	{
+	    print_caution("FAILED: Basic string copy test!");
+	    printf("   (Original: %s, Copy: %s)\n", str1, str2);
+	    return (-1);
+	}
+	print_result("Passed basic string copy test.");
+	result = ft_memcpy(numbers2, numbers1, sizeof(numbers1));
+	if (result != numbers2 || memcmp(numbers1, numbers2, sizeof(numbers1)) != 0)
+	{
+	    print_caution("FAILED: Integer array copy test!");
+	    return (-1);
+	}
+	print_result("Passed integer array copy test.");
+	for (i = 0; i < sizeof(bytes1); i++)
+	    bytes1[i] = (unsigned char)i;
+	for (i = 0; i < sizeof(test_sizes)/sizeof(test_sizes[0]); i++)
+	{
+	    result = ft_memcpy(bytes2, bytes1, test_sizes[i]);
+	    if (result != bytes2 || memcmp(bytes1, bytes2, test_sizes[i]) != 0)
+	    {
+	        print_caution("FAILED: Variable size test!");
+	        printf("   (Size: %zu)\n", test_sizes[i]);
+	        return (-1);
+	    }
+	}
+	print_result("Passed variable size tests.");
+	result = ft_memcpy(NULL, NULL, 0);
+	if (result != NULL)
+	{
+	    print_caution("FAILED: NULL pointers with size 0 test!");
+	    return (-1);
+	}
+	print_result("Passed NULL pointer with size 0 test.");
+	for (i = 0; i < 8; i++)
+	{
+	    memset(bytes1, 0x55, sizeof(bytes1));
+	    memset(bytes2, 0x55, sizeof(bytes2));
+	    result = ft_memcpy(bytes2 + i, bytes1, 16);
+	    if (result != (bytes2 + i) || memcmp(bytes2 + i, bytes1, 16) != 0)
+	    {
+	        print_caution("FAILED: Alignment test!");
+	        printf("   (Offset: %zu)\n", i);
+	        return (-1);
+	    }
+	}
+	print_result("Passed alignment tests.");
+	unsigned char edge_values[] = {0x00, 0xFF, 0xAA, 0x55};
+	for (i = 0; i < sizeof(edge_values); i++)
+	{
+	    memset(bytes1, edge_values[i], 8);
+	    result = ft_memcpy(bytes2, bytes1, 8);
+	    if (result != bytes2 || memcmp(bytes1, bytes2, 8) != 0)
+	    {
+	        print_caution("FAILED: Edge values test!");
+	        printf("   (Value: 0x%02x)\n", edge_values[i]);
+	        return (-1);
+	    }
+	}
+	print_result("Passed edge values test.");
+	return (1);
 }
 
 static int	test_memset(void)

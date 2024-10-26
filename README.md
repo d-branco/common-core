@@ -3,42 +3,42 @@ Common Core repository from 42 school
 
 ## libft - current project
 
-| Part       | library  | function      | state                | tests                                                        |
-|------------|----------|---------------|----------------------|--------------------------------------------------------------|
-| libc       | ctype.h  | ft_isalpha    | :white_check_mark:   | :white_check_mark::white_check_mark::white_check_mark:       |
-| libc       | ctype.h  | ft_isdigit    | :white_check_mark:   | :white_check_mark::white_check_mark::white_check_mark:       |
-| libc       | ctype.h  | ft_isdigit    | :white_check_mark:   | :white_check_mark::white_check_mark::white_check_mark:       |
-| libc       | ctype.h  | ft_isascii    | :white_check_mark:   | :white_check_mark::white_check_mark::white_check_mark:       |
-| libc       | ctype.h  | ft_isprint    | :white_check_mark:   | :white_check_mark::white_check_mark::white_check_mark:       |
-| libc       | ctype.h  | ft_toupper    | :white_check_mark:   | :white_check_mark::white_check_mark::white_check_mark:       |
-| libc       | ctype.h  | ft_tolower    | :white_check_mark:   | :white_check_mark::white_check_mark::white_check_mark:       |
-| libc       | string.h | ft_strlen     | :white_check_mark:   | :white_check_mark::white_check_mark::white_check_mark:       |
-| libc       | string.h | ft_memset     | :white_check_mark:   | :white_check_mark::white_check_mark::white_check_mark:       |
-| libc       | string.h | ft_bzero      | :black_large_square: | :black_large_square::black_large_square::black_large_square: |
-| libc       | string.h | ft_memcpy     | :white_check_mark:   | :white_check_mark::white_check_mark::white_check_mark:       |
-| libc       | string.h | ft_memmove    | :black_large_square: | :black_large_square::black_large_square::black_large_square: |
-| libc       | string.h | ft_strlcpy    | :black_large_square: | :black_large_square::black_large_square::black_large_square: |
-| libc       | string.h | ft_strlcat    | :black_large_square: | :black_large_square::black_large_square::black_large_square: |
-| libc       | string.h | ft_strchr     |            :octocat: | :black_large_square::black_large_square::black_large_square: |
-| libc       | string.h | ft_strrchr    | :black_large_square: | :black_large_square::black_large_square::black_large_square: |
-| libc       | string.h | ft_strncmp    | :black_large_square: | :black_large_square::black_large_square::black_large_square: |
-| libc       | string.h | ft_memchr     | :black_large_square: | :black_large_square::black_large_square::black_large_square: |
-| libc       | string.h | ft_memcmp     | :black_large_square: | :black_large_square::black_large_square::black_large_square: |
-| libc       | string.h | ft_strnstr    | :black_large_square: | :black_large_square::black_large_square::black_large_square: |
-| libc       | stdlib.h | ft_atoi       | :black_large_square: | :black_large_square::black_large_square::black_large_square: |
-| libc       | stdlib.h | ft_calloc     | :black_large_square: | :black_large_square::black_large_square::black_large_square: |
-| libc       | stdlib.h | ft_strdup     | :black_large_square: | :black_large_square::black_large_square::black_large_square: |
-| additional |          | ft_substr     | :black_large_square: | :black_large_square::black_large_square::black_large_square: |
-| additional |          | ft_strjoin    | :black_large_square: | :black_large_square::black_large_square::black_large_square: |
-| additional |          | ft_strtrim    | :black_large_square: | :black_large_square::black_large_square::black_large_square: |
-| additional |          | ft_split      | :black_large_square: | :black_large_square::black_large_square::black_large_square: |
-| additional |          | ft_itoa       | :black_large_square: | :black_large_square::black_large_square::black_large_square: |
-| additional |          | ft_strmapi    | :black_large_square: | :black_large_square::black_large_square::black_large_square: |
-| additional |          | ft_striteri   | :black_large_square: | :black_large_square::black_large_square::black_large_square: |
-| additional |          | ft_putchar_fd | :black_large_square: | :black_large_square::black_large_square::black_large_square: |
-| additional |          | ft_putstr_fd  | :black_large_square: | :black_large_square::black_large_square::black_large_square: |
-| additional |          | ft_putendl_fd | :black_large_square: | :black_large_square::black_large_square::black_large_square: |
-| additional |          | ft_putnbr_fd  | :black_large_square: | :black_large_square::black_large_square::black_large_square: |
+| Part      | library| function     |state| tests   |
+|-----------|--------|--------------|-----|-------- |
+| libc      |ctype.h | ft_isalpha   | X   | X  X  X |
+| libc      |ctype.h | ft_isdigit   | X   | X  X  X |
+| libc      |ctype.h | ft_isdigit   | X   | X  X  X |
+| libc      |ctype.h | ft_isascii   | X   | X  X  X |
+| libc      |ctype.h | ft_isprint   | X   | X  X  X |
+| libc      |ctype.h | ft_toupper   | X   | X  X  X |
+| libc      |ctype.h | ft_tolower   | X   | X  X  X |
+| libc      |string.h| ft_strlen    | X   | X  X  X |
+| libc      |string.h| ft_memset    | X   | X  X  X |
+| libc      |string.h| ft_bzero     | _   | _  _  _ |
+| libc      |string.h| ft_memcpy    | X   | X  X  X |
+| libc      |string.h| ft_memmove   | _   | _  _  _ |
+| libc      |string.h| ft_strlcpy   | _   | _  _  _ |
+| libc      |string.h| ft_strlcat   | _   | _  _  _ |
+| libc      |string.h| ft_strchr    | X   | X  X  X |
+| libc      |string.h| ft_strrchr   | _   | _  _  _ |
+| libc      |string.h| ft_strncmp   | _   | _  _  _ |
+| libc      |string.h| ft_memchr    | _   | _  _  _ |
+| libc      |string.h| ft_memcmp    | _   | _  _  _ |
+| libc      |string.h| ft_strnstr   | _   | _  _  _ |
+| libc      |stdlib.h| ft_atoi      | _   | _  _  _ |
+| libc      |stdlib.h| ft_calloc    | _   | _  _  _ |
+| libc      |stdlib.h| ft_strdup    | _   | _  _  _ |
+| additional|        | ft_substr    | _   | _  _  _ |
+| additional|        | ft_strjoin   | _   | _  _  _ |
+| additional|        | ft_strtrim   | _   | _  _  _ |
+| additional|        | ft_split     | _   | _  _  _ |
+| additional|        | ft_itoa      | _   | _  _  _ |
+| additional|        | ft_strmapi   | _   | _  _  _ |
+| additional|        | ft_striteri  | _   | _  _  _ |
+| additional|        | ft_putchar_fd| _   | _  _  _ |
+| additional|        | ft_putstr_fd | _   | _  _  _ |
+| additional|        | ft_putendl_fd| _   | _  _  _ |
+| additional|        | ft_putnbr_fd | _   | _  _  _ |
 
 	TODO Find a way to easily test a file as it is done.
 		it ought to be tested for 

@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 10:27:08 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/26 11:03:35 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/26 13:29:25 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,19 @@
 
 // NOTES
 // ptr has to be static so that it can be used by main outside this function.
-char	*strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
-	int			j;
-	static char	ptr[1];
+	int		j;
 
 	j = 0;
 	while (s[j] != '\0')
 	{
 		if (s[j] == c)
-		{
-			*ptr = s[j];
-			return (ptr);
-		}
+			return ((char *) &s[j]);
 		j++;
 	}
 	if ((s[j] == '\0') && (c == '\0'))
-		*ptr = s[j];
+		return ((char *) &s[j]);
 	else
-		*ptr = 0;
-	return (ptr);
+		return (0);
 }
