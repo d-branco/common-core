@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 08:10:20 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/26 15:37:47 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/26 16:03:33 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ void		*ft_memset(void *s, int c, t_size_t n);
 void		*ft_memcpy(void *dest, const void *src, t_size_t n);
 char		*ft_strchr(const char *s, int c);
 void		ft_bzero(void *s, t_size_t n);
+int			ft_memcmp(const void *s1, const void *s2, t_size_t n);
 
 #endif

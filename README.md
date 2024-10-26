@@ -3,42 +3,52 @@ Common Core repository from 42 school
 
 ## libft - current project
 
-| Part      | library| function     |state| tests   |
-|-----------|--------|--------------|-----|-------- |
-| libc      |ctype.h | ft_isalpha   | X   | X  X  X |
-| libc      |ctype.h | ft_isdigit   | X   | X  X  X |
-| libc      |ctype.h | ft_isdigit   | X   | X  X  X |
-| libc      |ctype.h | ft_isascii   | X   | X  X  X |
-| libc      |ctype.h | ft_isprint   | X   | X  X  X |
-| libc      |ctype.h | ft_toupper   | X   | X  X  X |
-| libc      |ctype.h | ft_tolower   | X   | X  X  X |
-| libc      |string.h| ft_strlen    | X   | X  X  X |
-| libc      |string.h| ft_memset    | X   | X  X  X |
-| libc      |string.h| ft_bzero     | X   | X  X  X |
-| libc      |string.h| ft_memcpy    | X   | X  X  X |
-| libc      |string.h| ft_memmove   | _   | _  _  _ |
-| libc      |string.h| ft_strlcpy   | _   | _  _  _ |
-| libc      |string.h| ft_strlcat   | _   | _  _  _ |
-| libc      |string.h| ft_strchr    | X   | X  X  X |
-| libc      |string.h| ft_strrchr   | _   | _  _  _ |
-| libc      |string.h| ft_strncmp   | _   | _  _  _ |
-| libc      |string.h| ft_memchr    | _   | _  _  _ |
-| libc      |string.h| ft_memcmp    | _   | _  _  _ |
-| libc      |string.h| ft_strnstr   | _   | _  _  _ |
-| libc      |stdlib.h| ft_atoi      | _   | _  _  _ |
-| libc      |stdlib.h| ft_calloc    | _   | _  _  _ |
-| libc      |stdlib.h| ft_strdup    | _   | _  _  _ |
-| additional|        | ft_substr    | _   | _  _  _ |
-| additional|        | ft_strjoin   | _   | _  _  _ |
-| additional|        | ft_strtrim   | _   | _  _  _ |
-| additional|        | ft_split     | _   | _  _  _ |
-| additional|        | ft_itoa      | _   | _  _  _ |
-| additional|        | ft_strmapi   | _   | _  _  _ |
-| additional|        | ft_striteri  | _   | _  _  _ |
-| additional|        | ft_putchar_fd| _   | _  _  _ |
-| additional|        | ft_putstr_fd | _   | _  _  _ |
-| additional|        | ft_putendl_fd| _   | _  _  _ |
-| additional|        | ft_putnbr_fd | _   | _  _  _ |
+| Part     | library | function      |state| tests |
+|----------|---------|---------------|-----|-------|
+|   libc   |  ctype.h|ft_isalpha     |  X  | X X X |
+|   libc   |  ctype.h|ft_isdigit     |  X  | X X X |
+|   libc   |  ctype.h|ft_isalnum     |  X  | X X X |
+|   libc   |  ctype.h|ft_isascii     |  X  | X X X |
+|   libc   |  ctype.h|ft_isprint     |  X  | X X X |
+|   libc   |  ctype.h|ft_toupper     |  X  | X X X |
+|   libc   |  ctype.h|ft_tolower     |  X  | X X X |
+|   libc   |string.h |ft_strlen      |  X  | X X X |
+|   libc   |string.h |ft_memset      |  X  | X X X |
+|   libc   |string.h |ft_bzero       |  X  | X X X |
+|   libc   |string.h |ft_memcpy      |  X  | X X X |
+|   libc   |string.h |ft_memmove     |  _  | _ _ _ |
+|   libc   |string.h |ft_strlcpy     |  _  | _ _ _ |
+|   libc   |string.h |ft_strlcat     |  _  | _ _ _ |
+|   libc   |string.h |ft_strchr      |  X  | X X X |
+|   libc   |string.h |ft_strrchr     |  _  | _ _ _ |
+|   libc   |string.h |ft_strncmp     |  _  | _ _ _ |
+|   libc   |string.h |ft_memchr      |  _  | _ _ _ |
+|   libc   |string.h |ft_memcmp      |  X  | X X O |
+|   libc   |string.h |ft_strnstr     |  _  | _ _ _ |
+|   libc   | stdlib.h|ft_atoi        |  _  | _ _ _ |
+|   libc   | stdlib.h|ft_calloc      |  _  | _ _ _ |
+|   libc   | stdlib.h|ft_strdup      |  _  | _ _ _ |
+|additional|    -    |ft_substr      |  _  | _ _ _ |
+|additional|    -    |ft_strjoin     |  _  | _ _ _ |
+|additional|    -    |ft_strtrim     |  _  | _ _ _ |
+|additional|    -    |ft_split       |  _  | _ _ _ |
+|additional|    -    |ft_itoa        |  _  | _ _ _ |
+|additional|    -    |ft_strmapi     |  _  | _ _ _ |
+|additional|    -    |ft_striteri    |  _  | _ _ _ |
+|additional|    -    |ft_putchar_fd  |  _  | _ _ _ |
+|additional|    -    |ft_putstr_fd   |  _  | _ _ _ |
+|additional|    -    |ft_putendl_fd  |  _  | _ _ _ |
+|additional|    -    |ft_putnbr_fd   |  _  | _ _ _ |
+|   bonus  | list.h  |ft_lstnew      |  _  | _ _ _ |
+|   bonus  | list.h  |ft_lstadd_front|  _  | _ _ _ |
+|   bonus  | list.h  |ft_lstsize     |  _  | _ _ _ |
+|   bonus  | list.h  |ft_lstlast     |  _  | _ _ _ |
+|   bonus  | list.h  |ft_lstadd_back |  _  | _ _ _ |
+|   bonus  | list.h  |ft_lstdelone   |  _  | _ _ _ |
+|   bonus  | list.h  |ft_lstclear    |  _  | _ _ _ |
+|   bonus  | list.h  |ft_lstiter     |  _  | _ _ _ |
+|   bonus  | list.h  |ft_lstmap      |  _  | _ _ _ |
+
 
 	TODO Find a way to easily test a file as it is done.
 		it ought to be tested for 

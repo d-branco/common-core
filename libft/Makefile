@@ -6,7 +6,7 @@
 #    By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/22 13:21:39 by abessa-m          #+#    #+#              #
-#    Updated: 2024/10/26 15:42:34 by abessa-m         ###   ########.fr        #
+#    Updated: 2024/10/26 16:13:28 by abessa-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,21 +28,20 @@ OBJS = $(EXISTING_SRCS:.c=.o)
 $(OBJS): check-sources
 	@cc -Wall -Werror -Wextra $(EXISTING_SRCS)
 
-SRCS = $(MANDATORY1)
-# $(MANDATORY2) $(BONUS) $(PERSONAL)
+SRCS = $(MANDATORY1) $(MANDATORY2) $(BONUS) $(PERSONAL)
 
 MANDATORY1 = \
+	ft_strlcpy.c ft_strlcat.c ft_strrchr.c ft_strncmp.c ft_strnstr.c ft_strchr.c ft_strlen.c \
+	ft_memmove.c ft_memchr.c ft_memcmp.c ft_memset.c ft_memcpy.c \
+	ft_isalpha.c ft_isdigit.c ft_isalnum.c \
+	ft_isascii.c ft_isprint.c ft_toupper.c ft_tolower.c \
 	ft_bzero.c \
 	ft_atoi.c \
-	ft_strlen.c ft_strlcpy.c ft_strlcat.c ft_strchr.c ft_strrchr.c ft_strncmp.c ft_strnstr.c \
-	ft_memset.c ft_memcpy.c ft_memmove.c ft_memchr.c ft_memcmp.c \
-	ft_isalpha.c ft_isdigit.c ft_isalnum.c \
-	ft_isascii.c ft_isprint.c ft_toupper.c ft_tolower.c 
 
-#MANDATORY2 = 0
+#MANDATORY2 = 
 #	TODO aditional functions
 #
-#BONUS = 0
+#BONUS = 
 #	TODO or delete"
 
 test: re
@@ -86,6 +85,7 @@ $(NAME): check-sources $(OBJS)
 clean:
 	@rm -f $(OBJS)
 #	clear
+
 
 fclean: clean
 	@rm -f $(NAME)

@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:33:40 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/26 15:43:49 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/26 18:17:05 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static int		test_memset(void);
 static int		test_memcpy(void);
 static int		test_strchr(void);
 static int		test_bzero(void);
+static int		test_memcmp(void);
 
 int	main(int argc, char **argv)
 {
@@ -67,12 +68,116 @@ int	main(int argc, char **argv)
 			aval = test_strchr();
 		if (!strcmp(argv[i], "ft_bzero.c"))
 			aval = test_bzero();
+		if (!strcmp(argv[i], "ft_memcmp.c"))
+			aval = test_memcmp();
 
 
 		if (aval == 0)
 			print_warning(argv[i], "has no test yet!");
 		i++;
 	}
+}
+
+static int test_memcmp(void)
+{
+	char			str1[] = "Hello, World!";
+	char			str2[] = "Hello, world!";
+	char			identical1[] = "Test String";
+	char			identical2[] = "Test String";
+	unsigned char	bytes1[50];
+	unsigned char	bytes2[50];
+	char			empty1[] = "";
+	char			empty2[] = "";
+	char			nulls1[] = "Test\0Test";
+	char			nulls2[] = "Test\0test";
+	size_t			test_sizes[] = {0, 1, 4, 8, 16};
+	size_t			i;
+	
+	if (ft_memcmp(str1, str2, strlen(str1)) != memcmp(str1, str2, strlen(str1)))
+	{
+		print_caution("FAILED: Basic string comparison test!");
+		printf("	(String1: \"%s\", String2: \"%s\")\n", str1, str2);
+		return (-1);
+	}
+	print_result("Passed basic string comparison test.");
+	if (ft_memcmp(identical1, identical2, strlen(identical1)) != 
+		memcmp(identical1, identical2, strlen(identical1)))
+	{
+		print_caution("FAILED: Identical strings test!");
+		return (-1);
+	}
+	print_result("Passed identical strings test.");
+	if (ft_memcmp(empty1, empty2, 0) != memcmp(empty1, empty2, 0))
+	{
+		print_caution("FAILED: Empty strings test!");
+		return (-1);
+	}
+	print_result("Passed empty strings test.");
+	if (ft_memcmp(nulls1, nulls2, sizeof(nulls1)) != 
+		memcmp(nulls1, nulls2, sizeof(nulls1)))
+	{
+		print_caution("FAILED: Strings with embedded nulls test!");
+		return (-1);
+	}
+	print_result("Passed strings with embedded nulls test.");
+	for (i = 0; i < sizeof(bytes1); i++)
+	{
+		bytes1[i] = (unsigned char)i;
+		bytes2[i] = (unsigned char)i;
+	}
+	for (i = 0; i < sizeof(test_sizes)/sizeof(test_sizes[0]); i++)
+	{
+		if (ft_memcmp(bytes1, bytes2, test_sizes[i]) != 
+			memcmp(bytes1, bytes2, test_sizes[i]))
+		{
+			print_caution("FAILED: Variable size test with identical data!");
+			printf("	(Size: %zu)\n", test_sizes[i]);
+			return (-1);
+		}
+		bytes2[test_sizes[i]/2] = (unsigned char)(bytes2[test_sizes[i]/2] + 1);
+		if (ft_memcmp(bytes1, bytes2, test_sizes[i]) != 
+			memcmp(bytes1, bytes2, test_sizes[i]))
+		{
+			print_caution("FAILED: Variable size test with different data!");
+			printf("	(Size: %zu)\n", test_sizes[i]);
+			return (-1);
+		}
+		bytes2[test_sizes[i]/2] = (unsigned char)(bytes2[test_sizes[i]/2] - 1);
+	}
+	print_result("Passed variable size tests.");
+	unsigned char edge_values[] = {0x00, 0x01, 0x7F, 0x80, 0xFF};
+	for (i = 0; i < sizeof(edge_values); i++)
+	{
+		bytes1[0] = edge_values[i];
+		bytes2[0] = edge_values[i];
+		if (ft_memcmp(bytes1, bytes2, 1) != memcmp(bytes1, bytes2, 1))
+		{
+			print_caution("FAILED: Edge values test!");
+			printf("	(Value: 0x%02x)\n", edge_values[i]);
+			return (-1);
+		}
+		bytes2[0] = edge_values[(i + 1) % sizeof(edge_values)];
+		if (ft_memcmp(bytes1, bytes2, 1) != memcmp(bytes1, bytes2, 1))
+		{
+			print_caution("FAILED: Edge values comparison test!");
+			printf("	(Value1: 0x%02x, Value2: 0x%02x)\n", 
+					edge_values[i], bytes2[0]);
+			return (-1);
+		}
+	}
+	print_result("Passed edge values test.");
+	for (i = 0; i < 8; i++)
+	{
+		if (ft_memcmp(bytes1 + i, bytes2 + i, 16) != 
+			memcmp(bytes1 + i, bytes2 + i, 16))
+		{
+			print_caution("FAILED: Alignment test!");
+			printf("	(Offset: %zu)\n", i);
+			return (-1);
+		}
+	}
+	print_result("Passed alignment tests.");
+	return (1);
 }
 
 static int	test_bzero(void)
@@ -93,13 +198,13 @@ static int	test_bzero(void)
 		if (memcmp(buf1, buf2, sizeof(buf1)) != 0)
 		{
 			print_caution("FAILED: Basic zero-fill test!");
-			printf("   (Size: %zu)\n", test_sizes[i]);
+			printf("	(Size: %zu)\n", test_sizes[i]);
 			return (-1);
 		}
 		if (test_sizes[i] < sizeof(buf1) && buf1[test_sizes[i]] != 0x55)
 		{
 			print_caution("FAILED: Buffer overflow detected!");
-			printf("   (Size: %zu)\n", test_sizes[i]);
+			printf("	(Size: %zu)\n", test_sizes[i]);
 			return (-1);
 		}
 	}
@@ -115,7 +220,7 @@ static int	test_bzero(void)
 		if (memcmp(buf1, buf2, sizeof(buf1)) != 0)
 		{
 			print_caution("FAILED: Alignment test!");
-			printf("   (Offset: %zu)\n", i);
+			printf("	(Offset: %zu)\n", i);
 			return (-1);
 		}
 	}
@@ -140,7 +245,7 @@ static int	test_bzero(void)
 		if (memcmp(buf1, buf2, sizeof(buf1)) != 0)
 		{
 			print_caution("FAILED: Sequential writes test!");
-			printf("   (Position: %zu)\n", i);
+			printf("	(Position: %zu)\n", i);
 			return (-1);
 		}
 	}
@@ -260,62 +365,62 @@ static int test_memcpy(void)
 	result = ft_memcpy(str2, str1, strlen(str1) + 1);
 	if (result != str2 || strcmp(str1, str2) != 0)
 	{
-	    print_caution("FAILED: Basic string copy test!");
-	    printf("   (Original: %s, Copy: %s)\n", str1, str2);
-	    return (-1);
+		print_caution("FAILED: Basic string copy test!");
+		printf("	(Original: %s, Copy: %s)\n", str1, str2);
+		return (-1);
 	}
 	print_result("Passed basic string copy test.");
 	result = ft_memcpy(numbers2, numbers1, sizeof(numbers1));
 	if (result != numbers2 || memcmp(numbers1, numbers2, sizeof(numbers1)) != 0)
 	{
-	    print_caution("FAILED: Integer array copy test!");
-	    return (-1);
+		print_caution("FAILED: Integer array copy test!");
+		return (-1);
 	}
 	print_result("Passed integer array copy test.");
 	for (i = 0; i < sizeof(bytes1); i++)
-	    bytes1[i] = (unsigned char)i;
+		bytes1[i] = (unsigned char)i;
 	for (i = 0; i < sizeof(test_sizes)/sizeof(test_sizes[0]); i++)
 	{
-	    result = ft_memcpy(bytes2, bytes1, test_sizes[i]);
-	    if (result != bytes2 || memcmp(bytes1, bytes2, test_sizes[i]) != 0)
-	    {
-	        print_caution("FAILED: Variable size test!");
-	        printf("   (Size: %zu)\n", test_sizes[i]);
-	        return (-1);
-	    }
+		result = ft_memcpy(bytes2, bytes1, test_sizes[i]);
+		if (result != bytes2 || memcmp(bytes1, bytes2, test_sizes[i]) != 0)
+		{
+			print_caution("FAILED: Variable size test!");
+			printf("	(Size: %zu)\n", test_sizes[i]);
+			return (-1);
+		}
 	}
 	print_result("Passed variable size tests.");
 	result = ft_memcpy(NULL, NULL, 0);
 	if (result != NULL)
 	{
-	    print_caution("FAILED: NULL pointers with size 0 test!");
-	    return (-1);
+		print_caution("FAILED: NULL pointers with size 0 test!");
+		return (-1);
 	}
 	print_result("Passed NULL pointer with size 0 test.");
 	for (i = 0; i < 8; i++)
 	{
-	    memset(bytes1, 0x55, sizeof(bytes1));
-	    memset(bytes2, 0x55, sizeof(bytes2));
-	    result = ft_memcpy(bytes2 + i, bytes1, 16);
-	    if (result != (bytes2 + i) || memcmp(bytes2 + i, bytes1, 16) != 0)
-	    {
-	        print_caution("FAILED: Alignment test!");
-	        printf("   (Offset: %zu)\n", i);
-	        return (-1);
-	    }
+		memset(bytes1, 0x55, sizeof(bytes1));
+		memset(bytes2, 0x55, sizeof(bytes2));
+		result = ft_memcpy(bytes2 + i, bytes1, 16);
+		if (result != (bytes2 + i) || memcmp(bytes2 + i, bytes1, 16) != 0)
+		{
+			print_caution("FAILED: Alignment test!");
+			printf("	(Offset: %zu)\n", i);
+			return (-1);
+		}
 	}
 	print_result("Passed alignment tests.");
 	unsigned char edge_values[] = {0x00, 0xFF, 0xAA, 0x55};
 	for (i = 0; i < sizeof(edge_values); i++)
 	{
-	    memset(bytes1, edge_values[i], 8);
-	    result = ft_memcpy(bytes2, bytes1, 8);
-	    if (result != bytes2 || memcmp(bytes1, bytes2, 8) != 0)
-	    {
-	        print_caution("FAILED: Edge values test!");
-	        printf("   (Value: 0x%02x)\n", edge_values[i]);
-	        return (-1);
-	    }
+		memset(bytes1, edge_values[i], 8);
+		result = ft_memcpy(bytes2, bytes1, 8);
+		if (result != bytes2 || memcmp(bytes1, bytes2, 8) != 0)
+		{
+			print_caution("FAILED: Edge values test!");
+			printf("	(Value: 0x%02x)\n", edge_values[i]);
+			return (-1);
+		}
 	}
 	print_result("Passed edge values test.");
 	return (1);
