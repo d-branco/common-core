@@ -1,6 +1,8 @@
 # 42 common core
 Common Core repository from 42 school
 
+Do this work? ☑️✔️❌❎
+
 ## libft - current project
 
 | Part     | library | function      |state| tests |
@@ -76,6 +78,7 @@ Common Core repository from 42 school
 
 #### Moulinette Rumors
 	TODO Remove all shell commands from the Makefile
+	The NORM refers that the Makefile is not checked by Moulinette. It's adderance to the norm is to be manually verified by the human evaluator.
 
 # Cyphertext
 
