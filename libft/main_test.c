@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:33:40 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/26 12:56:33 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/26 15:43:49 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static int		test_strlen(void);
 static int		test_memset(void);
 static int		test_memcpy(void);
 static int		test_strchr(void);
+static int		test_bzero(void);
 
 int	main(int argc, char **argv)
 {
@@ -64,12 +65,97 @@ int	main(int argc, char **argv)
 			aval = test_memcpy();
 		if (!strcmp(argv[i], "ft_strchr.c"))
 			aval = test_strchr();
+		if (!strcmp(argv[i], "ft_bzero.c"))
+			aval = test_bzero();
 
 
 		if (aval == 0)
 			print_warning(argv[i], "has no test yet!");
 		i++;
 	}
+}
+
+static int	test_bzero(void)
+{
+	unsigned char	buf1[100];
+	unsigned char	buf2[100];
+	int				int_buf1[10];
+	int				int_buf2[10];
+	size_t			test_sizes[] = {0, 1, 2, 4, 8, 16, 32, 64};
+	size_t			i;
+	
+	for (i = 0; i < sizeof(test_sizes) / sizeof(test_sizes[0]); i++)
+	{
+		memset(buf1, 0x55, sizeof(buf1));
+		memset(buf2, 0x55, sizeof(buf2));
+		ft_bzero(buf1, test_sizes[i]);
+		bzero(buf2, test_sizes[i]);
+		if (memcmp(buf1, buf2, sizeof(buf1)) != 0)
+		{
+			print_caution("FAILED: Basic zero-fill test!");
+			printf("   (Size: %zu)\n", test_sizes[i]);
+			return (-1);
+		}
+		if (test_sizes[i] < sizeof(buf1) && buf1[test_sizes[i]] != 0x55)
+		{
+			print_caution("FAILED: Buffer overflow detected!");
+			printf("   (Size: %zu)\n", test_sizes[i]);
+			return (-1);
+		}
+	}
+	print_result("Passed various sizes test.");
+	for (i = 0; i < 8; i++)
+	{
+		memset(buf1, 0x55, sizeof(buf1));
+		memset(buf2, 0x55, sizeof(buf2));
+
+		ft_bzero(buf1 + i, 32);
+		bzero(buf2 + i, 32);
+
+		if (memcmp(buf1, buf2, sizeof(buf1)) != 0)
+		{
+			print_caution("FAILED: Alignment test!");
+			printf("   (Offset: %zu)\n", i);
+			return (-1);
+		}
+	}
+	print_result("Passed alignment tests.");
+	memset(int_buf1, 0x55, sizeof(int_buf1));
+	memset(int_buf2, 0x55, sizeof(int_buf2));
+	ft_bzero(int_buf1, sizeof(int_buf1));
+	bzero(int_buf2, sizeof(int_buf2));
+	if (memcmp(int_buf1, int_buf2, sizeof(int_buf1)) != 0)
+	{
+		print_caution("FAILED: Integer array test!");
+		return (-1);
+	}
+	print_result("Passed integer array test.");
+	memset(buf1, 0x55, sizeof(buf1));
+	memset(buf2, 0x55, sizeof(buf2));
+	for (i = 0; i < 10; i++)
+	{
+		ft_bzero(buf1 + i, 1);
+		bzero(buf2 + i, 1);
+
+		if (memcmp(buf1, buf2, sizeof(buf1)) != 0)
+		{
+			print_caution("FAILED: Sequential writes test!");
+			printf("   (Position: %zu)\n", i);
+			return (-1);
+		}
+	}
+	print_result("Passed sequential writes test.");
+	memset(buf1, 0x55, sizeof(buf1));
+	memset(buf2, 0x55, sizeof(buf2));
+	ft_bzero(buf1, 0);
+	bzero(buf2, (0));
+	if (memcmp(buf1, buf2, sizeof(buf1)) != 0)
+	{
+		print_caution("FAILED: Zero size test!");
+		return (-1);
+	}
+	print_result("Passed zero size test.");
+	return (1);
 }
 
 static int	test_strchr(void)

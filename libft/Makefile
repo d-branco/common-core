@@ -6,7 +6,7 @@
 #    By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/22 13:21:39 by abessa-m          #+#    #+#              #
-#    Updated: 2024/10/26 13:53:02 by abessa-m         ###   ########.fr        #
+#    Updated: 2024/10/26 15:42:34 by abessa-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,8 +45,6 @@ MANDATORY1 = \
 #BONUS = 0
 #	TODO or delete"
 
-all: $(NAME)
-
 test: re
 	clear
 	@rm -f a.out
@@ -62,6 +60,8 @@ test: re
 			./a.out $$src; \
 		fi; \
 	done
+
+all: $(NAME)
 
 # example usage: print-SRCS
 print-%: ; @echo '$(subst ','\'',$*=$($*))'

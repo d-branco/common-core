@@ -14,7 +14,7 @@ Common Core repository from 42 school
 | libc      |ctype.h | ft_tolower   | X   | X  X  X |
 | libc      |string.h| ft_strlen    | X   | X  X  X |
 | libc      |string.h| ft_memset    | X   | X  X  X |
-| libc      |string.h| ft_bzero     | _   | _  _  _ |
+| libc      |string.h| ft_bzero     | X   | X  X  X |
 | libc      |string.h| ft_memcpy    | X   | X  X  X |
 | libc      |string.h| ft_memmove   | _   | _  _  _ |
 | libc      |string.h| ft_strlcpy   | _   | _  _  _ |
