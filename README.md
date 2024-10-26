@@ -23,7 +23,7 @@ Common Core repository from 42 school
 |   libc   |string.h |ft_strrchr     |  _  | _ _ _ |
 |   libc   |string.h |ft_strncmp     |  _  | _ _ _ |
 |   libc   |string.h |ft_memchr      |  _  | _ _ _ |
-|   libc   |string.h |ft_memcmp      |  X  | X X O |
+|   libc   |string.h |ft_memcmp      |  X  | X X X |
 |   libc   |string.h |ft_strnstr     |  _  | _ _ _ |
 |   libc   | stdlib.h|ft_atoi        |  _  | _ _ _ |
 |   libc   | stdlib.h|ft_calloc      |  _  | _ _ _ |
@@ -59,7 +59,7 @@ Common Core repository from 42 school
 
 ## Makefile
 
-##### you must submit a Makefile
+#### you must submit a Makefile
 	TODO it must compile all source files to the root with the flags:
 	DONE FLAGS -Wall, -Wextra and -Werror, use cc, and
 	TODO your Makefile must not relink.
@@ -74,6 +74,8 @@ Common Core repository from 42 school
 #### Norm
 	TODO All source files you need to compile your project must be explicitly named in your Makefile.
 
+#### Moulinette Rumors
+	TODO Remove all shell commands from the Makefile
 
 # Cyphertext
 

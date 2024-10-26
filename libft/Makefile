@@ -6,9 +6,11 @@
 #    By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/22 13:21:39 by abessa-m          #+#    #+#              #
-#    Updated: 2024/10/26 16:13:28 by abessa-m         ###   ########.fr        #
+#    Updated: 2024/10/26 18:41:12 by abessa-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+# NOTE Moullinette does not aprove shell commands (like "echo:) on Makefile!
 
 # := means simple assignment
 NAME := libft.a
@@ -84,7 +86,7 @@ $(NAME): check-sources $(OBJS)
 
 clean:
 	@rm -f $(OBJS)
-#	clear
+	clear
 
 
 fclean: clean
