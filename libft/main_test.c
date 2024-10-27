@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*																			*/
-/*														:::	  ::::::::   */
-/*   main_test.c										:+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: abessa-m <abessa-m@student.42porto.com>	+#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2024/10/23 13:33:40 by abessa-m		  #+#	#+#			 */
-/*   Updated: 2024/10/26 18:17:05 by abessa-m		 ###   ########.fr	   */
-/*																			*/
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main_test.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/23 13:33:40 by abessa-m          #+#    #+#             */
+/*   Updated: 2024/10/27 12:11:54 by abessa-m         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
@@ -578,9 +578,9 @@ static int	test_strlen(void)
 	char	*empty_str = "";
 	char	*normal_str = "Quarenta e dois.";
 	char	*long_str = "As armas e os baroes assinaldados, "
-				"que da ocidental praia lusitana,"
-				"por mares nunca dantes navegadosm, "
-				"passaram ainda alem da Taprobana.";
+		"que da ocidental praia lusitana,"
+		"por mares nunca dantes navegadosm, "
+		"passaram ainda alem da Taprobana.";
 	char	*special_chars = "Hello\n\t\r\v\f World!";
 	char	*numbers = "-127 +0 42 225";
 	char	str_with_null[20] = "Something\0hidden";
