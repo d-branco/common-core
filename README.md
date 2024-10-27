@@ -53,16 +53,16 @@ Common Core repository from 42 school
 
 ---
 
-symbol | legend
-|--- | ---|
-D|done
--|non-aplicable
-N|norminette approved
-V|valgrind approved
-X|personal tests aproved
-@|current focus
-_|not started yet
-doing|working on parallel
+|symbol| legend               |
+|   ---|---                   |
+|    D |done                  |
+|    - |non-aplicable         |
+|    N |norminette approved   |
+|    V |valgrind approved     |
+|    X |personal tests aproved|
+|    @ |current focus         |
+|    _ |not started yet       |
+|doing |working on parallel   |
 
 ---
 
@@ -90,6 +90,11 @@ doing|working on parallel
 
 #### Norm
 	TODO All source files you need to compile your project must be explicitly named in your Makefile.
+
+#### Evaluator's rumors
+	No wildcards at all in the Makefile! or it's a straight 0!
+		make --debug
+		leaks, valgrind or e_fence agains memory leaks
 
 #### Moulinette Rumors
 	TODO Remove all shell commands from the Makefile

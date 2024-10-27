@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main_test.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 13:33:40 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/26 18:17:05 by abessa-m         ###   ########.fr       */
-/*                                                                            */
+/*																			*/
+/*														:::	  ::::::::   */
+/*   main_test.c										:+:	  :+:	:+:   */
+/*													+:+ +:+		 +:+	 */
+/*   By: abessa-m <abessa-m@student.42porto.com>	+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+		   */
+/*   Created: 2024/10/23 13:33:40 by abessa-m		  #+#	#+#			 */
+/*   Updated: 2024/10/26 18:17:05 by abessa-m		 ###   ########.fr	   */
+/*																			*/
 /* ************************************************************************** */
 
 #include "libft.h"
@@ -78,7 +78,7 @@ int	main(int argc, char **argv)
 	}
 }
 
-static int test_memcmp(void)
+static int	test_memcmp(void)
 {
 	char			str1[] = "Hello, World!";
 	char			str2[] = "Hello, world!";
@@ -92,34 +92,39 @@ static int test_memcmp(void)
 	char			nulls2[] = "Test\0test";
 	size_t			test_sizes[] = {0, 1, 4, 8, 16};
 	size_t			i;
+	int				result = 1;
 	
 	if (ft_memcmp(str1, str2, strlen(str1)) != memcmp(str1, str2, strlen(str1)))
 	{
 		print_caution("FAILED: Basic string comparison test!");
 		printf("	(String1: \"%s\", String2: \"%s\")\n", str1, str2);
-		return (-1);
+		result = -1;
 	}
-	print_result("Passed basic string comparison test.");
+	else
+		print_result("Passed basic string comparison test.");
 	if (ft_memcmp(identical1, identical2, strlen(identical1)) != 
 		memcmp(identical1, identical2, strlen(identical1)))
 	{
 		print_caution("FAILED: Identical strings test!");
-		return (-1);
+		result = -2;
 	}
-	print_result("Passed identical strings test.");
+	else
+		print_result("Passed identical strings test.");
 	if (ft_memcmp(empty1, empty2, 0) != memcmp(empty1, empty2, 0))
 	{
 		print_caution("FAILED: Empty strings test!");
-		return (-1);
+		result = -3;
 	}
-	print_result("Passed empty strings test.");
+	else
+		print_result("Passed empty strings test.");
 	if (ft_memcmp(nulls1, nulls2, sizeof(nulls1)) != 
 		memcmp(nulls1, nulls2, sizeof(nulls1)))
 	{
 		print_caution("FAILED: Strings with embedded nulls test!");
-		return (-1);
+		result = -4;
 	}
-	print_result("Passed strings with embedded nulls test.");
+	else
+		print_result("Passed strings with embedded nulls test.");
 	for (i = 0; i < sizeof(bytes1); i++)
 	{
 		bytes1[i] = (unsigned char)i;
@@ -132,7 +137,7 @@ static int test_memcmp(void)
 		{
 			print_caution("FAILED: Variable size test with identical data!");
 			printf("	(Size: %zu)\n", test_sizes[i]);
-			return (-1);
+			result = -5;
 		}
 		bytes2[test_sizes[i]/2] = (unsigned char)(bytes2[test_sizes[i]/2] + 1);
 		if (ft_memcmp(bytes1, bytes2, test_sizes[i]) != 
@@ -140,11 +145,12 @@ static int test_memcmp(void)
 		{
 			print_caution("FAILED: Variable size test with different data!");
 			printf("	(Size: %zu)\n", test_sizes[i]);
-			return (-1);
+			result = -6;
 		}
 		bytes2[test_sizes[i]/2] = (unsigned char)(bytes2[test_sizes[i]/2] - 1);
 	}
-	print_result("Passed variable size tests.");
+	if (result == 1)
+		print_result("Passed variable size tests.");
 	unsigned char edge_values[] = {0x00, 0x01, 0x7F, 0x80, 0xFF};
 	for (i = 0; i < sizeof(edge_values); i++)
 	{
@@ -154,7 +160,7 @@ static int test_memcmp(void)
 		{
 			print_caution("FAILED: Edge values test!");
 			printf("	(Value: 0x%02x)\n", edge_values[i]);
-			return (-1);
+			if (result == 1) result = -7;
 		}
 		bytes2[0] = edge_values[(i + 1) % sizeof(edge_values)];
 		if (ft_memcmp(bytes1, bytes2, 1) != memcmp(bytes1, bytes2, 1))
@@ -162,10 +168,11 @@ static int test_memcmp(void)
 			print_caution("FAILED: Edge values comparison test!");
 			printf("	(Value1: 0x%02x, Value2: 0x%02x)\n", 
 					edge_values[i], bytes2[0]);
-			return (-1);
+			result = -8;
 		}
 	}
-	print_result("Passed edge values test.");
+	if ((result != 7) || (result != 8))
+		print_result("Passed edge values test.");
 	for (i = 0; i < 8; i++)
 	{
 		if (ft_memcmp(bytes1 + i, bytes2 + i, 16) != 
@@ -173,11 +180,12 @@ static int test_memcmp(void)
 		{
 			print_caution("FAILED: Alignment test!");
 			printf("	(Offset: %zu)\n", i);
-			return (-1);
+			if (result == 1) result = -9;
 		}
 	}
-	print_result("Passed alignment tests.");
-	return (1);
+	if (result == 1)
+		print_result("Passed alignment tests.");
+	return result;
 }
 
 static int	test_bzero(void)
@@ -188,6 +196,7 @@ static int	test_bzero(void)
 	int				int_buf2[10];
 	size_t			test_sizes[] = {0, 1, 2, 4, 8, 16, 32, 64};
 	size_t			i;
+	int				result = 1;
 	
 	for (i = 0; i < sizeof(test_sizes) / sizeof(test_sizes[0]); i++)
 	{
@@ -199,16 +208,17 @@ static int	test_bzero(void)
 		{
 			print_caution("FAILED: Basic zero-fill test!");
 			printf("	(Size: %zu)\n", test_sizes[i]);
-			return (-1);
+			result = -1;
 		}
 		if (test_sizes[i] < sizeof(buf1) && buf1[test_sizes[i]] != 0x55)
 		{
 			print_caution("FAILED: Buffer overflow detected!");
 			printf("	(Size: %zu)\n", test_sizes[i]);
-			return (-1);
+			result = -2;
 		}
 	}
-	print_result("Passed various sizes test.");
+	if (result == 1)
+		print_result("Passed various sizes test.");
 	for (i = 0; i < 8; i++)
 	{
 		memset(buf1, 0x55, sizeof(buf1));
@@ -221,10 +231,11 @@ static int	test_bzero(void)
 		{
 			print_caution("FAILED: Alignment test!");
 			printf("	(Offset: %zu)\n", i);
-			return (-1);
+			result = -3;
 		}
 	}
-	print_result("Passed alignment tests.");
+	if (result > -3)
+		print_result("Passed alignment tests.");
 	memset(int_buf1, 0x55, sizeof(int_buf1));
 	memset(int_buf2, 0x55, sizeof(int_buf2));
 	ft_bzero(int_buf1, sizeof(int_buf1));
@@ -232,9 +243,10 @@ static int	test_bzero(void)
 	if (memcmp(int_buf1, int_buf2, sizeof(int_buf1)) != 0)
 	{
 		print_caution("FAILED: Integer array test!");
-		return (-1);
+		result = -4;
 	}
-	print_result("Passed integer array test.");
+	if (result > -4)
+		print_result("Passed integer array test.");
 	memset(buf1, 0x55, sizeof(buf1));
 	memset(buf2, 0x55, sizeof(buf2));
 	for (i = 0; i < 10; i++)
@@ -246,10 +258,11 @@ static int	test_bzero(void)
 		{
 			print_caution("FAILED: Sequential writes test!");
 			printf("	(Position: %zu)\n", i);
-			return (-1);
+			result = -5;
 		}
 	}
-	print_result("Passed sequential writes test.");
+	if (result > -5)
+		print_result("Passed sequential writes test.");
 	memset(buf1, 0x55, sizeof(buf1));
 	memset(buf2, 0x55, sizeof(buf2));
 	ft_bzero(buf1, 0);
@@ -257,10 +270,11 @@ static int	test_bzero(void)
 	if (memcmp(buf1, buf2, sizeof(buf1)) != 0)
 	{
 		print_caution("FAILED: Zero size test!");
-		return (-1);
+		result = -6;
 	}
-	print_result("Passed zero size test.");
-	return (1);
+	if (result > -6)
+		print_result("Passed zero size test.");
+	return (result);
 }
 
 static int	test_strchr(void)
@@ -272,85 +286,98 @@ static int	test_strchr(void)
 	const char	*special_chars = "Line1\nLine2\tTab\rReturn";
 	char		c;
 	int			i;
+	int			result = 1;
 
 	if (ft_strchr(test_str, 'H') != strchr(test_str, 'H'))
 	{
 		print_caution("FAILED to find first character!");
-		printf("(String: \"%s\", Char: 'H')", test_str);
-		return (-1);
+		printf("(String: \"%s\", Char: 'H')\n", test_str);
+		result = -1;
 	}
-	print_result("Finds first character correctly.");
+	else
+		print_result("Finds first character correctly.");
 	if (ft_strchr(test_str, 'W') != strchr(test_str, 'W'))
 	{
 		print_caution("FAILED to find middle character!");
-		printf("(String: \"%s\", Char: 'W')", test_str);
-		return (-1);
+		printf("(String: \"%s\", Char: 'W')\n", test_str);
+		result = -2;
 	}
-	print_result("Finds middle character correctly.");
+	else
+		print_result("Finds middle character correctly.");
 	if (ft_strchr(test_str, '!') != strchr(test_str, '!'))
 	{
 		print_caution("FAILED to find last character!");
-		printf("(String: \"%s\", Char: '!')", test_str);
-		return (-1);
+		printf("(String: \"%s\", Char: '!')\n", test_str);
+		result = -3;
 	}
-	print_result("Finds last character correctly.");
+	else
+		print_result("Finds last character correctly.");
 	if (ft_strchr(test_str, '\0') != strchr(test_str, '\0'))
 	{
 		print_caution("FAILED to find null terminator!");
-		printf("(String: \"%s\", Char: '\\0')", test_str);
-		return (-1);
+		printf("(String: \"%s\", Char: '\\0')\n", test_str);
+		result = -4;
 	}
-	print_result("Finds null terminator correctly.");
+	else
+		print_result("Finds null terminator correctly.");
 	if (ft_strchr(test_str, 'Z') != strchr(test_str, 'Z'))
 	{
 		print_caution("FAILED on character not in string!");
-		printf("(String: \"%s\", Char: 'Z')", test_str);
-		return (-1);
+		printf("(String: \"%s\", Char: 'Z')\n", test_str);
+		result = -5;
 	}
-	print_result("Handles character not in string correctly.");
+	else
+		print_result("Handles character not in string correctly.");
 	if (ft_strchr(empty_str, 'A') != strchr(empty_str, 'A'))
 	{
 		print_caution("FAILED on empty string!");
-		printf("(String: \"\", Char: 'A')");
-		return (-1);
+		printf("(String: \"\", Char: 'A')\n");
+		result = -6;
 	}
-	print_result("Handles empty string correctly.");
+	else
+		print_result("Handles empty string correctly.");
 	if (ft_strchr(str_with_nulls, 'H') != strchr(str_with_nulls, 'H'))
 	{
 		print_caution("FAILED with embedded null!");
-		return (-1);
+		result = -7;
 	}
-	print_result("Handles string with embedded nulls correctly.");
+	else
+		print_result("Handles string with embedded nulls correctly.");
 	if (ft_strchr(repeated_chars, 'H') != strchr(repeated_chars, 'H'))
 	{
 		print_caution("FAILED with repeated characters!");
-		printf("(String: \"%s\", Char: 'H')", repeated_chars);
-		return (-1);
+		printf("(String: \"%s\", Char: 'H')\n", repeated_chars);
+		result = -8;
 	}
-	print_result("Handles repeated characters correctly.");
+	else
+		print_result("Handles repeated characters correctly.");
 	for (c = '\0'; c < 127; c++)
 	{
 		if (ft_strchr(special_chars, c) != strchr(special_chars, c))
 		{
 			print_caution("FAILED with special character!");
-			printf("(String: \"%s\", Char: '0x%x')", special_chars, c);
-			return (-1);
+			printf("(String: \"%s\", Char: '0x%x')\n", special_chars, c);
+			result = -9;
 		}
 	}
-	print_result("Handles special characters correctly.");
+	if (result != -9)
+		print_result("Handles special characters correctly.");
+
 	for (i = -128; i <= 127; i++)
 	{
 		if (ft_strchr(test_str, i) != strchr(test_str, i))
 		{
 			print_caution("FAILED with ASCII value!");
-			printf("(String: \"%s\", Value: %d)", test_str, i);
-			return (-1);
+			printf("(String: \"%s\", Value: %d)\n", test_str, i);
+			result = -10;
 		}
 	}
-	print_result("Handles all ASCII values correctly.");
-	return (1);
+	if (result != -10)
+		print_result("Handles all ASCII values correctly.");
+	return (result);
 }
-static int test_memcpy(void)
+
+static int	test_memcpy(void)
 {
 	char			str1[100] = "Testing string";
 	char			str2[100];
@@ -361,22 +388,25 @@ static int test_memcpy(void)
 	void			*result;
 	size_t			test_sizes[] = {0, 1, 4, 8, 16, 32};
 	size_t			i;
+	int				error_code = 1;
 
 	result = ft_memcpy(str2, str1, strlen(str1) + 1);
 	if (result != str2 || strcmp(str1, str2) != 0)
 	{
 		print_caution("FAILED: Basic string copy test!");
 		printf("	(Original: %s, Copy: %s)\n", str1, str2);
-		return (-1);
+		error_code = -1;
 	}
-	print_result("Passed basic string copy test.");
+	else
+		print_result("Passed basic string copy test.");
 	result = ft_memcpy(numbers2, numbers1, sizeof(numbers1));
 	if (result != numbers2 || memcmp(numbers1, numbers2, sizeof(numbers1)) != 0)
 	{
 		print_caution("FAILED: Integer array copy test!");
-		return (-1);
+		error_code = -2;
 	}
-	print_result("Passed integer array copy test.");
+	else
+		print_result("Passed integer array copy test.");
 	for (i = 0; i < sizeof(bytes1); i++)
 		bytes1[i] = (unsigned char)i;
 	for (i = 0; i < sizeof(test_sizes)/sizeof(test_sizes[0]); i++)
@@ -386,17 +416,20 @@ static int test_memcpy(void)
 		{
 			print_caution("FAILED: Variable size test!");
 			printf("	(Size: %zu)\n", test_sizes[i]);
-			return (-1);
+			error_code = -3;
+			break;
 		}
 	}
-	print_result("Passed variable size tests.");
+	if (error_code == 1)
+		print_result("Passed variable size tests.");
 	result = ft_memcpy(NULL, NULL, 0);
 	if (result != NULL)
 	{
 		print_caution("FAILED: NULL pointers with size 0 test!");
-		return (-1);
+		error_code = -4;
 	}
-	print_result("Passed NULL pointer with size 0 test.");
+	else
+		print_result("Passed NULL pointer with size 0 test.");
 	for (i = 0; i < 8; i++)
 	{
 		memset(bytes1, 0x55, sizeof(bytes1));
@@ -406,10 +439,12 @@ static int test_memcpy(void)
 		{
 			print_caution("FAILED: Alignment test!");
 			printf("	(Offset: %zu)\n", i);
-			return (-1);
+			error_code = -5;
+			break;
 		}
 	}
-	print_result("Passed alignment tests.");
+	if (error_code == 1)
+		print_result("Passed alignment tests.");
 	unsigned char edge_values[] = {0x00, 0xFF, 0xAA, 0x55};
 	for (i = 0; i < sizeof(edge_values); i++)
 	{
@@ -419,11 +454,14 @@ static int test_memcpy(void)
 		{
 			print_caution("FAILED: Edge values test!");
 			printf("	(Value: 0x%02x)\n", edge_values[i]);
-			return (-1);
+			error_code = -6;
+			break;
 		}
 	}
-	print_result("Passed edge values test.");
-	return (1);
+	if (error_code == 1)
+		print_result("Passed edge values test.");
+
+	return (error_code);
 }
 
 static int	test_memset(void)
@@ -437,6 +475,7 @@ static int	test_memset(void)
 	int				test_values[] = {0x00, 0xFF, 0xAA, 0x55, 'a', '0', '\n'};
 	size_t			i;
 	size_t			j;
+	int				result = 1;
 
 	memset(buf1, 0x55, sizeof(buf1));
 	memset(buf2, 0x55, sizeof(buf2));
@@ -453,27 +492,28 @@ static int	test_memset(void)
 				print_caution("FAILED: Return value is incorrect!");
 				printf("(Size: %zu, Value: 0x%02x)\n",
 					test_sizes[i], test_values[j]);
-				return (-1);
+				if (result == 1) result = -1;
 			}
 			if (memcmp(buf1, buf2, test_sizes[i]) != 0)
 			{
 				print_caution("FAILED: Memory content mismatch!");
 				printf("(Size: %zu, Value: 0x%02x)\n",
 					test_sizes[i], test_values[j]);
-				return (-1);
+				if (result == 1) result = -2;
 			}
 			if (buf1[test_sizes[i]] != 0x55)
 			{
 				print_caution("FAILED: Buffer overflow detected!");
 				printf("(Size: %zu, Value: 0x%02x)\n",
 					test_sizes[i], test_values[j]);
-				return (-1);
+				if (result == 1) result = -3;
 			}
 			j++;
 		}
 		i++;
 	}
-	print_result("Passed various sizes and values tests.");
+	if (result == 1)
+		print_result("Passed various sizes and values tests.");
 	for (i = 0; i < 8; i++)
 	{
 		result1 = ft_memset(buf1 + i, 0x42, 32);
@@ -483,19 +523,21 @@ static int	test_memset(void)
 		{
 			print_caution("FAILED: Alignment test!");
 			printf("(Offset: %zu)\n", i);
-			return (-1);
+			result = -4;
 		}
 	}
-	print_result("Passed alignment tests.");
+	if (result != 4)
+		print_result("Passed alignment tests.");
 	result1 = ft_memset(int_buf1, 0, sizeof(int_buf1));
 	memset(int_buf2, 0, sizeof(int_buf2));
 	if (memcmp(int_buf1, int_buf2, sizeof(int_buf1)) != 0 ||
 		result1 != int_buf1)
 	{
 		print_caution("FAILED: Integer array test!");
-		return (-1);
+		result = -5;
 	}
-	print_result("Passed integer array test.");
+	if (result != 5)
+		print_result("Passed integer array test.");
 	for (i = 0; i < 10; i++)
 	{
 		result1 = ft_memset(buf1 + i, 'A' + i, 1);
@@ -505,10 +547,11 @@ static int	test_memset(void)
 		{
 			print_caution("FAILED: Sequential writes test!");
 			printf("(Position: %zu)\n", i);
-			return (-1);
+			result = -6;
 		}
 	}
-	print_result("Passed sequential writes test.");
+	if (result != 6)
+		print_result("Passed sequential writes test.");
 	unsigned char edge_values[] = {
 		0x00, 0x01, 0x7F, 0x80, 0xFF, // Edge values
 		'A', 'Z', 'a', 'z', '0', '9', // ASCII ranges
@@ -518,16 +561,16 @@ static int	test_memset(void)
 	{
 		result1 = ft_memset(buf1, edge_values[i], 8);
 		memset(buf2, edge_values[i], 8);
-
 		if (memcmp(buf1, buf2, 8) != 0 || result1 != buf1)
 		{
 			print_caution("FAILED: Edge values test!");
 			printf("(Value: 0x%02x)\n", edge_values[i]);
-			return (-1);
+			result = -7;
 		}
 	}
-	print_result("Passed edge values test.");
-	return (1);
+	if (result != 7)
+		print_result("Passed edge values test.");
+	return (result);
 }
 
 static int	test_strlen(void)
@@ -541,62 +584,72 @@ static int	test_strlen(void)
 	char	*special_chars = "Hello\n\t\r\v\f World!";
 	char	*numbers = "-127 +0 42 225";
 	char	str_with_null[20] = "Something\0hidden";
+	int	result;
 
+	result = 1;
 	if (ft_strlen(empty_str) != strlen(empty_str))
 	{
 		print_caution("FAILED on empty string!");
 		printf("	(Expected: %lu, Got: %lu)\n",
 			strlen(empty_str), ft_strlen(empty_str));
-		return (-1);
+		result = -1;
 	}
-	print_result("Handles empty string correctly.");
+	if (result != -1)
+		print_result("Handles empty string correctly.");
 	if (ft_strlen(normal_str) != strlen(normal_str))
 	{
 		print_caution("FAILED on normal string!");
 		printf("	(Expected: %lu, Got: %lu)\n",
 			strlen(normal_str), ft_strlen(normal_str));
-		return (-1);
+		result = -2;
 	}
-	print_result("Handles normal string correctly.");
+	if (result != -2)
+		print_result("Handles normal string correctly.");
 	if (ft_strlen(long_str) != strlen(long_str))
 	{
 		print_caution("FAILED on long string!");
 		printf("	(Expected: %lu, Got: %lu)\n",
 			strlen(long_str), ft_strlen(long_str));
-		return (-1);
+		result = -3;
 	}
-	print_result("Handles long string correctly.");
+	if (result != -3)
+		print_result("Handles long string correctly.");
 	if (ft_strlen(special_chars) != strlen(special_chars))
 	{
 		print_caution("FAILED on string with special characters!");
 		printf("	(Expected: %lu, Got: %lu)\n",
 			strlen(special_chars), ft_strlen(special_chars));
-		return (-1);
+		result = -4;
 	}
-	print_result("Handles special characters correctly.");
+	if (result != -4)
+		print_result("Handles special characters correctly.");
 	if (ft_strlen(numbers) != strlen(numbers))
 	{
 		print_caution("FAILED on string with numbers!");
 		printf("	(Expected: %lu, Got: %lu)\n",
 			strlen(numbers), ft_strlen(numbers));
-		return (-1);
+		result = -5;
 	}
-	print_result("Handles numeric characters correctly.");
+	if (result != -5)
+		print_result("Handles numeric characters correctly.");
 	if (ft_strlen(str_with_null) != strlen(str_with_null))
 	{
 		print_caution("FAILED on string with NULL terminator in middle!");
 		printf("	(Expected: %lu, Got: %lu)\n",
 			strlen(str_with_null), ft_strlen(str_with_null));
-		return (-1);
+		result = -6;
 	}
-	print_result("Handles embedded NULL terminator correctly.");
-	return (1);
+	if (result != -6)
+		print_result("Handles embedded NULL terminator correctly.");
+	return (result);
 }
 
 static int	test_toupper(void)
 {
 	int	i;
+	int	result;
 
+	result = 1;
 	i = 'a';
 	while (i <= 'z')
 	{
@@ -604,11 +657,12 @@ static int	test_toupper(void)
 		{
 			print_caution("FAILED to convert lowercase to uppercase!");
 			printf("	(Character: %c, ASCII: %i)\n", i, i);
-			return (-1);
+			result = -1;
 		}
 		i++;
 	}
-	print_result("Converts all lowercase letters to uppercase.");
+	if (result != -1)
+		print_result("Converts all lowercase letters to uppercase.");
 	i = -1;
 	while (i <= 127)
 	{
@@ -618,12 +672,13 @@ static int	test_toupper(void)
 			{
 				print_caution("FAILED on non-lowercase character!");
 				printf("	(ASCII: %i)\n", i);
-				return (-1);
+				result = -2;
 			}
 		}
 		i++;
 	}
-	print_result("Leaves non-lowercase characters unchanged.");
+	if (result != -2)
+		print_result("Leaves non-lowercase characters unchanged.");
 	i = 128;
 	while (i <= 255)
 	{
@@ -631,18 +686,21 @@ static int	test_toupper(void)
 		{
 			print_caution("FAILED on extended ASCII character!");
 			printf("	(ASCII: %i)\n", i);
-			return (-1);
+			result = -3;
 		}
 		i++;
 	}
-	print_result("Handles extended ASCII characters correctly.");
-	return (1);
+	if (result != -3)
+		print_result("Handles extended ASCII characters correctly.");
+	return (result);
 }
 
 static int	test_tolower(void)
 {
 	int	i;
+	int	result;
 
+	result = 1;
 	i = 'A';
 	while (i <= 'Z')
 	{
@@ -650,11 +708,12 @@ static int	test_tolower(void)
 		{
 			print_caution("FAILED to convert uppercase to lowercase!");
 			printf("	(Character: %c, ASCII: %i)\n", i, i);
-			return (-1);
+			result = -1;
 		}
 		i++;
 	}
-	print_result("Converts all uppercase letters to lowercase.");
+	if (result != -1)
+		print_result("Converts all uppercase letters to lowercase.");
 	i = -1;
 	while (i <= 127)
 	{
@@ -664,12 +723,13 @@ static int	test_tolower(void)
 			{
 				print_caution("FAILED on non-uppercase character!");
 				printf("	(ASCII: %i)\n", i);
-				return (-1);
+				result = -2;
 			}
 		}
 		i++;
 	}
-	print_result("Leaves non-uppercase characters unchanged.");
+	if (result != -2)
+		print_result("Leaves non-uppercase characters unchanged.");
 	i = 128;
 	while (i <= 255)
 	{
@@ -677,18 +737,21 @@ static int	test_tolower(void)
 		{
 			print_caution("FAILED on extended ASCII character!");
 			printf("	(ASCII: %i)\n", i);
-			return (-1);
+			result = -3;
 		}
 		i++;
 	}
-	print_result("Handles extended ASCII characters correctly.");
-	return (1);
+	if (result != -3)
+		print_result("Handles extended ASCII characters correctly.");
+	return (result);
 }
 
 static int	test_isprint(void)
 {
 	int	i;
+	int	result;
 
+	result = 1;
 	i = 32;
 	while (i <= 126)
 	{
@@ -696,11 +759,12 @@ static int	test_isprint(void)
 		{
 			print_caution("FAILED on printable character!");
 			printf("	(ASCII: %i)\n", i);
-			return (-1);
+			result = -1;
 		}
 		i++;
 	}
-	print_result("Handles all printable characters (32-126).");
+	if (result != -1)
+		print_result("Handles all printable characters (32-126).");
 	i = -128;
 	while (i < 32)
 	{
@@ -708,11 +772,12 @@ static int	test_isprint(void)
 		{
 			print_caution("FAILED on non-printable character!");
 			printf("	(ASCII: %i)\n", i);
-			return (-1);
+			result = -2;
 		}
 		i++;
 	}
-	print_result("Handles control characters and negatives correctly.");
+	if (result != -2)
+		print_result("Handles control characters and negatives correctly.");
 	i = 127;
 	while (i <= 255)
 	{
@@ -720,18 +785,21 @@ static int	test_isprint(void)
 		{
 			print_caution("FAILED on extended ASCII character!");
 			printf("	(ASCII: %i)\n", i);
-			return (-1);
+			result = -3;
 		}
 		i++;
 	}
-	print_result("Handles extended ASCII characters correctly.");
-	return (1);
+	if (result != -3)
+		print_result("Handles extended ASCII characters correctly.");
+	return (result);
 }
 
 static int	test_isascii(void)
 {
 	int	i;
+	int	result;
 
+	result = 1;
 	i = 0;
 	while (i <= 127)
 	{
@@ -739,42 +807,48 @@ static int	test_isascii(void)
 		{
 			print_caution("FAILED on valid ASCII character!");
 			printf("	(ASCII: %i)\n", i);
-			return (-1);
+			result = -1;
 		}
 		i++;
 	}
-	print_result("Identifies all valid ASCII values (0-127).");
+	if (result != -1)
+		print_result("Identifies all valid ASCII values (0-127).");
 	i = 128;
 	while (i <= 255)
 	{
 		if (ft_isascii(i) != 0)
 		{
 			print_caution("FAILED on value above ASCII range!");
-			printf("	(Value: %i)", i);
-			return (-1);
+			printf("	(Value: %i)\n", i);
+			result = -2;
 		}
 		i++;
 	}
-	print_result("Handles values above ASCII range (128-255).");
+	if (result != -2)
+		print_result("Handles values above ASCII range (128-255).");
 	i = -128;
 	while (i < 0)
 	{
 		if (ft_isascii(i) != 0)
 		{
 			print_caution("FAILED on negative value!");
-			printf("	(Value: %i)", i);
-			return (-1);
+			printf("	(Value: %i)\n", i);
+			result = -3;
 		}
 		i++;
 	}
-	print_result("Handles negative values.");
-	return (1);
+	if (result != -3)
+		print_result("Handles negative values.");
+	return (result);
 }
+
 
 static int	test_isalnum(void)
 {
 	int	i;
+	int	result;
 
+	result = 1;
 	i = '0';
 	while (i <= '9')
 	{
@@ -783,10 +857,12 @@ static int	test_isalnum(void)
 		else
 		{
 			print_caution("FAILED to print a digit ascii character");
-			return (-1);
+			printf("	(ASCII: %i)\n", i);
+			result = -1;
 		}
 	}
-	print_result("Prints all the digit ascii characters.");
+	if (result != -1)
+		print_result("Prints all the digit ascii characters.");
 	i = 'A';
 	while (i <= 'z')
 	{
@@ -800,35 +876,37 @@ static int	test_isalnum(void)
 		else
 		{
 			print_caution("FAILED to print an alphabetic ascii character");
-			return (-1);
+			printf("	(ASCII: %i)\n", i);
+			result = -2;
 		}
 	}
-	print_result("Prints all the alphabetic ascii characters.");
+	if (result != -2)
+		print_result("Prints all the alphabetic ascii characters.");
 	i = -10;
 	while (i <= 127)
 	{
-		if (!((i >= '0' && i <= '9')
-				|| (i >= 'A' && i <= 'Z')
-				|| (i >= 'a' && i <= 'z')))
+		if (!((i >= '0' && i <= '9') || (i >= 'A' && i <= 'Z') || (i >= 'a' && i <= 'z')))
 		{
 			if (!!ft_isalnum(i) != !!isalnum(i))
 			{
 				print_caution("FAILED on non-alphanumeric character!");
 				printf("	(ASCII: %i)\n", i);
-				return (-1);
+				result = -3;
 			}
 		}
 		i++;
 	}
-	print_result("Handles negatives, "
-		"special characters and non-alphanumerics correctly.");
-	return (1);
+	if (result != -3)
+		print_result("Handles negatives, special characters and non-alphanumerics correctly.");
+	return (result);
 }
 
 static int	test_isdigit(void)
 {
 	int	i;
+	int	result;
 
+	result = 1;
 	i = '0';
 	while (i <= '9')
 	{
@@ -837,10 +915,11 @@ static int	test_isdigit(void)
 		else
 		{
 			print_caution("FAILED to print a digit ascii character");
-			return (-1);
+			result = -1;
 		}
 	}
-	print_result("Prints all the digit ascii characters.");
+	if (result != -1)
+		print_result("Prints all the digit ascii characters.");
 	i = -10;
 	while (i <= 127)
 	{
@@ -850,20 +929,23 @@ static int	test_isdigit(void)
 			{
 				print_caution("FAILED on non-digit character!");
 				printf("	(ASCII: %i)\n", i);
-				return (-1);
+				result = -2;
 			}
 		}
 		i++;
 	}
-	print_result("Handles negatives,"
+	if (result != -2)
+		print_result("Handles negatives,"
 		" special characters and non-digits correctly.");
-	return (1);
+	return (result);
 }
 
 static int	test_isalpha(void)
 {
 	int	i;
+	int	result;
 
+	result = 1;
 	i = 'A';
 	while (i <= 'z')
 	{
@@ -877,23 +959,26 @@ static int	test_isalpha(void)
 		else
 		{
 			print_caution("FAILED to print an alphabetic ascii character");
-			return (-1);
+			result = -1;
+			i++;
 		}
 	}
-	print_result("Prints all the alphabetic ascii characters.");
+	if (result != -1)
+		print_result("Prints all the alphabetic ascii characters.");
 	i = -10;
 	while (i <= 32)
 	{
-		if (!!ft_isalpha(i) != !!isalpha(i))
+		if (ft_isalpha(i) != isalpha(i))
 		{
 			print_caution("FAILED on non-alphabetic character!");
 			printf("	(ASCII: %i)\n", i);
-			return (-1);
+			result = -2;
 		}
 		i++;
 	}
-	print_result("Handles negatives, NULL and space characters.");
-	return (1);
+	if (result != -2)
+		print_result("Handles negatives, NULL and space characters.");
+	return (result);
 }
 
 static void	print_result(char *message)
@@ -915,5 +1000,6 @@ static void	print_warning(char *file_name, char *message)
 
 static void	suspense(void)
 {
-	usleep(200000);
+	//usleep(200000);
+	printf("\1");
 }

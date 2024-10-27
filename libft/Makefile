@@ -6,7 +6,7 @@
 #    By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/22 13:21:39 by abessa-m          #+#    #+#              #
-#    Updated: 2024/10/26 22:06:02 by abessa-m         ###   ########.fr        #
+#    Updated: 2024/10/27 12:05:04 by abessa-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,10 +63,10 @@ test: re
 		fi; \
 		if [ -f $$src ]; then \
 			norminette $$src | grep -q "Error!" && printf "$$src:  \033[41mnorminette ERROR!\033[0m" || printf "$$src:\033[0;32m  norminette OK\033[0m"; \
+			cc -Wall -Werror -Wextra $(TEST) -L. -lft -o test.out; \
 			printf " | \033[41m"; \
-			cc -Wall -Werror -Wextra $(TEST) -L. -lft -o a.out; \
-			valgrind --leak-check=full --show-leak-kinds=all ./a.out $$src 2>&1 | grep -q "ERROR SUMMARY: 0 errors from 0 contexts" && printf "\033[0;32m valgrind OK\033[0m\n" || echo "\033[41m valgrind ERROR!\033[0m"; \
-			./a.out $$src; \
+			valgrind --leak-check=full --show-leak-kinds=all ./test.out $$src 2>&1 | grep -q "ERROR SUMMARY: 0 errors from 0 contexts" && printf "\033[0;32m valgrind OK\033[0m\n" || echo "\033[41m valgrind ERROR!\033[0m"; \
+			./test.out $$src; \
 		fi; \
 	done
 
@@ -97,6 +97,7 @@ $(NAME): check-sources $(OBJS)
 
 clean:
 	@rm -f $(OBJS)
+	@rm -f test.out
 	clear
 
 
