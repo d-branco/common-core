@@ -30,18 +30,16 @@ OBJS = $(EXISTING_SRCS:.c=.o)
 $(OBJS): check-sources
 	@cc -Wall -Werror -Wextra $(EXISTING_SRCS)
 
-SRCS = $(MANDATORY1) $(MANDATORY2) $(BONUS) 
+SRCS = $(MANDATORY1) $(BONUS) 
 
 MANDATORY1 = \
 	ft_strlen.c ft_memcpy.c ft_memset.c ft_bzero.c ft_memmove.c ft_memcmp.c ft_memchr.c \
 	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 	ft_toupper.c ft_tolower.c ft_strchr.c ft_strrchr.c \
 	ft_strlcat.c ft_strlcpy.c ft_atoi.c ft_strnstr.c ft_strncmp.c ft_calloc.c ft_strdup.c 
-
-MANDATORY2 = \
+	\
 	ft_substr ft_strjoin ft_putchar_fd ft_putstr_fd ft_putendl_fd ft_putnbr_fd \
 	ft_strmapi ft_striteri ft_strtrim ft_split  ft_itoa 
-
 
 BONUS = \
 	ft_lstnew \
@@ -72,8 +70,8 @@ test: re
 
 all: $(NAME)
 
-#bonus:
-#	TODO
+bonus:	${NAME} ${BONUS}
+	@ar rcs $(NAME) $(OBJS) ${BONUS}
 
 # example usage: print-SRCS
 print-%: ; @echo '$(subst ','\'',$*=$($*))'

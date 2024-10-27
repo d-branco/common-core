@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:33:40 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/27 12:11:54 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/27 12:13:53 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,22 +132,24 @@ static int	test_memcmp(void)
 	}
 	for (i = 0; i < sizeof(test_sizes)/sizeof(test_sizes[0]); i++)
 	{
-		if (ft_memcmp(bytes1, bytes2, test_sizes[i]) != 
+		if (ft_memcmp(bytes1, bytes2, test_sizes[i])
+			!=  
 			memcmp(bytes1, bytes2, test_sizes[i]))
 		{
 			print_caution("FAILED: Variable size test with identical data!");
 			printf("	(Size: %zu)\n", test_sizes[i]);
 			result = -5;
 		}
-		bytes2[test_sizes[i]/2] = (unsigned char)(bytes2[test_sizes[i]/2] + 1);
-		if (ft_memcmp(bytes1, bytes2, test_sizes[i]) != 
+		bytes2[test_sizes[i] / 2] = (unsigned char)(bytes2[test_sizes[i] / 2] + 1);
+		if (ft_memcmp(bytes1, bytes2, test_sizes[i])
+			!=  
 			memcmp(bytes1, bytes2, test_sizes[i]))
 		{
 			print_caution("FAILED: Variable size test with different data!");
 			printf("	(Size: %zu)\n", test_sizes[i]);
 			result = -6;
 		}
-		bytes2[test_sizes[i]/2] = (unsigned char)(bytes2[test_sizes[i]/2] - 1);
+		bytes2[test_sizes[i] / 2] = (unsigned char)(bytes2[test_sizes[i] / 2] - 1);
 	}
 	if (result == 1)
 		print_result("Passed variable size tests.");
