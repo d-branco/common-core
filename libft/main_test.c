@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:33:40 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/28 10:00:32 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/28 10:43:35 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static int		test_strchr(void);
 static int		test_bzero(void);
 static int		test_memcmp(void);
 static int		test_memmove(void);
+static int		test_memchr(void);
 
 int	main(int argc, char **argv)
 {
@@ -72,7 +73,10 @@ int	main(int argc, char **argv)
 		if (!strcmp(argv[i], "ft_memcmp.c"))
 			aval = test_memcmp();
 		if (!strcmp(argv[i], "ft_memmove.c"))
-		aval = test_memmove();
+			aval = test_memmove();
+		if (!strcmp(argv[i], "ft_memchr.c"))
+			aval = test_memchr();
+
 
 
 
@@ -80,6 +84,81 @@ int	main(int argc, char **argv)
 			print_warning(argv[i], "has no test yet!");
 		i++;
 	}
+}
+
+static int	test_memchr(void)
+{
+	char			str[] = "Hello, World!";
+	int				numbers[] = {1, 2, 3, 4, 5};
+	unsigned char	bytes[] = {0x00, 0xFF, 0xAA, 0x55};
+	int				result = 1;
+
+	// Test basic functionality
+	if (ft_memchr(str, 'W', strlen(str)) != memchr(str, 'W', strlen(str)))
+	{
+		print_caution("FAILED: Basic character search test!");
+		printf("\t(String: \"%s\", Char: 'W')\n", str);
+		result = -1;
+	}
+	else
+		print_result("Passed basic character search test.");
+
+	// Test search for character not in string
+	if (ft_memchr(str, 'Z', strlen(str)) != memchr(str, 'Z', strlen(str)))
+	{
+		print_caution("FAILED: Search for non-existent character!");
+		printf("\t(String: \"%s\", Char: 'Z')\n", str);
+		result = -2;
+	}
+	else
+		print_result("Passed search for non-existent character.");
+
+	// Test search in integer array
+	if (ft_memchr(numbers, 3, sizeof(numbers)) != memchr(numbers, 3, sizeof(numbers)))
+	{
+		print_caution("FAILED: Integer array search test!");
+		result = -3;
+	}
+	else
+		print_result("Passed integer array search test.");
+
+	// Test search for null terminator
+	if (ft_memchr(str, '\0', strlen(str) + 1) != memchr(str, '\0', strlen(str) + 1))
+	{
+		print_caution("FAILED: Null terminator search test!");
+		result = -4;
+	}
+	else
+		print_result("Passed null terminator search test.");
+
+	// Test search in byte array
+	if (ft_memchr(bytes, 0xAA, sizeof(bytes)) != memchr(bytes, 0xAA, sizeof(bytes)))
+	{
+		print_caution("FAILED: Byte array search test!");
+		result = -5;
+	}
+	else
+		print_result("Passed byte array search test.");
+
+	// Test with size 0
+	if (ft_memchr(str, 'H', 0) != memchr(str, 'H', 0))
+	{
+		print_caution("FAILED: Zero size test!");
+		result = -6;
+	}
+	else
+		print_result("Passed zero size test.");
+
+	// Test with NULL pointer and size 0
+	if (ft_memchr(NULL, 'A', 0) != memchr(NULL, 'A', 0))
+	{
+		print_caution("FAILED: NULL pointer with zero size test!");
+		result = -7;
+	}
+	else
+		print_result("Passed NULL pointer with zero size test.");
+
+	return result;
 }
 
 static int	test_memmove(void)

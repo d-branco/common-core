@@ -11,9 +11,9 @@ Common Core repository from 42 school
 |   libc   |string.h |ft_memcpy      |  D  | N V X |
 |   libc   |string.h |ft_memset      |  D  | N V X |
 |   libc   |string.h |ft_bzero       |  D  | N V X |
-|   libc   |string.h |ft_memmove     |  _  | _ _ _ |copy memory area
+|   libc   |string.h |ft_memmove     |  D  | M V X |copy memory area
 |   libc   |string.h |ft_memcmp      |  D  | N V X |
-|   libc   |string.h |ft_memchr      |  _  | _ _ _ |
+|   libc   |string.h |ft_memchr      |  @  | _ _ _ |scan memory for a character
 |   libc   |  ctype.h|ft_isalpha     |  D  | N V X |
 |   libc   |  ctype.h|ft_isdigit     |  D  | N V X |
 |   libc   |  ctype.h|ft_isalnum     |  D  | N V X |
