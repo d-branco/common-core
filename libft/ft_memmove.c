@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 07:45:38 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/28 08:46:40 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/28 09:44:25 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,27 +33,30 @@
 
 #include "libft.h"
 
-void	*memmove(void *dest, const void *src, t_size_t n)
+void	*ft_memmove(void *dest, const void *src, t_size_t n)
 {
-	char				*temp;
-	unsigned int		j;
+	t_size_t			j;
 	unsigned char		*d;
 	const unsigned char	*s;
 
-	temp = (char *) src;
-	d = dest;
-	s = src;
+	d = (unsigned char *) dest;
+	s = (unsigned char *) src;
 	j = 0;
-	while (j < n)
+	if (src < dest)
 	{
-		temp[j] = s[j];
-		j++;
+		while (j < n)
+		{
+			j++;
+			d[n - j] = s[n - j];
+		}
 	}
-	j = 0;
-	while (j < n)
+	else if (src > dest)
 	{
-		d[j] = temp[j];
-		j++;
+		while (j < n)
+		{
+			d[j] = s[j];
+			j++;
+		}
 	}
 	return (dest);
 }

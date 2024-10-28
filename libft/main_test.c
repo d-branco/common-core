@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:33:40 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/28 09:02:41 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/28 09:25:09 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static int		test_memcpy(void);
 static int		test_strchr(void);
 static int		test_bzero(void);
 static int		test_memcmp(void);
+static int		test_memmove(void);
 
 int	main(int argc, char **argv)
 {
@@ -70,12 +71,67 @@ int	main(int argc, char **argv)
 			aval = test_bzero();
 		if (!strcmp(argv[i], "ft_memcmp.c"))
 			aval = test_memcmp();
+		if (!strcmp(argv[i], "ft_memmove.c"))
+		aval = test_memmove();
+
 
 
 		if (aval == 0)
 			print_warning(argv[i], "has no test yet!");
 		i++;
 	}
+}
+
+static int	test_memmove(void)
+{
+	char src1[] = "Hello, World!";
+	char src2[] = "Hello, World!";
+	char dest1[50];
+	char dest2[50];
+	size_t size;
+	int result = 1;
+	char overlap_src1[] = "1234567890";
+	char overlap_src2[] = "1234567890";
+
+	size = strlen(src1) + 1;
+	ft_memmove(dest1, src1, size);
+	memmove(dest2, src2, size);
+	if (strcmp(dest1, dest2) != 0)
+	{
+		print_caution("FAILED: Basic memmove test!");
+		printf("	(Source: \"%s\", Dest1: \"%s\", Dest2: \"%s\")\n", src1, dest1, dest2);
+		result = -1;
+	}
+	else
+		print_result("Passed basic memmove test.");
+	ft_memmove(overlap_src1 + 2, overlap_src1, 8);
+	memmove(overlap_src2, overlap_src1, 10);
+	if (strcmp(overlap_src1, "1231234567") != 0)
+	{
+		print_caution("FAILED: Overlapping regions test (forward)!");
+		printf("	(Result: \"%s\")\n", overlap_src1);
+		result = -2;
+	}
+	else
+		print_result("Passed overlapping regions test (forward).");
+	ft_memmove(overlap_src2, overlap_src2 + 2, 8);
+	memmove(overlap_src1, overlap_src2, 10);
+	if (strcmp(overlap_src2, "34567890") != 0)
+	{
+		print_caution("FAILED: Overlapping regions test (backward)!");
+		printf("	(Result: \"%s\")\n", overlap_src2);
+		result = -3;
+	}
+	else
+		print_result("Passed overlapping regions test (backward).");
+	if (ft_memmove(NULL, NULL, 0) != NULL)
+	{
+		print_caution("FAILED: NULL pointers with size 0 test!");
+		result = -4;
+	}
+	else
+		print_result("Passed NULL pointer with size 0 test.");
+	return result;
 }
 
 static int	test_memcmp(void)
