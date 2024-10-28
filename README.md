@@ -7,22 +7,22 @@ Common Core repository from 42 school
 |----------|---------|---------------|-----|-------|--------------|
 | Makefile |    -    |     -         |doing| - - _ |
 |  libft.h |    -    |     -         |doing| N - _ |
-|   libc   |string.h |ft_strlen      |  D  | N V X |
-|   libc   |string.h |ft_memcpy      |  D  | N V X |
-|   libc   |string.h |ft_memset      |  D  | N V X |
-|   libc   |string.h |ft_bzero       |  D  | N V X |
+|   libc   |string.h |ft_strlen      |  D  | N V X |calculate the length of a string
+|   libc   |string.h |ft_memcpy      |  D  | N V X |copy memory area
+|   libc   |string.h |ft_memset      |  D  | N V X |fill memory with a constant byte
+|   libc   |string.h |ft_bzero       |  D  | N V X |zero a byte string
 |   libc   |string.h |ft_memmove     |  D  | M V X |copy memory area
-|   libc   |string.h |ft_memcmp      |  D  | N V X |
+|   libc   |string.h |ft_memcmp      |  D  | N V X |compare memory areas
 |   libc   |string.h |ft_memchr      |  D  | M V X |scan memory for a character
-|   libc   |  ctype.h|ft_isalpha     |  D  | N V X |
-|   libc   |  ctype.h|ft_isdigit     |  D  | N V X |
-|   libc   |  ctype.h|ft_isalnum     |  D  | N V X |
-|   libc   |  ctype.h|ft_isascii     |  D  | N V X |
-|   libc   |  ctype.h|ft_isprint     |  D  | N V X |
-|   libc   |  ctype.h|ft_toupper     |  D  | N V X |
-|   libc   |  ctype.h|ft_tolower     |  D  | N V X |
-|   libc   |string.h |ft_strchr      |  D  | N V X |
-|   libc   |string.h |ft_strrchr     |  @  | _ _ _ |
+|   libc   |  ctype.h|ft_isalpha     |  D  | N V X |checks  for  an  alphabetic character
+|   libc   |  ctype.h|ft_isdigit     |  D  | N V X |checks for a digit (0 through 9)
+|   libc   |  ctype.h|ft_isalnum     |  D  | N V X |checks for an alphanumeric character
+|   libc   |  ctype.h|ft_isascii     |  D  | N V X |checks for an ASCII character
+|   libc   |  ctype.h|ft_isprint     |  D  | N V X |checks for any printable characterq
+|   libc   |  ctype.h|ft_toupper     |  D  | N V X |convert lowercase letters to uppercase
+|   libc   |  ctype.h|ft_tolower     |  D  | N V X |convert uppercase letters to lowercase
+|   libc   |string.h |ft_strchr      |  D  | N V X |locate character in string
+|   libc   |string.h |ft_strrchr     |  @  | _ _ _ |locate character in string
 |   libc   |string.h |ft_strlcat     |  _  | _ _ _ |
 |   libc   |string.h |ft_strlcpy     |  _  | _ _ _ |
 |   libc   | stdlib.h|ft_atoi        |  _  | _ _ _ |
