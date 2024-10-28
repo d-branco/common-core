@@ -3,15 +3,15 @@ Common Core repository from 42 school
 
 ## libft - current project
 
-| Part     | library | function      |state| tests |
-|----------|---------|---------------|-----|-------|
+| Part     | library | function      |state| tests | desccription |
+|----------|---------|---------------|-----|-------|--------------|
 | Makefile |    -    |     -         |doing| - - _ |
 |  libft.h |    -    |     -         |doing| N - _ |
 |   libc   |string.h |ft_strlen      |  D  | N V X |
 |   libc   |string.h |ft_memcpy      |  D  | N V X |
 |   libc   |string.h |ft_memset      |  D  | N V X |
 |   libc   |string.h |ft_bzero       |  D  | N V X |
-|   libc   |string.h |ft_memmove     |  _  | _ _ _ |
+|   libc   |string.h |ft_memmove     |  _  | _ _ _ |copy memory area
 |   libc   |string.h |ft_memcmp      |  D  | N V X |
 |   libc   |string.h |ft_memchr      |  _  | _ _ _ |
 |   libc   |  ctype.h|ft_isalpha     |  D  | N V X |

@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:33:40 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/27 12:13:53 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/28 09:02:41 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,12 +125,15 @@ static int	test_memcmp(void)
 	}
 	else
 		print_result("Passed strings with embedded nulls test.");
-	for (i = 0; i < sizeof(bytes1); i++)
+	i = 0;
+	while (i < sizeof(bytes1))
 	{
 		bytes1[i] = (unsigned char)i;
 		bytes2[i] = (unsigned char)i;
+		i++;
 	}
-	for (i = 0; i < sizeof(test_sizes)/sizeof(test_sizes[0]); i++)
+	i = 0;
+	while (i < sizeof(test_sizes)/sizeof(test_sizes[0]))
 	{
 		if (ft_memcmp(bytes1, bytes2, test_sizes[i])
 			!=  
@@ -150,11 +153,13 @@ static int	test_memcmp(void)
 			result = -6;
 		}
 		bytes2[test_sizes[i] / 2] = (unsigned char)(bytes2[test_sizes[i] / 2] - 1);
+		i++;
 	}
 	if (result == 1)
 		print_result("Passed variable size tests.");
 	unsigned char edge_values[] = {0x00, 0x01, 0x7F, 0x80, 0xFF};
-	for (i = 0; i < sizeof(edge_values); i++)
+	i = 0;
+	while (i < sizeof(edge_values))
 	{
 		bytes1[0] = edge_values[i];
 		bytes2[0] = edge_values[i];
@@ -172,10 +177,12 @@ static int	test_memcmp(void)
 					edge_values[i], bytes2[0]);
 			result = -8;
 		}
+		i++;
 	}
 	if ((result != 7) || (result != 8))
 		print_result("Passed edge values test.");
-	for (i = 0; i < 8; i++)
+	i = 0;
+	while (i < 8)
 	{
 		if (ft_memcmp(bytes1 + i, bytes2 + i, 16) != 
 			memcmp(bytes1 + i, bytes2 + i, 16))
@@ -184,6 +191,7 @@ static int	test_memcmp(void)
 			printf("	(Offset: %zu)\n", i);
 			if (result == 1) result = -9;
 		}
+		i++;
 	}
 	if (result == 1)
 		print_result("Passed alignment tests.");
@@ -200,7 +208,8 @@ static int	test_bzero(void)
 	size_t			i;
 	int				result = 1;
 	
-	for (i = 0; i < sizeof(test_sizes) / sizeof(test_sizes[0]); i++)
+	i = 0;
+	while (i < sizeof(test_sizes) / sizeof(test_sizes[0]))
 	{
 		memset(buf1, 0x55, sizeof(buf1));
 		memset(buf2, 0x55, sizeof(buf2));
@@ -218,10 +227,12 @@ static int	test_bzero(void)
 			printf("	(Size: %zu)\n", test_sizes[i]);
 			result = -2;
 		}
+		i++;
 	}
 	if (result == 1)
 		print_result("Passed various sizes test.");
-	for (i = 0; i < 8; i++)
+	i = 0;
+	while (i < 8)
 	{
 		memset(buf1, 0x55, sizeof(buf1));
 		memset(buf2, 0x55, sizeof(buf2));
@@ -235,6 +246,7 @@ static int	test_bzero(void)
 			printf("	(Offset: %zu)\n", i);
 			result = -3;
 		}
+		i++;
 	}
 	if (result > -3)
 		print_result("Passed alignment tests.");
@@ -251,7 +263,8 @@ static int	test_bzero(void)
 		print_result("Passed integer array test.");
 	memset(buf1, 0x55, sizeof(buf1));
 	memset(buf2, 0x55, sizeof(buf2));
-	for (i = 0; i < 10; i++)
+	i = 0;
+	while (i < 10)
 	{
 		ft_bzero(buf1 + i, 1);
 		bzero(buf2 + i, 1);
@@ -262,6 +275,7 @@ static int	test_bzero(void)
 			printf("	(Position: %zu)\n", i);
 			result = -5;
 		}
+		i++;
 	}
 	if (result > -5)
 		print_result("Passed sequential writes test.");
@@ -353,7 +367,8 @@ static int	test_strchr(void)
 	}
 	else
 		print_result("Handles repeated characters correctly.");
-	for (c = '\0'; c < 127; c++)
+	c = '\0';
+	while (c < 127)
 	{
 		if (ft_strchr(special_chars, c) != strchr(special_chars, c))
 		{
@@ -361,11 +376,13 @@ static int	test_strchr(void)
 			printf("(String: \"%s\", Char: '0x%x')\n", special_chars, c);
 			result = -9;
 		}
+		c++;
 	}
 	if (result != -9)
 		print_result("Handles special characters correctly.");
 
-	for (i = -128; i <= 127; i++)
+	i = -128;
+	while (i <= 127)
 	{
 		if (ft_strchr(test_str, i) != strchr(test_str, i))
 		{
@@ -373,6 +390,7 @@ static int	test_strchr(void)
 			printf("(String: \"%s\", Value: %d)\n", test_str, i);
 			result = -10;
 		}
+		i++;
 	}
 	if (result != -10)
 		print_result("Handles all ASCII values correctly.");
@@ -409,9 +427,14 @@ static int	test_memcpy(void)
 	}
 	else
 		print_result("Passed integer array copy test.");
-	for (i = 0; i < sizeof(bytes1); i++)
+	i = 0;
+	while (i < sizeof(bytes1))
+	{
 		bytes1[i] = (unsigned char)i;
-	for (i = 0; i < sizeof(test_sizes)/sizeof(test_sizes[0]); i++)
+		i++;
+	}
+	i = 0;
+	while (i < sizeof(test_sizes)/sizeof(test_sizes[0]))
 	{
 		result = ft_memcpy(bytes2, bytes1, test_sizes[i]);
 		if (result != bytes2 || memcmp(bytes1, bytes2, test_sizes[i]) != 0)
@@ -421,6 +444,7 @@ static int	test_memcpy(void)
 			error_code = -3;
 			break;
 		}
+		i++;
 	}
 	if (error_code == 1)
 		print_result("Passed variable size tests.");
@@ -432,7 +456,8 @@ static int	test_memcpy(void)
 	}
 	else
 		print_result("Passed NULL pointer with size 0 test.");
-	for (i = 0; i < 8; i++)
+	i = 0;
+	while (i < 8)
 	{
 		memset(bytes1, 0x55, sizeof(bytes1));
 		memset(bytes2, 0x55, sizeof(bytes2));
@@ -444,11 +469,13 @@ static int	test_memcpy(void)
 			error_code = -5;
 			break;
 		}
+		i++;
 	}
 	if (error_code == 1)
 		print_result("Passed alignment tests.");
 	unsigned char edge_values[] = {0x00, 0xFF, 0xAA, 0x55};
-	for (i = 0; i < sizeof(edge_values); i++)
+	i = 0;
+	while (i < sizeof(edge_values))
 	{
 		memset(bytes1, edge_values[i], 8);
 		result = ft_memcpy(bytes2, bytes1, 8);
@@ -459,6 +486,7 @@ static int	test_memcpy(void)
 			error_code = -6;
 			break;
 		}
+		i++;
 	}
 	if (error_code == 1)
 		print_result("Passed edge values test.");
@@ -516,7 +544,8 @@ static int	test_memset(void)
 	}
 	if (result == 1)
 		print_result("Passed various sizes and values tests.");
-	for (i = 0; i < 8; i++)
+	i = 0;
+	while (i < 8)
 	{
 		result1 = ft_memset(buf1 + i, 0x42, 32);
 		memset(buf2 + i, 0x42, 32);
@@ -527,6 +556,7 @@ static int	test_memset(void)
 			printf("(Offset: %zu)\n", i);
 			result = -4;
 		}
+		i++;
 	}
 	if (result != 4)
 		print_result("Passed alignment tests.");
@@ -540,7 +570,8 @@ static int	test_memset(void)
 	}
 	if (result != 5)
 		print_result("Passed integer array test.");
-	for (i = 0; i < 10; i++)
+	i = 0;
+	while (i < 10)
 	{
 		result1 = ft_memset(buf1 + i, 'A' + i, 1);
 		memset(buf2 + i, 'A' + i, 1);
@@ -551,6 +582,7 @@ static int	test_memset(void)
 			printf("(Position: %zu)\n", i);
 			result = -6;
 		}
+		i++;
 	}
 	if (result != 6)
 		print_result("Passed sequential writes test.");
@@ -559,7 +591,8 @@ static int	test_memset(void)
 		'A', 'Z', 'a', 'z', '0', '9', // ASCII ranges
 		'\t', '\n', '\r', ' ' // Special characters
 	};
-	for (i = 0; i < sizeof(edge_values); i++)
+	i = 0;
+	while (i < sizeof(edge_values))
 	{
 		result1 = ft_memset(buf1, edge_values[i], 8);
 		memset(buf2, edge_values[i], 8);
@@ -569,6 +602,7 @@ static int	test_memset(void)
 			printf("(Value: 0x%02x)\n", edge_values[i]);
 			result = -7;
 		}
+		i++;
 	}
 	if (result != 7)
 		print_result("Passed edge values test.");
@@ -843,7 +877,6 @@ static int	test_isascii(void)
 		print_result("Handles negative values.");
 	return (result);
 }
-
 
 static int	test_isalnum(void)
 {
