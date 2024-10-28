@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:33:40 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/28 10:43:35 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/28 11:02:31 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,19 @@ int	main(int argc, char **argv)
 	}
 }
 
-static int	test_memchr(void)
+static int test_memchr(void)
 {
-	char			str[] = "Hello, World!";
-	int				numbers[] = {1, 2, 3, 4, 5};
-	unsigned char	bytes[] = {0x00, 0xFF, 0xAA, 0x55};
-	int				result = 1;
+	char str[] = "Hello, World!";
+	int numbers[] = {1, 2, 3, 4, 5};
+	unsigned char bytes[] = {0x00, 0xFF, 0xAA, 0x55};
+	int result = 1;
+	void *expected, *actual;
+	char *test_chars[] = {"H", "o", "!"};  // Start, middle, end
+	char boundary[] = {'A', 'B', 'C', 'D'};
+	char aligned[] __attribute__((aligned(8))) = "Aligned";
+	char *unaligned = aligned + 1;
+	char large_buf[1024];
 
-	// Test basic functionality
 	if (ft_memchr(str, 'W', strlen(str)) != memchr(str, 'W', strlen(str)))
 	{
 		print_caution("FAILED: Basic character search test!");
@@ -102,18 +107,14 @@ static int	test_memchr(void)
 	}
 	else
 		print_result("Passed basic character search test.");
-
-	// Test search for character not in string
 	if (ft_memchr(str, 'Z', strlen(str)) != memchr(str, 'Z', strlen(str)))
 	{
 		print_caution("FAILED: Search for non-existent character!");
 		printf("\t(String: \"%s\", Char: 'Z')\n", str);
 		result = -2;
-	}
+		}
 	else
 		print_result("Passed search for non-existent character.");
-
-	// Test search in integer array
 	if (ft_memchr(numbers, 3, sizeof(numbers)) != memchr(numbers, 3, sizeof(numbers)))
 	{
 		print_caution("FAILED: Integer array search test!");
@@ -121,8 +122,6 @@ static int	test_memchr(void)
 	}
 	else
 		print_result("Passed integer array search test.");
-
-	// Test search for null terminator
 	if (ft_memchr(str, '\0', strlen(str) + 1) != memchr(str, '\0', strlen(str) + 1))
 	{
 		print_caution("FAILED: Null terminator search test!");
@@ -130,8 +129,6 @@ static int	test_memchr(void)
 	}
 	else
 		print_result("Passed null terminator search test.");
-
-	// Test search in byte array
 	if (ft_memchr(bytes, 0xAA, sizeof(bytes)) != memchr(bytes, 0xAA, sizeof(bytes)))
 	{
 		print_caution("FAILED: Byte array search test!");
@@ -139,8 +136,6 @@ static int	test_memchr(void)
 	}
 	else
 		print_result("Passed byte array search test.");
-
-	// Test with size 0
 	if (ft_memchr(str, 'H', 0) != memchr(str, 'H', 0))
 	{
 		print_caution("FAILED: Zero size test!");
@@ -148,16 +143,39 @@ static int	test_memchr(void)
 	}
 	else
 		print_result("Passed zero size test.");
-
-	// Test with NULL pointer and size 0
-	if (ft_memchr(NULL, 'A', 0) != memchr(NULL, 'A', 0))
-	{
-		print_caution("FAILED: NULL pointer with zero size test!");
-		result = -7;
+	for (size_t i = 0; i < sizeof(test_chars)/sizeof(test_chars[0]); i++) {
+		expected = memchr(str, test_chars[i][0], strlen(str) + 1);
+		actual = ft_memchr(str, test_chars[i][0], strlen(str) + 1);
+		if (actual != expected) {
+			print_caution("FAILED: Character search test!");
+			printf("\tString: \"%s\", Char: '%c'\n", str, test_chars[i][0]);
+			printf("\tExpected: %p, Got: %p\n", expected, actual);
+			result = -7;
+		}
+	}	
+	expected = memchr(boundary, 'D', sizeof(boundary));
+	actual = ft_memchr(boundary, 'D', sizeof(boundary));
+	if (actual != expected) {
+		print_caution("FAILED: Boundary test!");
+		printf("\tExpected: %p, Got: %p\n", expected, actual);
+		result = -8;
 	}
-	else
-		print_result("Passed NULL pointer with zero size test.");
-
+	expected = memchr(unaligned, 'l', strlen(unaligned));
+	actual = ft_memchr(unaligned, 'l', strlen(unaligned));
+	if (actual != expected) {
+		print_caution("FAILED: Alignment test!");
+		printf("\tExpected: %p, Got: %p\n", expected, actual);
+		result = -9;
+	}
+	memset(large_buf, 'A', sizeof(large_buf));
+	large_buf[1023] = 'X';
+	expected = memchr(large_buf, 'X', sizeof(large_buf));
+	actual = ft_memchr(large_buf, 'X', sizeof(large_buf));
+	if (actual != expected) {
+		print_caution("FAILED: Large buffer test!");
+		printf("\tExpected: %p, Got: %p\n", expected, actual);
+		result = -10;
+	}
 	return result;
 }
 
