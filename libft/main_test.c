@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:33:40 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/28 09:25:09 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/28 10:00:32 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,54 +84,84 @@ int	main(int argc, char **argv)
 
 static int	test_memmove(void)
 {
-	char src1[] = "Hello, World!";
-	char src2[] = "Hello, World!";
-	char dest1[50];
-	char dest2[50];
-	size_t size;
-	int result = 1;
-	char overlap_src1[] = "1234567890";
-	char overlap_src2[] = "1234567890";
+	char	src1[] = "Hello, World!";
+	char	src2[] = "Hello, World!";
+	char	dest1[50] = {0};
+	char	dest2[50] = {0};
+	size_t	size;
+	int		result = 1;
+	char	overlap_src1[] = "1234567890";
+	char	overlap_src2[] = "1234567890";
+	int		numbers1[] = {1, 2, 3, 4, 5};
+	int		numbers2[] = {1, 2, 3, 4, 5};
+	void	*ret;
 
 	size = strlen(src1) + 1;
-	ft_memmove(dest1, src1, size);
+	ret = ft_memmove(dest1, src1, size);
 	memmove(dest2, src2, size);
-	if (strcmp(dest1, dest2) != 0)
+	if (ret != dest1)
+	{
+		print_caution("FAILED: Basic memmove return value test!");
+		result = -1;
+	}
+	else if (memcmp(dest1, dest2, size) != 0)
 	{
 		print_caution("FAILED: Basic memmove test!");
-		printf("	(Source: \"%s\", Dest1: \"%s\", Dest2: \"%s\")\n", src1, dest1, dest2);
+		printf("	(Source: \"%s\", Expected: \"%s\", Got: \"%s\")\n", src1, dest2, dest1);
 		result = -1;
 	}
 	else
 		print_result("Passed basic memmove test.");
 	ft_memmove(overlap_src1 + 2, overlap_src1, 8);
-	memmove(overlap_src2, overlap_src1, 10);
-	if (strcmp(overlap_src1, "1231234567") != 0)
+	memmove(overlap_src2 + 2, overlap_src2, 8);
+	if (memcmp(overlap_src1, overlap_src2, 10) != 0)
 	{
 		print_caution("FAILED: Overlapping regions test (forward)!");
-		printf("	(Result: \"%s\")\n", overlap_src1);
+		printf("	(Expected: \"%s\", Got: \"%s\")\n", overlap_src2, overlap_src1);
 		result = -2;
 	}
 	else
 		print_result("Passed overlapping regions test (forward).");
-	ft_memmove(overlap_src2, overlap_src2 + 2, 8);
-	memmove(overlap_src1, overlap_src2, 10);
-	if (strcmp(overlap_src2, "34567890") != 0)
+	strcpy(overlap_src1, "1234567890");
+	strcpy(overlap_src2, "1234567890");
+	ft_memmove(overlap_src1, overlap_src1 + 2, 8);
+	memmove(overlap_src2, overlap_src2 + 2, 8);
+	if (memcmp(overlap_src1, overlap_src2, 10) != 0)
 	{
 		print_caution("FAILED: Overlapping regions test (backward)!");
-		printf("	(Result: \"%s\")\n", overlap_src2);
+		printf("	(Expected: \"%s\", Got: \"%s\")\n", overlap_src2, overlap_src1);
 		result = -3;
 	}
 	else
 		print_result("Passed overlapping regions test (backward).");
-	if (ft_memmove(NULL, NULL, 0) != NULL)
+	ft_memmove(numbers1 + 1, numbers1, 3 * sizeof(int));
+	memmove(numbers2 + 1, numbers2, 3 * sizeof(int));
+	if (memcmp(numbers1, numbers2, 5 * sizeof(int)) != 0)
 	{
-		print_caution("FAILED: NULL pointers with size 0 test!");
+		print_caution("FAILED: Integer array test!");
+		printf("	(Expected: %d %d %d %d %d, Got: %d %d %d %d %d)\n",
+			numbers2[0], numbers2[1], numbers2[2], numbers2[3], numbers2[4],
+			numbers1[0], numbers1[1], numbers1[2], numbers1[3], numbers1[4]);
 		result = -4;
 	}
 	else
+		print_result("Passed integer array test.");
+	if (ft_memmove(NULL, NULL, 0) != NULL)
+	{
+		print_caution("FAILED: NULL pointers with size 0 test!");
+		result = -5;
+	}
+	else
 		print_result("Passed NULL pointer with size 0 test.");
-	return result;
+	if (ft_memmove(dest1, src1, 0) != dest1)
+	{
+		print_caution("FAILED: Zero-size with non-NULL pointers test!");
+		result = -6;
+	}
+	else
+		print_result("Passed zero-size with non-NULL pointers test.");
+
+	return (result);
 }
 
 static int	test_memcmp(void)
