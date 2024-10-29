@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:33:40 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/28 11:02:31 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/29 17:57:19 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static int		test_bzero(void);
 static int		test_memcmp(void);
 static int		test_memmove(void);
 static int		test_memchr(void);
+static int		test_strrchr(void);
 
 int	main(int argc, char **argv)
 {
@@ -76,7 +77,8 @@ int	main(int argc, char **argv)
 			aval = test_memmove();
 		if (!strcmp(argv[i], "ft_memchr.c"))
 			aval = test_memchr();
-
+		if (!strcmp(argv[i], "ft_strrchr.c"))
+			aval = test_strrchr();
 
 
 
@@ -84,6 +86,123 @@ int	main(int argc, char **argv)
 			print_warning(argv[i], "has no test yet!");
 		i++;
 	}
+}
+
+static int	test_strrchr(void)
+{
+	const char	*test_str = "Hello, World!";
+	const char	*empty_str = "";
+	char		str_with_nulls[] = "Hello\0Hidden\0Text";
+	const char	*repeated_chars = "Hello, Hello!";
+	const char	*special_chars = "Line1\nLine2\tTab\rReturn";
+	char		c;
+	int			i;
+	int			result = 1;
+
+	if (ft_strrchr(test_str, 'H') != strrchr(test_str, 'H'))
+	{
+		print_caution("FAILED to find first occurrence in single instance!");
+		printf("\t(String: \"%s\", Char: 'H')\n", test_str);
+		result = -1;
+	}
+	else
+		print_result("Finds single instance correctly.");
+
+	if (ft_strrchr(repeated_chars, 'H') != strrchr(repeated_chars, 'H'))
+	{
+		print_caution("FAILED to find last occurrence of repeated character!");
+		printf("\t(String: \"%s\", Char: 'H')\n", repeated_chars);
+		result = -2;
+	}
+	else
+		print_result("Finds last occurrence of repeated character correctly.");
+
+	if (ft_strrchr(test_str, '!') != strrchr(test_str, '!'))
+	{
+		print_caution("FAILED to find last character!");
+		printf("\t(String: \"%s\", Char: '!')\n", test_str);
+		result = -3;
+	}
+	else
+		print_result("Finds last character correctly.");
+
+	if (ft_strrchr(test_str, '\0') != strrchr(test_str, '\0'))
+	{
+		print_caution("FAILED to find null terminator!");
+		printf("\t(String: \"%s\", Char: '\\0')\n", test_str);
+		result = -4;
+	}
+	else
+		print_result("Finds null terminator correctly.");
+
+	if (ft_strrchr(test_str, 'Z') != strrchr(test_str, 'Z'))
+	{
+		print_caution("FAILED on character not in string!");
+		printf("\t(String: \"%s\", Char: 'Z')\n", test_str);
+		result = -5;
+	}
+	else
+		print_result("Handles character not in string correctly.");
+
+	if (ft_strrchr(empty_str, 'A') != strrchr(empty_str, 'A'))
+	{
+		print_caution("FAILED on empty string!");
+		printf("\t(String: \"\", Char: 'A')\n");
+		result = -6;
+	}
+	else
+		print_result("Handles empty string correctly.");
+
+	if (ft_strrchr(str_with_nulls, 'H') != strrchr(str_with_nulls, 'H'))
+	{
+		print_caution("FAILED with embedded null!");
+		printf("\t(String: \"Hello\\0Hidden\\0Text\", Char: 'H')\n");
+		result = -7;
+	}
+	else
+		print_result("Handles string with embedded nulls correctly.");
+
+	c = '\0';
+	while (c < 127)
+	{
+		if (ft_strrchr(special_chars, c) != strrchr(special_chars, c))
+		{
+			print_caution("FAILED with special character!");
+			printf("\t(String: \"%s\", Char: '0x%x')\n", special_chars, c);
+			result = -8;
+			break;
+		}
+		c++;
+	}
+	if (result != -8)
+		print_result("Handles special characters correctly.");
+
+	i = -128;
+	while (i <= 127)
+	{
+		if (ft_strrchr(test_str, i) != strrchr(test_str, i))
+		{
+			print_caution("FAILED with ASCII value!");
+			printf("\t(String: \"%s\", Value: %d)\n", test_str, i);
+			result = -9;
+			break;
+		}
+		i++;
+	}
+	if (result != -9)
+		print_result("Handles all ASCII values correctly.");
+
+	const char *multiple = "aaaaaa";
+	if (ft_strrchr(multiple, 'a') != strrchr(multiple, 'a'))
+	{
+		print_caution("FAILED with multiple consecutive occurrences!");
+		printf("\t(String: \"%s\", Char: 'a')\n", multiple);
+		result = -10;
+	}
+	else
+		print_result("Handles multiple consecutive occurrences correctly.");
+
+	return (result);
 }
 
 static int test_memchr(void)
@@ -152,7 +271,7 @@ static int test_memchr(void)
 			printf("\tExpected: %p, Got: %p\n", expected, actual);
 			result = -7;
 		}
-	}	
+	}
 	expected = memchr(boundary, 'D', sizeof(boundary));
 	actual = ft_memchr(boundary, 'D', sizeof(boundary));
 	if (actual != expected) {
@@ -276,7 +395,7 @@ static int	test_memcmp(void)
 	size_t			test_sizes[] = {0, 1, 4, 8, 16};
 	size_t			i;
 	int				result = 1;
-	
+
 	if (ft_memcmp(str1, str2, strlen(str1)) != memcmp(str1, str2, strlen(str1)))
 	{
 		print_caution("FAILED: Basic string comparison test!");
@@ -285,7 +404,7 @@ static int	test_memcmp(void)
 	}
 	else
 		print_result("Passed basic string comparison test.");
-	if (ft_memcmp(identical1, identical2, strlen(identical1)) != 
+	if (ft_memcmp(identical1, identical2, strlen(identical1)) !=
 		memcmp(identical1, identical2, strlen(identical1)))
 	{
 		print_caution("FAILED: Identical strings test!");
@@ -300,7 +419,7 @@ static int	test_memcmp(void)
 	}
 	else
 		print_result("Passed empty strings test.");
-	if (ft_memcmp(nulls1, nulls2, sizeof(nulls1)) != 
+	if (ft_memcmp(nulls1, nulls2, sizeof(nulls1)) !=
 		memcmp(nulls1, nulls2, sizeof(nulls1)))
 	{
 		print_caution("FAILED: Strings with embedded nulls test!");
@@ -319,7 +438,7 @@ static int	test_memcmp(void)
 	while (i < sizeof(test_sizes)/sizeof(test_sizes[0]))
 	{
 		if (ft_memcmp(bytes1, bytes2, test_sizes[i])
-			!=  
+			!=
 			memcmp(bytes1, bytes2, test_sizes[i]))
 		{
 			print_caution("FAILED: Variable size test with identical data!");
@@ -328,7 +447,7 @@ static int	test_memcmp(void)
 		}
 		bytes2[test_sizes[i] / 2] = (unsigned char)(bytes2[test_sizes[i] / 2] + 1);
 		if (ft_memcmp(bytes1, bytes2, test_sizes[i])
-			!=  
+			!=
 			memcmp(bytes1, bytes2, test_sizes[i]))
 		{
 			print_caution("FAILED: Variable size test with different data!");
@@ -356,7 +475,7 @@ static int	test_memcmp(void)
 		if (ft_memcmp(bytes1, bytes2, 1) != memcmp(bytes1, bytes2, 1))
 		{
 			print_caution("FAILED: Edge values comparison test!");
-			printf("	(Value1: 0x%02x, Value2: 0x%02x)\n", 
+			printf("	(Value1: 0x%02x, Value2: 0x%02x)\n",
 					edge_values[i], bytes2[0]);
 			result = -8;
 		}
@@ -367,7 +486,7 @@ static int	test_memcmp(void)
 	i = 0;
 	while (i < 8)
 	{
-		if (ft_memcmp(bytes1 + i, bytes2 + i, 16) != 
+		if (ft_memcmp(bytes1 + i, bytes2 + i, 16) !=
 			memcmp(bytes1 + i, bytes2 + i, 16))
 		{
 			print_caution("FAILED: Alignment test!");
@@ -390,7 +509,7 @@ static int	test_bzero(void)
 	size_t			test_sizes[] = {0, 1, 2, 4, 8, 16, 32, 64};
 	size_t			i;
 	int				result = 1;
-	
+
 	i = 0;
 	while (i < sizeof(test_sizes) / sizeof(test_sizes[0]))
 	{

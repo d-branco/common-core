@@ -62,8 +62,8 @@ test: re
 		if [ -f $$src ]; then \
 			norminette $$src | grep -q "Error!" && printf "$$src:  \033[41mnorminette ERROR!\033[0m" || printf "$$src:\033[0;32m  norminette OK\033[0m"; \
 			cc -Wall -Werror -Wextra $(TEST) -L. -lft -o test.out; \
-			printf " | \033[41m"; \
-			valgrind --leak-check=full --show-leak-kinds=all ./test.out $$src 2>&1 | grep -q "ERROR SUMMARY: 0 errors from 0 contexts" && printf "\033[0;32m valgrind OK\033[0m\n" || echo "\033[41m valgrind ERROR!\033[0m"; \
+			printf "  |  \033[41m"; \
+			valgrind --leak-check=full --show-leak-kinds=all ./test.out $$src 2>&1 | grep -q "ERROR SUMMARY: 0 errors from 0 contexts" && printf "\033[0;32mvalgrind OK\033[0m\n" || echo "\033[41mvalgrind ERROR!\033[0m"; \
 			./test.out $$src; \
 		fi; \
 	done

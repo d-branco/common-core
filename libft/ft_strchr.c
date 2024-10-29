@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 10:27:08 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/26 13:29:25 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/29 17:45:38 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@
 //	considered part of the string, so that if c is specified as '\0', this
 //	function returns a pointer to the terminator.
 
-// NOTES
-// ptr has to be static so that it can be used by main outside this function.
 char	*ft_strchr(const char *s, int c)
 {
 	int		j;

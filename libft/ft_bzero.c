@@ -6,11 +6,12 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 15:17:45 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/26 15:37:22 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/29 17:50:57 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//	Emulates bzero from libc
+// Emulates bzero from libc
+// NOTE: bzero is deprecated. memset ought to be used instead
 
 //NAME
 //	bzero - zero a byte string
@@ -26,19 +27,10 @@
 //RETURN VALUE
 //		None.
 
-// In order to have acess to t_size_t
+// In order to have access to t_size_t
 #include "libft.h"
 
 void	ft_bzero(void *s, t_size_t n)
 {
-	t_size_t	j;
-	char		*ptr;
-
-	j = 0;
-	ptr = (char *) s;
-	while (j < n)
-	{
-		ptr[j] = 0;
-		j++;
-	}
+	ft_memset(s, '\0', n);
 }
