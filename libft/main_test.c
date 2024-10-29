@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:33:40 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/29 17:57:19 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/29 19:01:29 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,6 @@ static int	test_strrchr(void)
 	}
 	else
 		print_result("Finds single instance correctly.");
-
 	if (ft_strrchr(repeated_chars, 'H') != strrchr(repeated_chars, 'H'))
 	{
 		print_caution("FAILED to find last occurrence of repeated character!");
@@ -116,7 +115,6 @@ static int	test_strrchr(void)
 	}
 	else
 		print_result("Finds last occurrence of repeated character correctly.");
-
 	if (ft_strrchr(test_str, '!') != strrchr(test_str, '!'))
 	{
 		print_caution("FAILED to find last character!");
@@ -125,7 +123,6 @@ static int	test_strrchr(void)
 	}
 	else
 		print_result("Finds last character correctly.");
-
 	if (ft_strrchr(test_str, '\0') != strrchr(test_str, '\0'))
 	{
 		print_caution("FAILED to find null terminator!");
@@ -134,7 +131,6 @@ static int	test_strrchr(void)
 	}
 	else
 		print_result("Finds null terminator correctly.");
-
 	if (ft_strrchr(test_str, 'Z') != strrchr(test_str, 'Z'))
 	{
 		print_caution("FAILED on character not in string!");
@@ -143,7 +139,6 @@ static int	test_strrchr(void)
 	}
 	else
 		print_result("Handles character not in string correctly.");
-
 	if (ft_strrchr(empty_str, 'A') != strrchr(empty_str, 'A'))
 	{
 		print_caution("FAILED on empty string!");
@@ -152,7 +147,6 @@ static int	test_strrchr(void)
 	}
 	else
 		print_result("Handles empty string correctly.");
-
 	if (ft_strrchr(str_with_nulls, 'H') != strrchr(str_with_nulls, 'H'))
 	{
 		print_caution("FAILED with embedded null!");
@@ -161,7 +155,6 @@ static int	test_strrchr(void)
 	}
 	else
 		print_result("Handles string with embedded nulls correctly.");
-
 	c = '\0';
 	while (c < 127)
 	{
@@ -176,7 +169,6 @@ static int	test_strrchr(void)
 	}
 	if (result != -8)
 		print_result("Handles special characters correctly.");
-
 	i = -128;
 	while (i <= 127)
 	{
@@ -191,7 +183,6 @@ static int	test_strrchr(void)
 	}
 	if (result != -9)
 		print_result("Handles all ASCII values correctly.");
-
 	const char *multiple = "aaaaaa";
 	if (ft_strrchr(multiple, 'a') != strrchr(multiple, 'a'))
 	{
@@ -201,7 +192,6 @@ static int	test_strrchr(void)
 	}
 	else
 		print_result("Handles multiple consecutive occurrences correctly.");
-
 	return (result);
 }
 
@@ -1189,13 +1179,14 @@ static int	test_isalnum(void)
 	i = '0';
 	while (i <= '9')
 	{
-		if (ft_isalnum(i) == i)
+		if (!ft_isalnum(i) == !i)
 			i++;
 		else
 		{
 			print_caution("FAILED to print a digit ascii character");
 			printf("	(ASCII: %i)\n", i);
 			result = -1;
+			i++;
 		}
 	}
 	if (result != -1)
@@ -1203,7 +1194,7 @@ static int	test_isalnum(void)
 	i = 'A';
 	while (i <= 'z')
 	{
-		if (ft_isalnum(i) == i)
+		if (!ft_isalnum(i) == !i)
 		{
 			if (i == 'Z')
 				i = 'a';
@@ -1215,6 +1206,7 @@ static int	test_isalnum(void)
 			print_caution("FAILED to print an alphabetic ascii character");
 			printf("	(ASCII: %i)\n", i);
 			result = -2;
+			i++;
 		}
 	}
 	if (result != -2)
@@ -1247,12 +1239,14 @@ static int	test_isdigit(void)
 	i = '0';
 	while (i <= '9')
 	{
-		if (ft_isdigit(i) == i)
+		if (!ft_isdigit(i) == !i)
 			i++;
 		else
 		{
 			print_caution("FAILED to print a digit ascii character");
+			printf("	(ASCII: %i)\n", i);
 			result = -1;
+			i++;
 		}
 	}
 	if (result != -1)
@@ -1262,7 +1256,7 @@ static int	test_isdigit(void)
 	{
 		if (i < '0' || i > '9')
 		{
-			if (!!ft_isdigit(i) != !!isdigit(i))
+			if (!ft_isdigit(i) != !isdigit(i))
 			{
 				print_caution("FAILED on non-digit character!");
 				printf("	(ASCII: %i)\n", i);
@@ -1286,7 +1280,7 @@ static int	test_isalpha(void)
 	i = 'A';
 	while (i <= 'z')
 	{
-		if (ft_isalpha(i) == i)
+		if (!ft_isalpha(i) == !i)
 		{
 			if (i == 'Z')
 				i = 'a';
@@ -1296,6 +1290,7 @@ static int	test_isalpha(void)
 		else
 		{
 			print_caution("FAILED to print an alphabetic ascii character");
+			printf("	(ASCII: %i)\n", i);
 			result = -1;
 			i++;
 		}
@@ -1337,6 +1332,6 @@ static void	print_warning(char *file_name, char *message)
 
 static void	suspense(void)
 {
-	//usleep(200000);
+	usleep(200000);
 	printf("\1");
 }
