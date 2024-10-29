@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:33:40 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/29 19:54:07 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/29 21:32:48 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static int		test_memmove(void);
 static int		test_memchr(void);
 static int		test_strrchr(void);
 static int		test_strlcat(void);
+static int		test_strlcpy(void);
 
 int	main(int argc, char **argv)
 {
@@ -82,12 +83,79 @@ int	main(int argc, char **argv)
 			aval = test_strrchr();
 		if (!strcmp(argv[i], "ft_strlcat.c"))
 			aval = test_strlcat();
+		if (!strcmp(argv[i], "ft_strlcpy.c"))
+			aval = test_strlcpy();
+		
 
 
 		if (aval == 0)
 			print_warning(argv[i], "has no test yet!");
 		i++;
 	}
+}
+
+static int	test_strlcpy(void)
+{
+	char		dest1[20];
+	char		dest2[20];
+	const char	*src = "Hello, World!";
+	size_t		result1, result2;
+	int			error_code = 1;
+
+	result1 = ft_strlcpy(dest1, src, sizeof(dest1));
+	result2 = strlcpy(dest2, src, sizeof(dest2));
+	if (result1 != result2 || strcmp(dest1, dest2) != 0)
+	{
+		print_caution("FAILED: Normal copy test!");
+		printf("\t(Expected: %zu \"%s\", Got: %zu \"%s\")\n", result2, dest2, result1, dest1);
+		error_code = -1;
+	}
+	else
+		print_result("Passed normal copy test.");
+	result1 = ft_strlcpy(dest1, src, 7);
+	result2 = strlcpy(dest2, src, 7);
+	if (result1 != result2 || strcmp(dest1, dest2) != 0)
+	{
+		print_caution("FAILED: Truncation test!");
+		printf("\t(Expected: %zu \"%s\", Got: %zu \"%s\")\n", result2, dest2, result1, dest1);
+		error_code = -2;
+	}
+	else
+		print_result("Passed truncation test.");
+	result1 = ft_strlcpy(dest1, "", sizeof(dest1));
+	result2 = strlcpy(dest2, "", sizeof(dest2));
+	if (result1 != result2 || strcmp(dest1, dest2) != 0)
+	{
+		print_caution("FAILED: Empty string test!");
+		printf("\t(Expected: %zu \"%s\", Got: %zu \"%s\")\n", result2, dest2, result1, dest1);
+		error_code = -3;
+	}
+	else
+		print_result("Passed empty string test.");
+	char original[20] = "Original";
+	strcpy(dest1, original);
+	strcpy(dest2, original);
+	result1 = ft_strlcpy(dest1, src, 0);
+	result2 = strlcpy(dest2, src, 0);
+	if (result1 != result2 || strcmp(dest1, dest2) != 0)
+	{
+		print_caution("FAILED: Zero size test!");
+		printf("\t(Expected: %zu \"%s\", Got: %zu \"%s\")\n", result2, dest2, result1, dest1);
+		error_code = -4;
+	}
+	else
+		print_result("Passed zero size test.");
+	result1 = ft_strlcpy(dest1, src, 1);
+	result2 = strlcpy(dest2, src, 1);
+	if (result1 != result2 || strcmp(dest1, dest2) != 0)
+	{
+		print_caution("FAILED: Size 1 test!");
+		printf("\t(Expected: %zu \"%s\", Got: %zu \"%s\")\n", result2, dest2, result1, dest1);
+		error_code = -5;
+	}
+	else
+		print_result("Passed size 1 test.");
+	return (error_code);
 }
 
 static int test_strlcat(void)
@@ -271,16 +339,16 @@ static int	test_strrchr(void)
 
 static int test_memchr(void)
 {
-	char str[] = "Hello, World!";
-	int numbers[] = {1, 2, 3, 4, 5};
-	unsigned char bytes[] = {0x00, 0xFF, 0xAA, 0x55};
-	int result = 1;
-	void *expected, *actual;
-	char *test_chars[] = {"H", "o", "!"};  // Start, middle, end
-	char boundary[] = {'A', 'B', 'C', 'D'};
-	char aligned[] __attribute__((aligned(8))) = "Aligned";
-	char *unaligned = aligned + 1;
-	char large_buf[1024];
+	char			str[] = "Hello, World!";
+	int				numbers[] = {1, 2, 3, 4, 5};
+	unsigned char	bytes[] = {0x00, 0xFF, 0xAA, 0x55};
+	int				result = 1;
+	void			*expected, *actual;
+	char			*test_chars[] = {"H", "o", "!"};  // Start, middle, end
+	char			boundary[] = {'A', 'B', 'C', 'D'};
+	char			aligned[] __attribute__((aligned(8))) = "Aligned";
+	char			*unaligned = aligned + 1;
+	char			large_buf[1024];
 
 	if (ft_memchr(str, 'W', strlen(str)) != memchr(str, 'W', strlen(str)))
 	{

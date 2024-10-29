@@ -5,8 +5,8 @@ Common Core repository from 42 school
 
 | Part       | library  | function        | state | tests | desccription                           |
 |------------|----------|-----------------|-------|-------|----------------------------------------|
-| Makefile   | -        | -               | doing | - - _ |                                        |
-| libft.h    | -        | -               | doing | N - _ |                                        |
+| Makefile   | -        | -               | doing | - - _ | compiles instructions                  |
+| libft.h    | -        | -               | doing | N - _ | header                                 |
 | libc       | string.h | ft_strlen       | D     | N V X | calculate the length of a string       |
 | libc       | string.h | ft_memcpy       | D     | N V X | copy memory area                       |
 | libc       | string.h | ft_memset       | D     | N V X | fill memory with a constant byte       |
@@ -24,8 +24,8 @@ Common Core repository from 42 school
 | libc       | string.h | ft_strchr       | D     | N V X | locate character in string             |
 | libc       | string.h | ft_strrchr      | D     | N V X | locate character in string             |
 | libc       | string.h | ft_strlcat      | D     | N V X | size-bounded string concatenation      |
-| libc       | string.h | ft_strlcpy      | _     | _ _ _ |                                        |
-| libc       | stdlib.h | ft_atoi         | _     | _ _ _ |                                        |
+| libc       | string.h | ft_strlcpy      | D     | N V X | size-bounded string copying            |
+| libc       | stdlib.h | ft_atoi         | @     | _ _ _ |                                        |
 | libc       | string.h | ft_strnstr      | _     | _ _ _ |                                        |
 | libc       | string.h | ft_strncmp      | _     | _ _ _ |                                        |
 | libc       | stdlib.h | ft_calloc       | _     | _ _ _ |                                        |

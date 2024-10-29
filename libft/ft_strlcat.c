@@ -6,12 +6,12 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 18:07:59 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/29 19:53:25 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/29 21:34:51 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // NAME
-//	strlcat — size-bounded string copying and concatenation
+//	strlcat — size-bounded string concatenation
 
 // LIBRARY
 //	Utility functions from BSD systems (libbsd, -lbsd)

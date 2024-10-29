@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 08:10:20 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/29 19:53:33 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/29 21:33:59 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ void		*ft_memchr(const void *s, int c, t_size_t n);
 char		*strrchr(const char *s, int c);
 char		*ft_strrchr(const char *s, int c);
 t_size_t	ft_strlcat(char *dst, const char *src, t_size_t size);
+t_size_t	ft_strlcpy(char *dst, const char *src, t_size_t size);
 
 #endif
