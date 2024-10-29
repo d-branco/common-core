@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:33:40 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/29 19:01:29 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/29 19:54:07 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static int		test_memcmp(void);
 static int		test_memmove(void);
 static int		test_memchr(void);
 static int		test_strrchr(void);
+static int		test_strlcat(void);
 
 int	main(int argc, char **argv)
 {
@@ -79,13 +80,86 @@ int	main(int argc, char **argv)
 			aval = test_memchr();
 		if (!strcmp(argv[i], "ft_strrchr.c"))
 			aval = test_strrchr();
-
+		if (!strcmp(argv[i], "ft_strlcat.c"))
+			aval = test_strlcat();
 
 
 		if (aval == 0)
 			print_warning(argv[i], "has no test yet!");
 		i++;
 	}
+}
+
+static int test_strlcat(void)
+{
+	char		dest1[20] = "Hello";
+	char		dest2[20] = "Hello";
+	const char	*src = " World!";
+	size_t		result1;
+	size_t		result2;
+	int			error_code;
+	
+	error_code = 1;
+	result1 = ft_strlcat(dest1, src, sizeof(dest1));
+	result2 = strlcat(dest2, src, sizeof(dest2));
+	if (result1 != result2 || strcmp(dest1, dest2) != 0)
+	{
+		print_caution("FAILED: Basic functionality test!");
+		printf("\t(Expected: %zu \"%s\", Got: %zu \"%s\")\n", result2, dest2, result1, dest1);
+		error_code = -1;
+	}
+	else
+		print_result("Passed basic functionality test.");
+	char full_dest1[10] = "123456789";
+	char full_dest2[10] = "123456789";
+	result1 = ft_strlcat(full_dest1, src, sizeof(full_dest1));
+	result2 = strlcat(full_dest2, src, sizeof(full_dest2));
+	if (result1 != result2 || strcmp(full_dest1, full_dest2) != 0)
+	{
+		print_caution("FAILED: Destination buffer full test!");
+		printf("\t(Expected: %zu \"%s\", Got: %zu \"%s\")\n", result2, full_dest2, result1, full_dest1);
+		error_code = -2;
+	}
+	else
+		print_result("Passed destination buffer full test.");
+	char empty_src_dest1[20] = "Hello";
+	char empty_src_dest2[20] = "Hello";
+	const char *empty_src = "";
+	result1 = ft_strlcat(empty_src_dest1, empty_src, sizeof(empty_src_dest1));
+	result2 = strlcat(empty_src_dest2, empty_src, sizeof(empty_src_dest2));
+	if (result1 != result2 || strcmp(empty_src_dest1, empty_src_dest2) != 0)
+	{
+		print_caution("FAILED: Empty source string test!");
+		printf("\t(Expected: %zu \"%s\", Got: %zu \"%s\")\n", result2, empty_src_dest2, result1, empty_src_dest1);
+		error_code = -3;
+	}
+	else
+		print_result("Passed empty source string test.");
+	char zero_size_dest1[20] = "Hello";
+	char zero_size_dest2[20] = "Hello";
+	result1 = ft_strlcat(zero_size_dest1, src, 0);
+	result2 = strlcat(zero_size_dest2, src, 0);
+	if (result1 != result2 || strcmp(zero_size_dest1, zero_size_dest2) != 0)
+	{
+		print_caution("FAILED: Zero size test!");
+		printf("\t(Expected: %zu \"%s\", Got: %zu \"%s\")\n", result2, zero_size_dest2, result1, zero_size_dest1);
+		error_code = -4;
+	}
+	else
+		print_result("Passed zero size test.");
+	char small_size_dest1[20] = "Hello";
+	char small_size_dest2[20] = "Hello";
+	result1 = ft_strlcat(small_size_dest1, src, 3);
+	result2 = strlcat(small_size_dest2, src, 3);
+	if (result1 != result2 || strcmp(small_size_dest1, small_size_dest2) != 0)
+	{
+		print_caution("FAILED: Size smaller than destination length test!");
+		printf("\t(Expected: %zu \"%s\", Got: %zu \"%s\")\n", result2, small_size_dest2, result1, small_size_dest1);
+		error_code = -5;
+	}
+	else
+		print_result("Passed size smaller than destination length test.");
+	return error_code;
 }
 
 static int	test_strrchr(void)

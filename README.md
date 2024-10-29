@@ -23,7 +23,7 @@ Common Core repository from 42 school
 | libc       | ctype.h  | ft_tolower      | D     | N V X | convert uppercase letters to lowercase |
 | libc       | string.h | ft_strchr       | D     | N V X | locate character in string             |
 | libc       | string.h | ft_strrchr      | D     | N V X | locate character in string             |
-| libc       | string.h | ft_strlcat      | @     | _ _ _ |                                        |
+| libc       | string.h | ft_strlcat      | D     | N V X | size-bounded string concatenation      |
 | libc       | string.h | ft_strlcpy      | _     | _ _ _ |                                        |
 | libc       | stdlib.h | ft_atoi         | _     | _ _ _ |                                        |
 | libc       | string.h | ft_strnstr      | _     | _ _ _ |                                        |
