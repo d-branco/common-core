@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:33:40 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/29 21:32:48 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/30 09:47:06 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <ctype.h>
 #include <unistd.h>
 #include <stddef.h>
+#include <stdlib.h>
 
 static void		print_result(char *message);
 static void		print_caution(char *message);
@@ -39,6 +40,7 @@ static int		test_memchr(void);
 static int		test_strrchr(void);
 static int		test_strlcat(void);
 static int		test_strlcpy(void);
+static int		test_atoi(void);
 
 int	main(int argc, char **argv)
 {
@@ -85,13 +87,113 @@ int	main(int argc, char **argv)
 			aval = test_strlcat();
 		if (!strcmp(argv[i], "ft_strlcpy.c"))
 			aval = test_strlcpy();
-		
+		if (!strcmp(argv[i], "ft_atoi.c"))
+			aval = test_atoi();
 
 
 		if (aval == 0)
 			print_warning(argv[i], "has no test yet!");
 		i++;
 	}
+}
+
+static int	test_atoi(void)
+{
+	int		result;
+	char	*str;
+
+	str = "12345";
+	result = 1;
+	if (ft_atoi(str) != atoi(str))
+	{
+		print_caution("FAILED: Converting positive integer");
+		printf("	(string: %s)\n", str);
+		result = -1;
+	}
+	if (result != -1)
+		print_result("Converts positive integer.");
+	str = "-1234";
+	if (ft_atoi(str) != atoi(str))
+	{
+		print_caution("FAILED: Converting negative integer");
+		printf("	(string: %s)\n", str);
+		result = -2;
+	}
+	if (result != -2)
+		print_result("Converts negative integer.");
+
+	if (ft_atoi("0") != atoi("0"))
+	{
+		print_caution("FAILED: Converting zero");
+		printf("	(string: \"0\")\n");
+		result = -3;
+	}
+	if (result != -3)
+		print_result("Converts zero.");
+	str = "   56789";
+	if (ft_atoi(str) != atoi(str)) {
+		print_caution("FAILED: Converting with leading whitespace");
+		printf("	(string: \"%s\")\n", str);
+		result = -4;
+	}
+	if (result != -4) print_result("Converts with leading whitespace.");
+	str = "12345   ";
+	if (ft_atoi(str) != atoi(str)) {
+		print_caution("FAILED: Converting with trailing whitespace");
+		printf("	(string: \"%s\")\n", str);
+		result = -5;
+	}
+	if (result != -5) print_result("Converts with trailing whitespace.");
+	str = "   -12345   ";
+	if (ft_atoi(str) != atoi(str)) {
+		print_caution("FAILED: Converting with leading and trailing whitespace");
+		printf("	(string: \"%s\")\n", str);
+		result = -6;
+	}
+	if (result != -6) print_result("Converts with leading and trailing whitespace.");
+	str = "2147483648";
+	if (ft_atoi(str) != atoi(str)) {
+		print_caution("FAILED: Converting overflow value");
+		printf("	(string: %s)\n", str);
+		result = -7;
+	}
+	if (result != -7) print_result("Handles overflow value.");
+	str = "-2147483649";
+	if (ft_atoi(str) != atoi(str)) {
+		print_caution("FAILED: Converting underflow value");
+		printf("	(string: %s)\n", str);
+		result = -8;
+	}
+	if (result != -8) print_result("Handles underflow value.");
+	str = "abc42";
+	if (ft_atoi(str) != atoi(str)) {
+		print_caution("FAILED: Converting invalid input");
+		printf("	(string: %s)\n", str);
+		result = -9;
+	}
+	if (result != -9) print_result("Handles invalid input.");
+	str = "";
+	if (ft_atoi(str) != atoi(str)) {
+		print_caution("FAILED: Converting empty string");
+		printf("	(string: \"%s\")\n", str);
+		result = -10;
+	}
+	if (result != -10) print_result("Handles empty string.");
+	str = "   ";
+	if (ft_atoi(str) != atoi(str)) {
+		print_caution("FAILED: Converting string with only whitespace");
+		printf("	(string: \"%s\")\n", str);
+		result = -11;
+	}
+	if (result != -11) print_result("Handles string with only whitespace.");
+	str = "42 and 225";
+	if (ft_atoi(str) != atoi(str)) {
+		print_caution("FAILED: Converting string with two numbers");
+		printf("	(string: \"%s\")\n", str);
+		result = -12;
+	}
+	if (result != -12) print_result("Handles string with two numbers.");
+	return (result);
 }
 
 static int	test_strlcpy(void)
@@ -555,6 +657,7 @@ static int	test_memcmp(void)
 		memcmp(nulls1, nulls2, sizeof(nulls1)))
 	{
 		print_caution("FAILED: Strings with embedded nulls test!");
+		printf("	(Strings: %s and %s)\n", nulls1, nulls2);
 		result = -4;
 	}
 	else
