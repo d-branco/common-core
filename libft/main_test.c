@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:33:40 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/30 09:47:06 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/30 12:19:18 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static int		test_strrchr(void);
 static int		test_strlcat(void);
 static int		test_strlcpy(void);
 static int		test_atoi(void);
+static int		test_strnstr(void);
 
 int	main(int argc, char **argv)
 {
@@ -89,6 +90,8 @@ int	main(int argc, char **argv)
 			aval = test_strlcpy();
 		if (!strcmp(argv[i], "ft_atoi.c"))
 			aval = test_atoi();
+		if (!strcmp(argv[i], "ft_strnstr.c"))
+			aval = test_strnstr();
 
 
 		if (aval == 0)
@@ -96,6 +99,94 @@ int	main(int argc, char **argv)
 		i++;
 	}
 }
+
+static int	test_strnstr(void)
+{
+	const char	*haystack = "Hello, World!";
+	const char	*needle1 = "World";
+	const char	*needle2 = "Hello";
+	const char	*needle3 = "!";
+	const char	*needle4 = "NotFound";
+	const char	*empty = "";
+	const char	*long_haystack = "This is a long string to test strnstr function";
+	char		haystack_with_null[] = "Hello\0Hidden";
+	int			result = 1;
+
+	if (ft_strnstr(haystack, needle1, strlen(haystack)) != strstr(haystack, needle1))
+	{
+		print_caution("FAILED: Basic substring search!");
+		printf("\t(Haystack: \"%s\", Needle: \"%s\")\n", haystack, needle1);
+		result = -1;
+	}
+	else
+		print_result("Passed basic substring search.");
+
+	if (ft_strnstr(haystack, needle2, strlen(haystack)) != strstr(haystack, needle2))
+	{
+		print_caution("FAILED: Search at the beginning!");
+		printf("\t(Haystack: \"%s\", Needle: \"%s\")\n", haystack, needle2);
+		result = -2;
+	}
+	else
+		print_result("Passed search at the beginning.");
+
+	if (ft_strnstr(haystack, needle3, strlen(haystack)) != strstr(haystack, needle3))
+	{
+		print_caution("FAILED: Search at the end!");
+		printf("\t(Haystack: \"%s\", Needle: \"%s\")\n", haystack, needle3);
+		result = -3;
+	}
+	else
+		print_result("Passed search at the end.");
+
+	if (ft_strnstr(haystack, needle4, strlen(haystack)) != strstr(haystack, needle4))
+	{
+		print_caution("FAILED: Search for non-existent substring!");
+		printf("\t(Haystack: \"%s\", Needle: \"%s\")\n", haystack, needle4);
+		result = -4;
+	}
+	else
+		print_result("Passed search for non-existent substring.");
+
+	if (ft_strnstr(haystack, empty, strlen(haystack)) != strstr(haystack, empty))
+	{
+		print_caution("FAILED: Search with empty needle!");
+		printf("\t(Haystack: \"%s\", Needle: \"\")\n", haystack);
+		result = -5;
+	}
+	else
+		print_result("Passed search with empty needle.");
+
+	if (ft_strnstr(empty, needle1, 0) != strstr(empty, needle1))
+	{
+		print_caution("FAILED: Search in empty haystack!");
+		printf("\t(Haystack: \"\", Needle: \"%s\")\n", needle1);
+		result = -6;
+	}
+	else
+		print_result("Passed search in empty haystack.");
+
+	if (ft_strnstr(long_haystack, "function", 20) != NULL)
+	{
+		print_caution("FAILED: Limited search length!");
+		printf("\t(Haystack: \"%s\", Needle: \"function\", len: 20)\n", long_haystack);
+		result = -7;
+	}
+	else
+		print_result("Passed limited search length.");
+
+	if (ft_strnstr(haystack_with_null, "Hidden", sizeof(haystack_with_null)) != NULL)
+	{
+		print_caution("FAILED: Search with embedded null!");
+		printf("\t(Haystack: \"Hello\\0Hidden\", Needle: \"Hidden\")\n");
+		result = -8;
+	}
+	else
+		print_result("Passed search with embedded null.");
+
+	return result;
+}
+
 
 static int	test_atoi(void)
 {
@@ -657,7 +748,7 @@ static int	test_memcmp(void)
 		memcmp(nulls1, nulls2, sizeof(nulls1)))
 	{
 		print_caution("FAILED: Strings with embedded nulls test!");
-		printf("	(Strings: %s and %s)\n", nulls1, nulls2);
+		printf("	(Strings: \"%s\" and \"%s\")\n", nulls1, nulls2);
 		result = -4;
 	}
 	else

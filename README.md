@@ -26,7 +26,7 @@ Common Core repository from 42 school
 | libc       | string.h | ft_strlcat      | D     | N V X | size-bounded string concatenation      |
 | libc       | string.h | ft_strlcpy      | D     | N V X | size-bounded string copying            |
 | libc       | stdlib.h | ft_atoi         | D     | N V X | converts a string to an integer        |
-| libc       | string.h | ft_strnstr      | _     | _ _ _ |                                        |
+| libc       | string.h | ft_strnstr      | D     | N V X | locate a substring in a string         |
 | libc       | string.h | ft_strncmp      | _     | _ _ _ |                                        |
 | libc       | stdlib.h | ft_calloc       | _     | _ _ _ |                                        |
 | libc       | stdlib.h | ft_strdup       | _     | _ _ _ |                                        |

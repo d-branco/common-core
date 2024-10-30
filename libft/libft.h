@@ -38,5 +38,6 @@ char		*ft_strrchr(const char *s, int c);
 t_size_t	ft_strlcat(char *dst, const char *src, t_size_t size);
 t_size_t	ft_strlcpy(char *dst, const char *src, t_size_t size);
 int			ft_atoi(const char *nptr);
+char		*ft_strnstr(const char *big, const char *little, t_size_t len);
 
 #endif
