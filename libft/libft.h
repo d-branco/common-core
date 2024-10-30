@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 08:10:20 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/30 08:30:13 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/30 14:09:35 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ t_size_t	ft_strlcat(char *dst, const char *src, t_size_t size);
 t_size_t	ft_strlcpy(char *dst, const char *src, t_size_t size);
 int			ft_atoi(const char *nptr);
 char		*ft_strnstr(const char *big, const char *little, t_size_t len);
+int			ft_strncmp(const char *s1, const char *s2, t_size_t n);
 
 #endif

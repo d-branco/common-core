@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:33:40 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/30 12:19:18 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/10/30 14:11:41 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static int		test_strlcat(void);
 static int		test_strlcpy(void);
 static int		test_atoi(void);
 static int		test_strnstr(void);
+static int		test_strncmp(void);
 
 int	main(int argc, char **argv)
 {
@@ -92,6 +93,8 @@ int	main(int argc, char **argv)
 			aval = test_atoi();
 		if (!strcmp(argv[i], "ft_strnstr.c"))
 			aval = test_strnstr();
+		if (!strcmp(argv[i], "ft_strncmp.c"))
+			aval = test_strncmp();
 
 
 		if (aval == 0)
@@ -99,6 +102,76 @@ int	main(int argc, char **argv)
 		i++;
 	}
 }
+
+static int	test_strncmp(void)
+{
+	const char	*s1 = "Hello, World!";
+	const char	*s2 = "Hello, everybody!";
+	const char	*empty = "";
+	const char	*nullterm = "Test\0Hidden";
+	int			result = 1;
+
+	if (ft_strncmp(s1, s2, 7) != strncmp(s1, s2, 7))
+	{
+		print_caution("FAILED: Basic comparison test!");
+		printf("\t(String1: \"%s\", String2: \"%s\", n: 7)\n", s1, s2);
+		result = -1;
+	}
+	else
+		print_result("Passed basic comparison test.");
+	if (ft_strncmp(s1, s2, 20) != strncmp(s1, s2, 20))
+	{
+		print_caution("FAILED: Comparison beyond string length!");
+		printf("\t(String1: \"%s\", String2: \"%s\", n: 20)\n", s1, s2);
+		result = -2;
+	}
+	else
+		print_result("Passed comparison beyond string length.");
+	if (ft_strncmp(s1, s1, 100) != strncmp(s1, s1, 100))
+	{
+		print_caution("FAILED: Identical strings test!");
+		printf("\t(String1: \"%s\", String2: \"%s\", n: 100)\n", s1, s1);
+		result = -3;
+	}
+	else
+		print_result("Passed identical strings test.");
+	if (ft_strncmp(empty, s1, 5) != strncmp(empty, s1, 5))
+	{
+		print_caution("FAILED: Empty string test!");
+		printf("\t(String1: \"\", String2: \"%s\", n: 5)\n", s1);
+		result = -4;
+	}
+	else
+		print_result("Passed empty string test.");
+	if (ft_strncmp(s1, s2, 0) != strncmp(s1, s2, 0))
+	{
+		print_caution("FAILED: Zero length test!");
+		printf("\t(String1: \"%s\", String2: \"%s\", n: 0)\n", s1, s2);
+		result = -5;
+	}
+	else
+		print_result("Passed zero length test.");
+	if (ft_strncmp(nullterm, "Test", 6) != strncmp(nullterm, "Test", 6))
+	{
+		print_caution("FAILED: Null terminator test!");
+		printf("\t(String1: \"%s\", String2: \"Test\", n: 6)\n", nullterm);
+		result = -6;
+	}
+	else
+		print_result("Passed null terminator test.");
+	const unsigned char *us1 = (const unsigned char *)"Test";
+	const unsigned char *us2 = (const unsigned char *)"Vest";
+	if (ft_strncmp((const char *)us1, (const char *)us2, 4) != strncmp((const char *)us1, (const char *)us2, 4))
+	{
+		print_caution("FAILED: Unsigned char comparison test!");
+		printf("\t(String1: \"%s\", String2: \"%s\", n: 4)\n", us1, us2);
+		result = -7;
+	}
+	else
+		print_result("Passed unsigned char comparison test.");
+	return (result);
+}
+
 
 static int	test_strnstr(void)
 {
