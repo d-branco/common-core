@@ -43,13 +43,13 @@
 //			ptr = strnstr(largestring, smallstring, 4);
 
 #include "libft.h"
-// for the t_size_t definition and ft_strlen()
+// for the size_t definition and ft_strlen()
 
-char	*ft_strnstr(const char *big, const char *little, t_size_t len)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	t_size_t	pos;
-	t_size_t	j;
-	t_size_t	len_little;
+	size_t	pos;
+	size_t	j;
+	size_t	len_little;
 
 	if (!big || !little)
 		return ((void *) 0);

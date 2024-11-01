@@ -46,14 +46,14 @@
 //	or that dst is not a proper “C” string). The check exists to prevent
 //	potential security problems in incorrect code.
 
-// For the inclusion of t_size_t
+// For the inclusion of size_t
 #include "libft.h"
 
-t_size_t	ft_strlcat(char *dst, const char *src, t_size_t size)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	t_size_t	len_dst;
-	t_size_t	len_src;
-	t_size_t	pos;
+	size_t	len_dst;
+	size_t	len_src;
+	size_t	pos;
 
 	len_dst = 0;
 	len_src = 0;

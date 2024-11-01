@@ -27,10 +27,10 @@
 //RETURN VALUE
 //		None.
 
-// In order to have access to t_size_t
+// In order to have access to size_t
 #include "libft.h"
 
-void	ft_bzero(void *s, t_size_t n)
+void	ft_bzero(void *s, size_t n)
 {
 	ft_memset(s, '\0', n);
 }

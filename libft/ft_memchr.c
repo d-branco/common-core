@@ -30,13 +30,13 @@
 //		The memchr() function returns a pointer to the matching	byte or NULL
 //	if the character does not occur in the given memory area.
 
-// include the definition of t_size_t
+// include the definition of size_t
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, t_size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
 	const unsigned char	*source;
-	t_size_t			j;
+	size_t			j;
 
 	source = (const unsigned char *) s;
 	j = 0;

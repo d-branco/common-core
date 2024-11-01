@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 17:07:07 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/01 11:23:27 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/01 12:36:07 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,24 +49,22 @@
 //		/proc/sys/vm/max_map_count.
 
 // NOTE
-// max size of t_size_t defined as 2147483648
+// max size of size_t defined as 2147483648
 
 #include "libft.h"
-#include <stdlib.h>
-// "libft.h" for the t_size_t
-// <stdlib.h> for malloc
+// "libft.h" for the size_t and for malloc()
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	t_size_t		mem_area;
+	size_t		mem_area;
 	unsigned char	*pos_ptr;
-	t_size_t		pos;
+	size_t		pos;
 	void			*mem_ptr;
 
 	if (nmemb > (size / (2147483648 - 1)))
 		return ((void *) 0);
 	mem_area = nmemb * size;
-	mem_ptr = (unsigned char *) malloc(sizeof(t_size_t) * mem_area);
+	mem_ptr = (unsigned char *) malloc(sizeof(size_t) * mem_area);
 	pos = 0;
 	pos_ptr = (unsigned char *) mem_ptr;
 	while (pos < size)

@@ -33,9 +33,9 @@
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, t_size_t n)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	t_size_t			j;
+	size_t			j;
 	unsigned char		*d;
 	const unsigned char	*s;
 

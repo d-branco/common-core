@@ -17,7 +17,7 @@
 // for the definition of size_t as
 // typedef typeof(sizeof(0)) size_t;
 
-t_size_t	ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
 	int	j;
 

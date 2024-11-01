@@ -31,12 +31,12 @@
 //	that differ in s1 and s2.
 //		If n is zero, the return value is zero.	
 
-// For the t_size_t
+// For the size_t
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, t_size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	t_size_t		j;
+	size_t		j;
 	unsigned char	*ss1;
 	unsigned char	*ss2;
 

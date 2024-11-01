@@ -40,11 +40,11 @@
 //	found, respectively, to be less than, to match, or be greater than s2.
 
 #include "libft.h"
-// for the t_size_t definition
+// for the size_t definition
 
-int	ft_strncmp(const char *s1, const char *s2, t_size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	t_size_t	pos;
+	size_t	pos;
 
 	pos = 0;
 	while (pos < n)

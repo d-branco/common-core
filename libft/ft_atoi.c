@@ -42,13 +42,13 @@
 //	horizontal tab ('\t'),  and vertical tab ('\v').
 
 #include "libft.h"
-//	for the t_size_t
+//	for the size_t
 
 int	ft_atoi(const char *nptr)
 {
 	int			nbr;
 	int			sign;
-	t_size_t	j;
+	size_t	j;
 
 	j = 0;
 	while (nptr[j] == 32

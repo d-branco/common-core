@@ -6,9 +6,11 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 11:27:48 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/01 11:44:05 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/01 12:38:04 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 //	Function name
 //		ft_substr
@@ -32,7 +34,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 //		The substring begins at index ’start’ and is of
 //		maximum size ’len’.
 
-char	*ft_substr(char const *s, unsigned int start, t_size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	
+	ft_strdup(&s[start])
 }

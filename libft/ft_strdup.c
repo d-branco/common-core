@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 07:01:41 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/01 11:23:57 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/01 12:35:57 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@
 //		ENOMEM Insufficient memory available to allocate duplicate string.
 
 #include "libft.h"
-// for ft_strlen()
+// for ft_strlen() and size_t
 
 char	*ft_strdup(const char *s)
 {
-	t_size_t	len_str;
-	t_size_t	j;
+	size_t	len_str;
+	size_t	j;
 	char		*dup;
 
 	len_str = ft_strlen(s);

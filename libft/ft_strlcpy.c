@@ -38,12 +38,12 @@
 //	to create. That means the length of src. While this may seem somewhat
 //	confusing, it was done to make truncation detection simple.
 
-//	In order to include t_size_t
+//	In order to include size_t
 #include "libft.h"
 
-t_size_t	ft_strlcpy(char *dst, const char *src, t_size_t size)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	t_size_t	len_src;
+	size_t	len_src;
 
 	if (!dst || !src)
 		return (-1);
