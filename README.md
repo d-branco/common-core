@@ -3,6 +3,8 @@ Common Core repository from 42 school
 
 ## libft - current project
 
+## CAN WE HAVE #include <stddef.h> IN THE HEADER?
+
 | Part       | library  | function        | state | tests | desccription                           |
 |------------|----------|-----------------|-------|-------|----------------------------------------|
 | Makefile   | -        | -               | doing | - - _ | compiles instructions                  |
@@ -28,9 +30,9 @@ Common Core repository from 42 school
 | libc       | stdlib.h | ft_atoi         | D     | N V X | converts a string to an integer        |
 | libc       | string.h | ft_strnstr      | D     | N V X | locate a substring in a string         |
 | libc       | string.h | ft_strncmp      | D     | N V X | compare two strings                    |
-| libc       | stdlib.h | ft_calloc       | @     | _ _ _ | allocate memory                        |
-| libc       | stdlib.h | ft_strdup       | @     | _ _ _ | duplicate a string                     |
-| additional | -        | ft_substr       | _     | _ _ _ |                                        |
+| libc       | stdlib.h | ft_calloc       | @     | N V _ | allocate memory                        |
+| libc       | stdlib.h | ft_strdup       | @     | N V _ | duplicate a string                     |
+| additional | -        | ft_substr       | @     | _ _ _ | finds substring in string              |
 | additional | -        | ft_strjoin      | _     | _ _ _ |                                        |
 | additional | -        | ft_putchar_fd   | _     | _ _ _ |                                        |
 | additional | -        | ft_putstr_fd    | _     | _ _ _ |                                        |
