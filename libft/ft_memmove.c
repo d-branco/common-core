@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 07:45:38 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/28 09:44:25 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/02 09:54:49 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t			j;
+	size_t				j;
 	unsigned char		*d;
 	const unsigned char	*s;
 

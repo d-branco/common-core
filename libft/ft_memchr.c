@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 10:04:35 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/28 10:36:42 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/02 10:14:51 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 void	*ft_memchr(const void *s, int c, size_t n)
 {
 	const unsigned char	*source;
-	size_t			j;
+	size_t				j;
 
 	source = (const unsigned char *) s;
 	j = 0;

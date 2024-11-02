@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 11:27:48 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/02 08:57:28 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/02 09:53:28 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	// COm calloc Cria uma nova string com comprimento len
-	// Copia com strlcpy
-	ft_strdup(&s[start]);
+	char	*new;
+
+	new = calloc(sizeof(char), len + 1);
+	ft_strlcpy(new, &s[start], len);
+	return (new);
 }
