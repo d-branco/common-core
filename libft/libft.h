@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 08:10:20 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/01 12:53:31 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/02 11:33:04 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@
 
 typedef typeof(sizeof(0))	size_t;
 
-#include <stdlib.h>
+#include <stdlib.h> // size_t, malloc(), free()
+#include <unistd.h> // write()
+
 
 // Reimplemented function
 int			ft_isalpha(int c);
@@ -43,10 +45,18 @@ size_t		ft_strlcpy(char *dst, const char *src, size_t size);
 int			ft_atoi(const char *nptr);
 char		*ft_strnstr(const char *big, const char *little, size_t len);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
+
 void		*ft_calloc(size_t nmemb, size_t size);
 char		*ft_strdup(const char *s);
 // Aditional function
 
 // Bonus functions (list)
+
+char		*ft_substr(char const *s, unsigned int start, size_t len);
+char		*ft_strjoin(char const *s1, char const *s2);
+void		ft_putchar_fd(char c, int fd);
+void		ft_putstr_fd(char *s, int fd);
+void		t_putendl_fd(char *s, int fd);
+void		ft_putnbr_fd(int n, int fd);
 
 #endif

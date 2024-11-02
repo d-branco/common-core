@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 15:57:40 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/26 18:29:32 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/02 09:55:22 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t		j;
+	size_t			j;
 	unsigned char	*ss1;
 	unsigned char	*ss2;
 

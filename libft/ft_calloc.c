@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 17:07:07 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/01 12:36:07 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/02 09:55:42 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	size_t		mem_area;
+	size_t			mem_area;
 	unsigned char	*pos_ptr;
-	size_t		pos;
+	size_t			pos;
 	void			*mem_ptr;
 
 	if (nmemb > (size / (2147483648 - 1)))
