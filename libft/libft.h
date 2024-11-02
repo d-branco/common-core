@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 08:10:20 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/02 10:12:00 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/02 10:41:46 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@
 
 typedef typeof(sizeof(0))	size_t;
 
-#include <stdlib.h>
+#include <stdlib.h> // size_t, malloc(), free()
+#include <unistd.h> // write()
+
 
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);
@@ -48,5 +50,9 @@ char		*ft_strdup(const char *s);
 
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 char		*ft_strjoin(char const *s1, char const *s2);
+void		ft_putchar_fd(char c, int fd);
+void		ft_putstr_fd(char *s, int fd);
+void		t_putendl_fd(char *s, int fd);
+void		ft_putnbr_fd(int n, int fd);
 
 #endif
