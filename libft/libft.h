@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 08:10:20 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/02 13:56:38 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/02 15:38:53 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void		ft_putchar_fd(char c, int fd);
 void		ft_putstr_fd(char *s, int fd);
 void		t_putendl_fd(char *s, int fd);
 void		ft_putnbr_fd(int n, int fd);
+char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+void		ft_striteri(char *s, void (*f)(unsigned int, char*));
 
 // Bonus functions (list)
 
