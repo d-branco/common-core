@@ -70,8 +70,7 @@ test: re
 
 all: $(NAME)
 
-bonus:	${NAME} ${BONUS}
-	@ar rcs $(NAME) $(OBJS) ${BONUS}
+bonus:	all
 
 # example usage: print-SRCS
 print-%: ; @echo '$(subst ','\'',$*=$($*))'

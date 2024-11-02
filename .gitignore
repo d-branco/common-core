@@ -1,6 +1,11 @@
+# Project files
+main_test.c
+libft/subject-Libft.pdf
+
 # CLion
 .idea/
-./cmake-build-debug
+cmake-build-debug/
+CMakeLists.txt
 
 # audio files
 *.wav
