@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 09:56:33 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/02 10:14:12 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/02 10:17:49 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	pos;
 
 	len_s1 = ft_strlen(s1);
-	new = (char	*) malloc(sizeof(char) *
-		(len_s1 + ft_strlen(s2) + 1));
+	new = (char *) malloc(sizeof(char)
+			* (len_s1 + ft_strlen(s2) + 1));
 	ft_strlcpy(new, s1, len_s1);
 	pos = 0;
 	while (s2[pos] != '\0')
