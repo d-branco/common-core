@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 05:22:24 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/02 14:24:28 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/02 15:08:16 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,18 @@ int	ft_atoi(const char *nptr)
 		j++;
 	}
 	nbr = 0;
-	while (ft_isdigit(nptr[j] - '0'))
+	while (ft_isdigit(nptr[j]))
 	{
-		nbr = (10 * nbr) + ((int) nptr[j] - '0');
+		nbr = (10 * nbr) + (nptr[j] - '0');
 		j++;
 	}
-	return (nbr * sign);
+	nbr *= sign;
+	return (nbr);
 }
+
+/*
+int	main(void)
+{
+	printf("%i\n", ft_atoi("42"));
+}
+*/
