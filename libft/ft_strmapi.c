@@ -38,11 +38,15 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	unsigned int	pos;
 	char			*new;
 
-	new = ft_calloc(sizeof(char), ft_strlen(s));
+	if (!s || !f)
+		return (NULL);
+	new = ft_calloc(sizeof(char), (ft_strlen(s) + 1));
+	if (!new)
+		return (NULL);
 	pos = 0;
 	while (s[pos] != '\0')
 	{
-		new[pos] = f(pos, new[pos]);
+		new[pos] = f(pos, s[pos]);
 		pos++;
 	}
 	return (new);

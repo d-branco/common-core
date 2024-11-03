@@ -6,6 +6,7 @@
 .idea/
 cmake-build-debug/
 CMakeLists.txt
+cmake-build-debug
 
 # audio files
 *.wav

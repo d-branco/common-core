@@ -36,18 +36,21 @@ char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*new;
 	size_t	len_s1;
+	size_t	len_s2;
 	size_t	pos;
 
 	len_s1 = ft_strlen(s1);
-	new = (char *) malloc(sizeof(char)
-			* (len_s1 + ft_strlen(s2) + 1));
-	ft_strlcpy(new, s1, len_s1);
+	len_s2 = ft_strlen(s2);
+	new = (char *) malloc(sizeof(char) * (len_s1 + len_s2 + 1));
+	if (!new)
+		return (NULL);
+	ft_strlcpy(new, s1, len_s1 + 1);
 	pos = 0;
 	while (s2[pos] != '\0')
 	{
-		new[len_s1 + 1 + pos] = s2[pos];
+		new[len_s1 + pos] = s2[pos];
 		pos++;
 	}
-	new[len_s1 + 1 + pos] = '\0';
+	new[len_s1 + pos] = '\0';
 	return (new);
 }

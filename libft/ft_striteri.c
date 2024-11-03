@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 15:26:06 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/02 15:40:07 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/02 17:55:01 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,19 @@
 //	argument, passing its index as first argument. Each character is passed by
 //	address to ’f’ to be modified if necessary.
 
+#include "libft.h"
+// NULL
+
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	unsigned int	pos;
+	unsigned int	index;
 
-	pos = 0;
-	while (s[pos] != '\0')
+	if (s == NULL || f == NULL)
+		return ;
+	index = 0;
+	while (s[index] != '\0')
 	{
-		s[pos] = f(pos, &s[pos]);
-		pos++;
+		f(index, &s[index]);
+		index++;
 	}
 }

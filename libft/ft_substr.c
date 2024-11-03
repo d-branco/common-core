@@ -10,12 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 //	Function name
 //		ft_substr
 //	Prototype
-char	*ft_substr(char const *s, unsigned int start, size_t len);
+//		char	*ft_substr(char const *s, unsigned int start, size_t len);
 //	Turn in files
 //		-
 //	Parameters
@@ -23,7 +21,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 //		start: The start index of the substring in the
 //		string ’s’.
 //		len: The maximum length of the substring.
-//		Return value
+//	Return value
 //		The substring.
 //		NULL if the allocation fails.
 //	External functs.
@@ -34,11 +32,18 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 //		The substring begins at index ’start’ and is of
 //		maximum size ’len’.
 
+#include "libft.h"
+// NULL, ft_strlcpy, 
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*new;
 
-	new = calloc(sizeof(char), len + 1);
-	ft_strlcpy(new, &s[start], len);
+	if (!s)
+		return (NULL);
+	new = ft_calloc(len + 1, sizeof(char));
+	if (!new)
+		return (NULL);
+	ft_strlcpy(new, &s[start], len + 1);
 	return (new);
 }

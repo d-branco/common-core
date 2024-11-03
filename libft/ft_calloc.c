@@ -6,9 +6,11 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 17:07:07 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/02 09:55:42 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/03 11:10:36 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+// reimplements calloc()
 
 //	NAME
 //		calloc - allocate and free dynamic
@@ -52,25 +54,19 @@
 // max size of size_t defined as 2147483648
 
 #include "libft.h"
-// "libft.h" for the size_t and for malloc()
+// size_t, malloc(), ft_memset(), NULL
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	size_t			mem_area;
-	unsigned char	*pos_ptr;
-	size_t			pos;
-	void			*mem_ptr;
+	size_t	mem_area;
+	void	*mem_ptr;
 
-	if (nmemb > (size / (2147483648 - 1)))
-		return ((void *) 0);
+	if (nmemb == 0 || size == 0 || nmemb > ((2147483648 - 1) / size))
+		return (NULL);
 	mem_area = nmemb * size;
-	mem_ptr = (unsigned char *) malloc(sizeof(size_t) * mem_area);
-	pos = 0;
-	pos_ptr = (unsigned char *) mem_ptr;
-	while (pos < size)
-	{
-		pos_ptr[pos] = (char) 0;
-		pos++;
-	}
+	mem_ptr = (unsigned char *) malloc(mem_area);
+	if (mem_ptr == NULL)
+		return (NULL);
+	ft_memset(mem_ptr, 0, mem_area);
 	return (mem_ptr);
 }

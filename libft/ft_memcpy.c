@@ -19,15 +19,18 @@
 //	The memcpy() function returns a pointer to dest.
 
 #include "libft.h"
+// for size_t, NULL
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	unsigned int		j;
+	size_t				j;
 	unsigned char		*d;
 	const unsigned char	*s;
 
-	d = dest;
-	s = src;
+	if (!dest && !src)
+		return (NULL);
+	d = (unsigned char *) dest;
+	s = (const unsigned char *) src;
 	j = 0;
 	while (j < n)
 	{
