@@ -5,53 +5,53 @@ Common Core repository from 42 school
 
 ## CAN WE HAVE #include <stddef.h> IN THE HEADER?
 
-| Part       | library  | function        | state | tests | desccription                           |
-|------------|----------|-----------------|-------|-------|----------------------------------------|
-| Makefile   | -        | -               | doing | - - _ | compiles instructions                  |
-| libft.h    | -        | -               | doing | N - _ | header                                 |
-| libc       | string.h | ft_strlen       | D     | N V X | calculate the length of a string       |
-| libc       | string.h | ft_memcpy       | D     | N V X | copy memory area                       |
-| libc       | string.h | ft_memset       | D     | N V X | fill memory with a constant byte       |
-| libc       | string.h | ft_bzero        | D     | N V X | zero a byte string                     |
-| libc       | string.h | ft_memmove      | D     | M V X | copy memory area                       |
-| libc       | string.h | ft_memcmp       | D     | N V X | compare memory areas                   |
-| libc       | string.h | ft_memchr       | D     | M V X | scan memory for a character            |
-| libc       | ctype.h  | ft_isalpha      | D     | N V X | checks  for  an  alphabetic character  |
-| libc       | ctype.h  | ft_isdigit      | D     | N V X | checks for a digit (0 through 9)       |
-| libc       | ctype.h  | ft_isalnum      | D     | N V X | checks for an alphanumeric character   |
-| libc       | ctype.h  | ft_isascii      | D     | N V X | checks for an ASCII character          |
-| libc       | ctype.h  | ft_isprint      | D     | N V X | checks for any printable characterq    |
-| libc       | ctype.h  | ft_toupper      | D     | N V X | convert lowercase letters to uppercase |
-| libc       | ctype.h  | ft_tolower      | D     | N V X | convert uppercase letters to lowercase |
-| libc       | string.h | ft_strchr       | D     | N V X | locate character in string             |
-| libc       | string.h | ft_strrchr      | D     | N V X | locate character in string             |
-| libc       | string.h | ft_strlcat      | D     | N V X | size-bounded string concatenation      |
-| libc       | string.h | ft_strlcpy      | D     | N V X | size-bounded string copying            |
-| libc       | stdlib.h | ft_atoi         | D     | N V X | converts a string to an integer        |
-| libc       | string.h | ft_strnstr      | D     | N V X | locate a substring in a string         |
-| libc       | string.h | ft_strncmp      | D     | N V X | compare two strings                    |
-| libc       | stdlib.h | ft_calloc       | @     | N V _ | allocate memory                        |
-| libc       | stdlib.h | ft_strdup       | @     | N V _ | duplicate a string                     |
-| additional | -        | ft_substr       | @     | _ _ _ | finds substring in string              |
-| additional | -        | ft_strjoin      | _     | _ _ _ |                                        |
-| additional | -        | ft_putchar_fd   | _     | _ _ _ |                                        |
-| additional | -        | ft_putstr_fd    | _     | _ _ _ |                                        |
-| additional | -        | ft_putendl_fd   | _     | _ _ _ |                                        |
-| additional | -        | ft_putnbr_fd    | _     | _ _ _ |                                        |
-| additional | -        | ft_strmapi      | _     | _ _ _ |                                        |
-| additional | -        | ft_striteri     | _     | _ _ _ |                                        |
-| additional | -        | ft_strtrim      | _     | _ _ _ |                                        |
-| additional | -        | ft_itoa         | _     | _ _ _ |                                        |
-| bonus      | list.h   | ft_lstnew       | _     | _ _ _ |                                        |
-| bonus      | list.h   | ft_lstdelone    | _     | _ _ _ |                                        |
-| bonus      | list.h   | ft_lstclear     | _     | _ _ _ |                                        |
-| additional | -        | ft_split        | _     | _ _ _ |                                        |
-| bonus      | list.h   | ft_lstadd_front | _     | _ _ _ |                                        |
-| bonus      | list.h   | ft_lstadd_back  | _     | _ _ _ |                                        |
-| bonus      | list.h   | ft_lstsize      | _     | _ _ _ |                                        |
-| bonus      | list.h   | ft_lstlast      | _     | _ _ _ |                                        |
-| bonus      | list.h   | ft_lstiter      | _     | _ _ _ |                                        |
-| bonus      | list.h   | ft_lstmap       | _     | _ _ _ |                                        |
+| Part       | library  | function        | state | tests | desccription                                    |
+|------------|----------|-----------------|-------|-------|-------------------------------------------------|
+| Makefile   | -        | -               | doing | - - _ | compiles instructions                           |
+| libft.h    | -        | -               | doing | N - _ | header                                          |
+| libc       | string.h | ft_strlen       | D     | N V X | calculate the length of a string                |
+| libc       | string.h | ft_memcpy       | D     | N V X | copy memory area                                |
+| libc       | string.h | ft_memset       | D     | N V X | fill memory with a constant byte                |
+| libc       | string.h | ft_bzero        | D     | N V X | zero a byte string                              |
+| libc       | string.h | ft_memmove      | D     | M V X | copy memory area                                |
+| libc       | string.h | ft_memcmp       | D     | N V X | compare memory areas                            |
+| libc       | string.h | ft_memchr       | D     | M V X | scan memory for a character                     |
+| libc       | ctype.h  | ft_isalpha      | D     | N V X | checks  for  an  alphabetic character           |
+| libc       | ctype.h  | ft_isdigit      | D     | N V X | checks for a digit (0 through 9)                |
+| libc       | ctype.h  | ft_isalnum      | D     | N V X | checks for an alphanumeric character            |
+| libc       | ctype.h  | ft_isascii      | D     | N V X | checks for an ASCII character                   |
+| libc       | ctype.h  | ft_isprint      | D     | N V X | checks for any printable characterq             |
+| libc       | ctype.h  | ft_toupper      | D     | N V X | convert lowercase letters to uppercase          |
+| libc       | ctype.h  | ft_tolower      | D     | N V X | convert uppercase letters to lowercase          |
+| libc       | string.h | ft_strchr       | D     | N V X | locate character in string                      |
+| libc       | string.h | ft_strrchr      | D     | N V X | locate character in string                      |
+| libc       | string.h | ft_strlcat      | D     | N V X | size-bounded string concatenation               |
+| libc       | string.h | ft_strlcpy      | D     | N V X | size-bounded string copying                     |
+| libc       | stdlib.h | ft_atoi         | D     | N V X | converts a string to an integer                 |
+| libc       | string.h | ft_strnstr      | D     | N V X | locate a substring in a string                  |
+| libc       | string.h | ft_strncmp      | D     | N V X | compare two strings                             |
+| libc       | stdlib.h | ft_calloc       | D     | N V X | allocate memory                                 |
+| libc       | stdlib.h | ft_strdup       | D     | N V _ | duplicate a string                              |
+| additional | -        | ft_substr       | D     | N V _ | finds substring in string                       |
+| additional | -        | ft_strjoin      | D     | N V X | concatenates two strings                        |
+| additional | -        | ft_putchar_fd   | D     | N V X | outputs a character to file descriptor          |
+| additional | -        | ft_putstr_fd    | D     | N V X | outputs a string to file descriptor             |
+| additional | -        | ft_putendl_fd   | D     | N V X | outputs a string and newline to file descriptor |
+| additional | -        | ft_putnbr_fd    | D     | N V X | outputs an integer to file descriptor           |
+| additional | -        | ft_strmapi      | D     | N V X | applies a function to each character by result  |
+| additional | -        | ft_striteri     | D     | N V X | applies a function to each character by index   |
+| additional | -        | ft_strtrim      | D     | N V X | trims begginning and end of string              |
+| additional | -        | ft_split        | D     | N V _ | splits a string on a character                  |
+| additional | -        | ft_itoa         | D     | N V X | converts ascii to integer                       |
+| bonus      | list.h   | ft_lstnew       | D     | N V X | creates a new list                              |
+| bonus      | list.h   | ft_lstdelone    | D     | N V X | removes list node                               |
+| bonus      | list.h   | ft_lstclear     | D     | N V X | clears list                                     |
+| bonus      | list.h   | ft_lstadd_front | D     | N V X | adds node to list top                           |
+| bonus      | list.h   | ft_lstadd_back  | D     | N V X | adds node to list bottom                        |
+| bonus      | list.h   | ft_lstsize      | D     | N V X | retrives number of nodes                        |
+| bonus      | list.h   | ft_lstlast      | D     | N V X | retrives last node                              |
+| bonus      | list.h   | ft_lstiter      | D     | N V X | iterates over list with function                |
+| bonus      | list.h   | ft_lstmap       | D     | N V _ | maps a new list with function results           |
 
 ---
 

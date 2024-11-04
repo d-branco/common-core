@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 08:10:20 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/04 10:28:44 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/04 16:53:42 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,25 @@ char		**ft_split(char const *s, char c);
 char		*ft_itoa(int n);
 
 // Bonus functions (list)
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}					t_list;
+//	content:	The data contained in the node.
+//			void * allows to store any kind of data.
+//	next:		The address of the next node,
+//			or NULL if the next node is the last one.
+
+t_list		*ft_lstnew(void *content);
+void		ft_lstdelone(t_list *lst, void (*del)(void *));
+void		ft_lstclear(t_list **lst, void (*del)(void *));
+void		ft_lstadd_front(t_list **lst, t_list *new);
+void		ft_lstadd_back(t_list **lst, t_list *new);
+int			ft_lstsize(t_list *lst);
+t_list		*ft_lstlast(t_list *lst);
+void		ft_lstiter(t_list *lst, void (*f)(void *));
+t_list		*ft_lstmap(t_list *lst, void *(*f)(void *),
+				void (*del)(void *));
 
 #endif

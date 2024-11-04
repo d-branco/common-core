@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 11:27:48 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/02 09:53:28 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/04 16:24:05 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,15 @@
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*new;
+	size_t	s_len;
 
 	if (!s)
 		return (NULL);
+	s_len = ft_strlen(s);
+	if (start >= s_len)
+		return (ft_strdup(""));
+	if (len > s_len - start)
+		len = s_len - start;
 	new = ft_calloc(len + 1, sizeof(char));
 	if (!new)
 		return (NULL);

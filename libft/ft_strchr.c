@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 10:27:08 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/29 17:45:38 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/04 15:36:05 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,24 @@
 //	considered part of the string, so that if c is specified as '\0', this
 //	function returns a pointer to the terminator.
 
+#include "libft.h"
+//	NULL
+
 char	*ft_strchr(const char *s, int c)
 {
 	int		j;
 
+	if (!s)
+		return (NULL);
 	j = 0;
 	while (s[j] != '\0')
 	{
-		if (s[j] == c)
+		if (s[j] == (char) c)
 			return ((char *) &s[j]);
 		j++;
 	}
-	if ((s[j] == '\0') && (c == '\0'))
+	if ((s[j] == '\0') && ((char) c == '\0'))
 		return ((char *) &s[j]);
 	else
-		return (0);
+		return (NULL);
 }

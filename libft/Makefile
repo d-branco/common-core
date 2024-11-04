@@ -10,27 +10,14 @@
 #                                                                              #
 # **************************************************************************** #
 
-# NOTE Moullinette does not aprove shell commands (like "echo:) on Makefile!
-
-# := means simple assignment
 NAME := libft.a
-
-TEST = main_test.c
-
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
-
-# Filter only existing source files
-EXISTING_SRCS = $(wildcard $(SRCS))
-OBJS = $(EXISTING_SRCS:.c=.o)
+SRCS = $(MANDATORY1) $(BONUS) 
+OBJS = $(SRCS:.c=.o)
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
-
-$(OBJS): check-sources
-	@cc -Wall -Werror -Wextra $(EXISTING_SRCS)
-
-SRCS = $(MANDATORY1) $(BONUS) 
 
 MANDATORY1 = \
 	ft_strlen.c ft_memcpy.c ft_memset.c ft_bzero.c ft_memmove.c ft_memcmp.c ft_memchr.c \
@@ -52,22 +39,6 @@ BONUS = \
 	ft_lstiter.c \
 	ft_lstmap.c 
 
-test: re
-	clear
-	@rm -f a.out
-	@for src in $(SRCS); do \
-		if [ ! -f $$src ]; then \
-			echo "$$src: \033[0;93mFile not found!\033[0m"; \
-		fi; \
-		if [ -f $$src ]; then \
-			norminette $$src | grep -q "Error!" && printf "$$src:  \033[41mnorminette ERROR!\033[0m" || printf "$$src:\033[0;32m  norminette OK\033[0m"; \
-			cc -Wall -Werror -Wextra $(TEST) -L. -lft -o test.out; \
-			printf "  |  \033[41m"; \
-			valgrind --leak-check=full --show-leak-kinds=all ./test.out $$src 2>&1 | grep -q "ERROR SUMMARY: 0 errors from 0 contexts" && printf "\033[0;32mvalgrind OK\033[0m\n" || echo "\033[41mvalgrind ERROR!\033[0m"; \
-			./test.out $$src; \
-		fi; \
-	done
-
 all: $(NAME)
 
 bonus:	all
@@ -78,15 +49,7 @@ print-%: ; @echo '$(subst ','\'',$*=$($*))'
 	@echo ' origin = $(origin $*)'
 	@echo ' flavor = $(flavor $*)'
 
-# Add check-sources target that just warns about missing files
-check-sources:
-	@for src in $(SRCS); do \
-		if [ ! -f $$src ]; then \
-			echo "\033[0;93mWarning: Source file '$$src' not found - skipping\033[0m"; \
-		fi; \
-	done
-
-$(NAME): check-sources $(OBJS)
+$(NAME): $(OBJS)
 	@ar rcs $(NAME) $(OBJS)
 	@rm -f $(OBJS)
 
@@ -100,4 +63,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: clean fclean re test check-sources
+.PHONY: clean fclean re
