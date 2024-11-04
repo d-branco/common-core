@@ -7,8 +7,8 @@ Common Core repository from 42 school
 
 | Part       | library  | function        | state | tests | desccription                                    |
 |------------|----------|-----------------|-------|-------|-------------------------------------------------|
-| Makefile   | -        | -               | doing | - - _ | compiles instructions                           |
-| libft.h    | -        | -               | doing | N - _ | header                                          |
+| Makefile   | -        | -               | D     | - - X | compiles instructions                           |
+| libft.h    | -        | -               | D     | N - X | header                                          |
 | libc       | string.h | ft_strlen       | D     | N V X | calculate the length of a string                |
 | libc       | string.h | ft_memcpy       | D     | N V X | copy memory area                                |
 | libc       | string.h | ft_memset       | D     | N V X | fill memory with a constant byte                |
@@ -78,7 +78,7 @@ Common Core repository from 42 school
 ## Makefile
 
 #### you must submit a Makefile
-	TODO it must compile all source files to the root with the flags:
+	DONE it must compile all source files to the root with the flags:
 		check the BONUS part on the subject
 	DONE FLAGS -Wall, -Wextra and -Werror, use cc, and
 	TODO your Makefile must not relink.
@@ -91,7 +91,7 @@ Common Core repository from 42 school
 	DONE re.
 
 #### Norm
-	TODO All source files you need to compile your project must be explicitly named in your Makefile.
+	DONE All source files you need to compile your project must be explicitly named in your Makefile.
 
 #### Evaluator's rumors
 	No wildcards at all in the Makefile! or it's a straight 0!
@@ -99,7 +99,7 @@ Common Core repository from 42 school
 		leaks, valgrind or e_fence agains memory leaks
 
 #### Moulinette Rumors
-	TODO Remove all shell commands from the Makefile
+	DONE Remove all shell commands from the Makefile
 		The NORM refers that the Makefile is not checked by Moulinette. It's adderance to the norm is to be manually verified by the human evaluator.
 
 # Cyphertext
