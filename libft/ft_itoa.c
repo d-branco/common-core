@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 09:14:26 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/04 10:40:56 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:00:11 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,53 @@
 #include "libft.h"
 //	malloc(), 
 
+static int	len_of_int(int n);
+
 char	*ft_itoa(int n)
 {
-	
+	long int		nbr;
+	int				len;
+	char			*str;
+	int				j;
+
+	len = len_of_int(n);
+	str = (char *) malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
+	str[len] = '\0';
+	j = 0;
+	nbr = n;
+	if (n < 0)
+		nbr = -nbr;
+	while (j < len)
+	{
+		str[len - j - 1] = '0' + nbr % 10;
+		nbr /= 10;
+		j++;
+	}
+	if (n < 0)
+		str[0] = '-';
+	return (str);
+}
+
+static int	len_of_int(int n)
+{
+	int			len;
+	long int	nbr;
+
+	nbr = n;
+	if (nbr == 0)
+		return (1);
+	len = 0;
+	if (nbr < 0)
+	{
+		nbr = -nbr;
+		len++;
+	}
+	while (nbr > 0)
+	{
+		len++;
+		nbr /= 10;
+	}
+	return (len);
 }
