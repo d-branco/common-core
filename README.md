@@ -1,9 +1,11 @@
 # 42 common core
 Common Core repository from 42 school
 
-## libft - current project
+## ft_printf - preparing
 
-## CAN WE HAVE #include <stddef.h> IN THE HEADER?
+
+
+## libft - waiting evaluation
 
 | Part       | library  | function        | state | tests | desccription                                    |
 |------------|----------|-----------------|-------|-------|-------------------------------------------------|
