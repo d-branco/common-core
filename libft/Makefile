@@ -10,22 +10,25 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME := libft.a
+NAME = libft.a
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
-SRCS = $(MANDATORY1) $(BONUS) 
+SRCS = $(MANDATORY)
 OBJS = $(SRCS:.c=.o)
 
-%.o: %.c
-	@$(CC) $(CFLAGS) -c $< -o $@
+SRCSBONUS = $(BONUS) 
+OBJSBONUS = $(SRCSBONUS:.c=.o)
 
-MANDATORY1 = \
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+MANDATORY = \
 	ft_strlen.c ft_memcpy.c ft_memset.c ft_bzero.c ft_memmove.c ft_memcmp.c ft_memchr.c \
 	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 	ft_toupper.c ft_tolower.c ft_strchr.c ft_strrchr.c \
 	ft_strlcat.c ft_strlcpy.c ft_atoi.c ft_strnstr.c ft_strncmp.c ft_calloc.c ft_strdup.c \
 	\
-	ft_substr.c ft_strjoin.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
+	ft_substr.c ft_strjoin.c  ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
 	ft_strmapi.c ft_striteri.c ft_strtrim.c ft_split.c ft_itoa.c 
 
 BONUS = \
@@ -39,28 +42,21 @@ BONUS = \
 	ft_lstiter.c \
 	ft_lstmap.c 
 
-all: $(NAME)
+all:	$(NAME)
 
-bonus:	all
-
-# example usage: print-SRCS
-print-%: ; @echo '$(subst ','\'',$*=$($*))'
-	@echo ' value = $(value $*)'
-	@echo ' origin = $(origin $*)'
-	@echo ' flavor = $(flavor $*)'
+bonus:	$(OBJS) $(OBJSBONUS)
+	ar rcs $(NAME) $(OBJS) $(OBJSBONUS)
 
 $(NAME): $(OBJS)
-	@ar rcs $(NAME) $(OBJS)
-	@rm -f $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
 clean:
-	@rm -f $(OBJS)
-	@rm -f test.out
-	clear
+	rm -f $(OBJS)
+	rm -f $(OBJSBONUS)
 
-fclean: clean
-	@rm -f $(NAME)
+fclean:	clean
+	rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: clean fclean re
+.PHONY:	clean fclean re
