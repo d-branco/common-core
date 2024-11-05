@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 13:03:20 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/04 09:09:58 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/05 15:04:00 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,17 @@
 
 static char		*add_substring(char const *s, unsigned int start, char c);
 static size_t	count_words(char const *s, char c);
+static void		free_array(char **arr, size_t size);
 
 char	**ft_split(char const *s, char c)
 {
 	char			**ptr;
 	unsigned int	index;
 	unsigned int	index_ptr;
+	
 
+	if (!s)
+		return (NULL);
 	ptr = (char **) malloc(sizeof(char *) * (count_words(s, c) + 1));
 	if (!ptr)
 		return (NULL);
@@ -50,6 +54,11 @@ char	**ft_split(char const *s, char c)
 	if (s[0] != c && s[0] != '\0')
 	{
 		ptr[index_ptr] = add_substring(s, 0, c);
+		if (ptr[index_ptr] == NULL)
+		{
+			free_array(ptr, index_ptr);
+			return (NULL);
+		}
 		index_ptr++;
 	}
 	index = 1;
@@ -58,6 +67,11 @@ char	**ft_split(char const *s, char c)
 		if ((s[index - 1] == c && s[index] != c))
 		{
 			ptr[index_ptr] = add_substring(s, index, c);
+			if (ptr[index_ptr] == NULL)
+			{
+				free_array(ptr, index_ptr);
+				return (NULL);
+			}
 			index_ptr++;
 		}
 		index++;
@@ -94,4 +108,17 @@ static size_t	count_words(char const *s, char c)
 		j++;
 	}
 	return (count);
+}
+
+static void	free_array(char **arr, size_t size)
+{
+	size_t	i;
+
+	i = 0;
+	while (i <= size)
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
 }
