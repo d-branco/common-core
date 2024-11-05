@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:30:02 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/04 16:56:05 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/05 16:34:36 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		new_node = ft_lstnew(f(lst->content));
 		if (!new_node)
 		{
+			del(new_node->content);
 			ft_lstclear(&new_list, del);
 			return (NULL);
 		}
