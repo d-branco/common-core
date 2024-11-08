@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 09:54:02 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/30 12:20:03 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/06 09:19:14 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@
 //			ptr = strnstr(largestring, smallstring, 4);
 
 #include "libft.h"
-// for the size_t definition and ft_strlen()
+// size_t, ft_strlen(), NULL
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
@@ -51,8 +51,6 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	size_t	j;
 	size_t	len_little;
 
-	if (!big || !little)
-		return ((void *) 0);
 	if (little[0] == '\0')
 		return ((char *) big);
 	len_little = ft_strlen(little);
@@ -70,5 +68,10 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		}
 		pos++;
 	}
-	return ((void *) 0);
+	return (NULL);
 }
+
+//	NOTE:
+//		No NULL check in strnstr()
+//	if (!big || !little)
+//		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 17:07:07 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/03 11:10:36 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/06 14:36:22 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,13 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	size_t	mem_area;
 	void	*mem_ptr;
 
-	if (nmemb == 0 || size == 0 || nmemb > ((2147483648 - 1) / size))
+	if (size > 0 && nmemb > ((2147483648 - 1) / size))
 		return (NULL);
 	mem_area = nmemb * size;
 	mem_ptr = (unsigned char *) malloc(mem_area);
 	if (mem_ptr == NULL)
 		return (NULL);
-	ft_memset(mem_ptr, 0, mem_area);
+	if (mem_area != 0)
+		ft_memset(mem_ptr, 0, mem_area);
 	return (mem_ptr);
 }

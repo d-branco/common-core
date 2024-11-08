@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:55:39 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/03 11:10:23 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/06 09:12:55 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	*ft_memset(void *s, int c, size_t n)
 	}
 	return (s);
 }
-/* NOTA:
+/* NOTE:
 	unsigned int *ptr
 changed to
 	unsigned char	*ptr;

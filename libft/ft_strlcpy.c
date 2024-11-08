@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 20:03:59 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/10/29 21:35:42 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/06 09:13:18 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	size_t	len_src;
 
-	if (!dst || !src)
-		return (-1);
 	len_src = 0;
 	if (size > 0)
 	{
@@ -62,3 +60,8 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 		len_src++;
 	return (len_src);
 }
+
+//	NOTE:
+//		No NULL check in strcpy():
+//	if (!dst || !src)
+//		return (-1);

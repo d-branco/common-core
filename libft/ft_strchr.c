@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 10:27:08 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/04 15:36:05 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/06 09:17:54 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ char	*ft_strchr(const char *s, int c)
 {
 	int		j;
 
-	if (!s)
-		return (NULL);
 	j = 0;
 	while (s[j] != '\0')
 	{
@@ -46,3 +44,8 @@ char	*ft_strchr(const char *s, int c)
 	else
 		return (NULL);
 }
+
+//	NOTE:
+//		No NULL check in strchr()
+//	if (!s)
+//		return (NULL);

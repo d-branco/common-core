@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 14:52:58 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/02 15:37:21 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/06 14:34:12 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 //	applications of f.
 
 #include "libft.h"
-// ft_strlen(), ft_calloc()
+// ft_strlen(), malloc(), size_t
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
@@ -40,7 +40,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 
 	if (!s || !f)
 		return (NULL);
-	new = ft_calloc(sizeof(char), (ft_strlen(s) + 1));
+	new = (char *) malloc(sizeof(char) * (ft_strlen(s) + 1));
 	if (!new)
 		return (NULL);
 	pos = 0;
@@ -49,5 +49,6 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		new[pos] = f(pos, s[pos]);
 		pos++;
 	}
+	new[pos] = '\0';
 	return (new);
 }

@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 05:22:24 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/02 15:08:16 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/06 09:33:12 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ int	ft_atoi(const char *nptr)
 	int			sign;
 	size_t		j;
 
-	if (nptr == NULL)
-		return (0);
 	j = 0;
 	while (nptr[j] == 32
 		|| (nptr[j] >= 9 && nptr[j] <= 13))
@@ -73,9 +71,7 @@ int	ft_atoi(const char *nptr)
 	return (nbr);
 }
 
-/*
-int	main(void)
-{
-	printf("%i\n", ft_atoi("42"));
-}
-*/
+//	NOTE:
+//		No NULL check in atoi()
+//	if (nptr == NULL)
+//		return (0);

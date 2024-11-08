@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 13:03:20 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/05 15:17:43 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/06 10:35:23 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	**ft_split(char const *s, char c)
 	if (!ptr)
 		return (NULL);
 	index = 1;
-	while (s[index] != '\0')
+	while ((s[index] != '\0') && (c != '\0'))
 	{
 		if ((s[index - 1] == c && s[index] != c))
 		{
@@ -128,7 +128,7 @@ static void	free_array(char **arr, size_t size)
 	size_t	i;
 
 	i = 0;
-	while (i <= size)
+	while (i < size)
 	{
 		free(arr[i]);
 		i++;
