@@ -9,14 +9,13 @@ Common Core repository from 42 school
 ### Born2beroot
 
 ## Rank 0
-### ft_printf 
+### libft 
+Duration: circa 74 hours.
 
-#### Duration: circa 74 hours.
-
-#### Suggested alterations
-   File   | sad
-|----|--|
- t_itoa.c | recursive instead of iterative.
+   File   | Suggested alteration
+|----|---|
+ ft_calloc.c | use ft_bzero() instead of ft_memset()
+ ft_itoa.c   | recursive instead of iterative.
 
 #### Evaluation
 <picture>
