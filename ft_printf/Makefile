@@ -1,16 +1,17 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    $(MAKE)file                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/08 17:56:00 by abessa-m          #+#    #+#              #
-#    Updated: 2024/11/08 19:09:50 by abessa-m         ###   ########.fr        #
+#    Updated: 2024/11/09 11:54:32 by abessa-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libftprintf.a
+LIBFT	= libft/libft.a
 ########################################################### Compiler and Flags #
 CC		= cc
 CFLAGS	= -Wall -Wextra -Werror
@@ -18,30 +19,45 @@ CFLAGS	= -Wall -Wextra -Werror
 RM		= rm -f
 ###################################################################### Arquive #
 AR		= ar rcs
-
+###################################################################### Sources #
 SRCS	= ft_printf.c
-OBJS	= $(SRC:.c=.o)
+OBJS	= $(SRCS:.c=.o)
+###################################################################### Headers #
+HEADERS	= ft_printf.h
 
-###################################################################### Targets #
-all: $(NAME)
+######################################################################### make #
+MAKE_SILENT = $(MAKE) --no-print-directory
+############################################################ Mandatory Targets #
+all: $(LIBFT) $(NAME)
 
-$(NAME): $(OBJS)
-	@$(AR) $(NAME) $(OBJS) \
-		&& echo "$(PURPLE)    Library built$(COLOR-RESET)"
+$(NAME): $(OBJS) $(LIBFT)
+	@cd libft && ar x libft.a \
+	&& $(AR) $(NAME) libft/*.o $(OBJS) \
+	&& echo "$(PURPLE)    Library built$(COR)"
+
+%.o: %.c ft_printf.h
+	@$(CC) $(CFLAGS) -c $< -o $@ \
+	&& echo "$(PURPLE)Compiled: $<$(RESET)"
 
 clean:
-	@$(RM) $(OBJS) \
-		&& echo "$(PURPLE)    Objects removed$(COLOR-RESET)"
+	@make --no-print-directory -C libft clean \
+	&& $(RM) $(OBJS) \
+	&& echo "$(PURPLE)    Objects removed$(COR)"
 
 fclean: clean
-	@$(RM) $(NAME) \
-		&& echo "$(PURPLE)    Library removed$(COLOR-RESET)"
+	@make --no-print-directory -C libft fclean \
+	&& $(RM) $(NAME) \
+	&& echo "$(PURPLE)    Library removed$(COR)"
 
 re: fclean all
-	@echo "$(PURPLE)    Redone$(COLOR-RESET)"
+	@echo "$(PURPLE)    Redone$(COR)"
 
 .PHONY: all clean fclean re 
-
-################################################################# Shell  #
+################################################################## Build libft #
+$(LIBFT):
+	@make --no-print-directory -C libft && echo "$(PURPLE)    libft library built$(COR)"
+###################################################################### Colors  #
 PURPLE = \033[1;35m
-COLOR-RESET = \033[0m
+# purple
+COR = \033[0m
+# color remove

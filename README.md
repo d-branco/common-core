@@ -1,8 +1,22 @@
 # 42 common core
 Common Core repository from 42 school
 
-## ft_printf - current project
+## current project - ft_printf
 
+#### File structure
+```shell
+project_name/
+├── Makefile
+├── ft_printf.c
+├── libftprintf.h
+├── libft/
+│   ├── Makefile
+│   ├── libft.h
+│   ├── ft_putchr.c
+│   ├── ft_putstr.c
+│   └── ...
+└── subject-ft_printf.pdf
+```
 ## Rank 1
 ## ft_printf
 Current project. Check above.

@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:02:14 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/08 19:22:01 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/09 12:06:11 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,7 @@
 //		Write a library that contains ft_printf(), a function that will mimic
 //	the original printf()
 
-//#include "./libftprintf.h"
-//#include "../libft/libft.h"
-#include <stdlib.h>
-#include <stdarg.h>
+#include "./ft_printf.h"
 //	variatic function toolbox
 //	Has the macros:
 //		va_start - initialize the pointer
@@ -37,17 +34,17 @@
 //		va_copy
 //		va_end   - resets the pointer and releases variatic pointer resources
 
-int	ft_printf(const char *, ...)
+int	ft_printf(const char *str, ...)
 {
 	size_t	i;
 	va_list	ptr_args;
 	char	chr;
 
-	va_start(ptr_args, nbr_args);
+	va_start(ptr_args, str);
 	i = 0;
-	while ((char *) *nbr_args != '\0')
+	while ((char *) *str != '\0')
 	{
-		chr = va_arg(ptr_args, char *)
+		chr = va_arg(ptr_args, char *);
 		printf("%C", chr);
 		i++;
 	}
