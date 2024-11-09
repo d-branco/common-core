@@ -1,8 +1,11 @@
 # 42 common core
 Common Core repository from 42 school
 
+## ft_printf - current project
+
 ## Rank 1
-### ft_printf - current project
+## ft_printf
+Current project. Check above.
 
 ### get_next_line
 
@@ -20,8 +23,22 @@ Duration: circa 74 hours.
 
 #### Evaluation
 <details>
-  <summary>Success</summary>
+  <summary>graded 125 on Libft</summary>
 <picture>
   <img alt="Shows success. 125 out of 100." src=evaluation-libft.png>
-</picture>
+</picture><br>
+initial_errors: <br><br>
+test_ft_isalpha: OK | test_ft_isdigit: OK | test_ft_isalnum: OK<br>
+test_ft_isascii: OK | test_ft_isprint: OK | test_ft_strlen: OK<br>
+test_ft_memset: OK | test_ft_bzero: OK | test_ft_memcpy: OK<br>
+test_ft_memmove: OK | test_ft_strlcpy: OK | test_ft_strlcat: OK<br>
+test_ft_toupper: OK | test_ft_tolower: OK | test_ft_strchr: OK<br>
+test_ft_strrchr: OK | test_ft_strncmp: OK | test_ft_memchr: OK<br>
+test_ft_memcmp: OK | test_ft_strnstr: OK | test_ft_atoi: OK<br>
+test_ft_calloc: OK | test_ft_strdup: OK | test_ft_substr: OK<br>
+test_ft_strjoin: OK | test_ft_strtrim: OK | test_ft_split: OK<br>
+test_ft_itoa: OK | test_ft_strmapi: OK | test_ft_striteri: OK<br>
+test_ft_putchar_fd: OK | test_ft_putstr_fd: OK <br>
+ test_ft_putendl_fd: OK | test_ft_putnbr_fd: OK<br><br>
+bonus: 9/9 functions correct
 </details>
