@@ -18,9 +18,6 @@ HEADERS = libft.h
 SRCS = $(MANDATORY)
 OBJS = $(SRCS:.c=.o)
 
-SRCSBONUS = $(BONUS) 
-OBJSBONUS = $(SRCSBONUS:.c=.o)
-
 %.o:	%.c $(HEADERS)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
@@ -34,9 +31,8 @@ MANDATORY = \
 	\
 	ft_substr.c ft_strjoin.c  ft_putchar_fd.c ft_putstr_fd.c \
 		ft_putendl_fd.c ft_putnbr_fd.c \
-	ft_strmapi.c ft_striteri.c ft_strtrim.c ft_split.c ft_itoa.c 
-
-BONUS = \
+	ft_strmapi.c ft_striteri.c ft_strtrim.c ft_split.c ft_itoa.c \
+	\
 	ft_lstnew.c \
 	ft_lstdelone.c \
 	ft_lstclear.c \
@@ -49,14 +45,11 @@ BONUS = \
 
 all:	$(NAME)
 
-bonus:	$(OBJS) $(OBJSBONUS)
-	@ar rcs $(NAME) $(OBJS) $(OBJSBONUS)
-
 $(NAME):	$(OBJS)
 	@ar rcs $(NAME) $(OBJS)
 
 clean:
-	@rm -f $(OBJS) $(OBJSBONUS)
+	@rm -f $(OBJS)
 
 fclean:	clean
 	@rm -f $(NAME)

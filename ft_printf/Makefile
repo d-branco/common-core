@@ -10,6 +10,14 @@
 #                                                                              #
 # **************************************************************************** #
 
+##########################            TEMP            ##########################
+test: #re
+	@$(CC) ft_printf.c libftprintf.a \
+	&& echo "$(GRAY)compiled: ft_printf.c libftprintf.a$(COR)" \
+	&& echo "" \
+	&& ./a.out
+##########################            TEMP            ##########################
+
 NAME	= libftprintf.a
 LIBFT	= libft/libft.a
 ########################################################### Compiler and Flags #
@@ -31,33 +39,40 @@ MAKE_SILENT = $(MAKE) --no-print-directory
 all: $(LIBFT) $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-	@cd libft && ar x libft.a \
+	@cd libft \
+	&& ar x libft.a \
+	&& cd .. \
 	&& $(AR) $(NAME) libft/*.o $(OBJS) \
-	&& echo "$(PURPLE)    Library built$(COR)"
+	&& echo "$(PURPLE)Library built: $(NAME)$(COR)"
 
 %.o: %.c ft_printf.h
 	@$(CC) $(CFLAGS) -c $< -o $@ \
-	&& echo "$(PURPLE)Compiled: $<$(RESET)"
+	&& echo "$(GRAY)compiled: $(COR) $<: "
 
 clean:
 	@make --no-print-directory -C libft clean \
 	&& $(RM) $(OBJS) \
-	&& echo "$(PURPLE)    Objects removed$(COR)"
+	&& echo "$(GRAY)Objects removed$(COR)"
 
 fclean: clean
 	@make --no-print-directory -C libft fclean \
 	&& $(RM) $(NAME) \
-	&& echo "$(PURPLE)    Library removed$(COR)"
+	&& echo "$(GRAY)Libraries removed$(COR)"
 
 re: fclean all
-	@echo "$(PURPLE)    Redone$(COR)"
+	@echo "$(GRAY)redone$(COR)"
 
-.PHONY: all clean fclean re 
+.PHONY: all clean fclean re
 ################################################################## Build libft #
 $(LIBFT):
-	@make --no-print-directory -C libft && echo "$(PURPLE)    libft library built$(COR)"
+	@make --no-print-directory -C libft \
+	&& echo "$(PURPLE)Library built: $(LIBFT)$(COR)"
 ###################################################################### Colors  #
-PURPLE = \033[1;35m
 # purple
-COR = \033[0m
-# color remove
+PURPLE = \033[1;35m    
+# COlor Remove
+COR = \033[0m    
+# purple
+GRAY = \033[1;90m    
+# yellow
+YELLOW = \033[1;93m    
