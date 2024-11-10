@@ -7,6 +7,9 @@ cmake-build-debug/
 CMakeLists.txt
 /cmake-build-debug
 
+# VSCode
+.vscode/
+
 # audio files
 *.wav
 *.mp3

@@ -11,11 +11,11 @@
 # **************************************************************************** #
 
 ##########################            TEMP            ##########################
-test: #re
-	@$(CC) ft_printf.c libftprintf.a \
-	&& echo "$(GRAY)compiled: ft_printf.c libftprintf.a$(COR)" \
-	&& echo "" \
-	&& ./a.out
+test: all clean
+	@$(CC) main-test.c libftprintf.a \
+	&& echo "$(GRAY)compiled: $(COR) main-test.c libftprintf.a" \
+	&& valgrind -q -s ./a.out \
+	; rm a.out 
 ##########################            TEMP            ##########################
 
 NAME	= libftprintf.a
