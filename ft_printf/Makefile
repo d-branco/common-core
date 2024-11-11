@@ -12,7 +12,7 @@
 
 ##########################            TEMP            ##########################
 test: all clean
-	@ printf "$(YELLOW)" ; norminette ft_printf.c ; printf "$(COR)" \
+	@ printf "$(YELLOW)" ; norminette $(SRCS) ; printf "$(COR)" \
 	; $(CC) main-test.c libftprintf.a \
 	&& echo "$(GRAY)compiled: $(COR) main-test.c libftprintf.a" \
 	&& valgrind -q -s ./a.out \
@@ -29,7 +29,7 @@ RM		= rm -f
 ###################################################################### Arquive #
 AR		= ar rcs
 ###################################################################### Sources #
-SRCS	= ft_printf.c
+SRCS	= ft_printf.c ft_flag-convertions.c
 OBJS	= $(SRCS:.c=.o)
 ###################################################################### Headers #
 HEADERS	= ft_printf.h

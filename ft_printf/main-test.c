@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 16:19:10 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/11 12:06:00 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/11 20:28:18 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,45 +15,58 @@
 
 int	main(void)
 {
-	int	i;
+	int		i;
+/*	char	*str;
+
+	str = "As armas e os baroes assinalados";
+	ft_printf("FLAG: (none)\n");
+	ft_printf("ft_printf(): <");
+	i = ft_printf("4%8.4s", str);
+	printf("> (return: %i)\n   printf(): <", i);
+	i = printf("4%8.4s", str);
+	printf("> (return: %i)\n", i);
+*/
 
 	ft_printf("FLAG: (none)\n");
 	ft_printf("ft_printf(): <");
-	i = ft_printf("42%%percent");
+	i = ft_printf("4%s", NULL);
 	printf("> (return: %i)\n   printf(): <", i);
-	i = printf("42%%percent");
+	i = printf("4%s", NULL);
 	printf("> (return: %i)\n", i);
 
-
-
-	
-
-	ft_printf("FLAG: (none)\n");
+	ft_printf("FLAG: 8.4 (paddind)\n");
 	ft_printf("ft_printf(): <");
-	i = ft_printf("4%i", 2);
+	i = ft_printf("4%8.4i", -2);
 	printf("> (return: %i)\n   printf(): <", i);
-	i = printf("4%i", 2);
+	i = printf("4%8.4i", -2);
+	printf("> (return: %i)\n", i);
+
+	ft_printf("FLAG: .2\n");
+	ft_printf("ft_printf(): <");
+	i = ft_printf("4%.2i", 2);
+	printf("> (return: %i)\n   printf(): <", i);
+	i = printf("4%.2i", 2);
 	printf("> (return: %i)\n", i);
 
 	ft_printf("FLAG: -\n");
 	ft_printf("ft_printf(): <");
-	i = ft_printf("4%-i", 2);
+	i = ft_printf("4%-i", -2);
 	printf("> (return: %i)\n   printf(): <", i);
-	i = printf("4%-i", 2);
+	i = printf("4%-i", -2);
 	printf("> (return: %i)\n", i);
 
 	ft_printf("FLAG: 0\n");
 	ft_printf("ft_printf(): <");
-	i = ft_printf("4%0i", 2);
+	i = ft_printf("4%03i", 2);
 	printf("> (return: %i)\n   printf(): <", i);
-	i = printf("4%0i", 2);
+	i = printf("4%03i", 2);
 	printf("> (return: %i)\n", i);
 	
 	ft_printf("FLAG: .\n");
 	ft_printf("ft_printf(): <");
-	i = ft_printf("4%.i", 2);
+	i = ft_printf("4%.2i", 2);
 	printf("> (return: %i)\n   printf(): <", i);
-	i = printf("4%.i", 2);
+	i = printf("4%.2i", 2);
 	printf("> (return: %i)\n", i);
 	
 	ft_printf("FLAG: (width)\n");
@@ -62,10 +75,8 @@ int	main(void)
 	printf("> (return: %i)\n   printf(): <", i);
 	i = printf("4%9i", 2);
 	printf("> (return: %i)\n", i);
-	
 
 
-	
 	ft_printf("FLAG: #\n");
 	ft_printf("ft_printf(): <");
 	i = ft_printf("4%#i", 2);
@@ -85,7 +96,8 @@ int	main(void)
 	i = ft_printf("4%+i", 2);
 	printf("> (return: %i)\n   printf(): <", i);
 	i = printf("4%+i", 2);
-	printf("> (return: %i)\n", i);}
+	printf("> (return: %i)\n", i);
+}
 /*
 //###################################################################### TESTS #
 	//	notes about FLAGS ("Sinalizadores" in portuguese) 

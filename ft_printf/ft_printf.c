@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:02:14 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/11 12:08:37 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/11 19:53:16 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,12 @@
 //	Has the macros:
 //		va_start - initialize the pointer
 //		va_arg   - fetches the next arguments
-//		va_copy
 //		va_end   - resets the pointer and releases variatic pointer resources
 
-//	SYNTAX
-//	%[$][flags][width][.precision][length modifier]conversion
-
 static int	is_flag(char chr);
-static void	format_converted(char *str, int *index, int *count);
+static void	format_converted(
+				va_list ptr_args, char *str, int *index, int *count);
+static void	format_arg(char *conv_str, int *count, va_list ptr_args);
 
 int	ft_printf(const char *initial_str, ...)
 {
@@ -55,7 +53,7 @@ int	ft_printf(const char *initial_str, ...)
 	{
 		if (initial_str[i] == '%')
 		{
-			format_converted((char *) initial_str, &i, &count);
+			format_converted(ptr_args, (char *) initial_str, &i, &count);
 			if (i == -1)
 				return (-1);
 			continue ;
@@ -68,7 +66,8 @@ int	ft_printf(const char *initial_str, ...)
 	return (count);
 }
 
-static void	format_converted(char *str, int *index, int *count)
+static void	format_converted(
+			va_list ptr_args, char *str, int *index, int *count)
 {
 	int		j;
 	char	*conversion_str;
@@ -85,17 +84,7 @@ static void	format_converted(char *str, int *index, int *count)
 				*index = -1;
 				return ;
 			}
-			if (ft_strncmp(conversion_str, "%%", 2) == 0)
-			{
-				ft_putchar_fd('%', 1);
-				*index += 2;
-				*count += 1;
-				return ;
-			}
-			ft_putchar_fd('{', 1);
-			ft_putstr_fd((conversion_str), 1);
-			*count += ft_strlen(conversion_str);
-			ft_putchar_fd('}', 1);
+			format_arg(conversion_str, count, ptr_args);
 			*index = j + 1;
 			break ;
 		}
@@ -104,6 +93,31 @@ static void	format_converted(char *str, int *index, int *count)
 		*index = -1;
 	free(conversion_str);
 	return ;
+}
+
+static void	format_arg(char *conv_str, int *count, va_list ptr_args)
+{
+	char	conversion_format;
+
+	conversion_format = conv_str[ft_strlen(conv_str) - 1];
+	if (conversion_format == '%')
+	{
+		ft_putchar_fd('%', 1);
+		*count += 1;
+	}
+	else if (conversion_format == 'c')
+		printf_character(conv_str, count, ptr_args);
+	else if (conversion_format == 's')
+		printf_string(conv_str, count, ptr_args);
+	else if (conversion_format == 'i' || conversion_format == 'd')
+		printf_integer(conv_str, count, ptr_args);
+	else
+	{
+		ft_putchar_fd('{', 1);
+		ft_putstr_fd((conv_str), 1);
+		*count += ft_strlen(conv_str);
+		ft_putchar_fd('}', 1);
+	}
 }
 
 static int	is_flag(char chr)

@@ -1,5 +1,6 @@
 # Project files
 #*.zip
+tests/
 
 # CLion
 .idea/
