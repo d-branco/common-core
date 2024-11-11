@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:02:14 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/10 19:00:31 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/11 12:08:37 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,56 +33,77 @@
 //		va_arg   - fetches the next arguments
 //		va_copy
 //		va_end   - resets the pointer and releases variatic pointer resources
+
+//	SYNTAX
+//	%[$][flags][width][.precision][length modifier]conversion
+
 static int	is_flag(char chr);
-static int	identify_flag(char *str, int index);
+static void	format_converted(char *str, int *index, int *count);
 
 int	ft_printf(const char *initial_str, ...)
 {
 	va_list	ptr_args;
 	int		i;
+	int		count;
 
 	if (!initial_str)
 		return (-1);
-	va_start(ptr_args, initial_str);
 	i = 0;
+	count = 0;
+	va_start(ptr_args, initial_str);
 	while (initial_str[i] != '\0')
 	{
-		va_arg(ptr_args, char *);
 		if (initial_str[i] == '%')
 		{
-			i = identify_flag((char *) initial_str, i);
+			format_converted((char *) initial_str, &i, &count);
 			if (i == -1)
 				return (-1);
-			// process flag that starts in i and ends in j (inclusive)
+			continue ;
 		}
 		write(1, &initial_str[i], 1);
 		i++;
+		count++;
 	}
 	va_end(ptr_args);
-	return (i);
+	return (count);
 }
 
-static int	identify_flag(char *str, int index)
+static void	format_converted(char *str, int *index, int *count)
 {
 	int		j;
-	char	*temp_str;
+	char	*conversion_str;
 
-	j = index;
+	j = *index;
 	while (str[j] != '\0')
 	{
 		j++;
 		if (is_flag(str[j]) == 1)
 		{
-			temp_str = ft_substr(str, index, (j - index));
-			ft_putstr_fd((temp_str), 1);
-			free(temp_str);
-			index = j;
+			conversion_str = ft_substr(str, *index, (j - *index + 1));
+			if (conversion_str == NULL)
+			{
+				*index = -1;
+				return ;
+			}
+			if (ft_strncmp(conversion_str, "%%", 2) == 0)
+			{
+				ft_putchar_fd('%', 1);
+				*index += 2;
+				*count += 1;
+				return ;
+			}
+			ft_putchar_fd('{', 1);
+			ft_putstr_fd((conversion_str), 1);
+			*count += ft_strlen(conversion_str);
+			ft_putchar_fd('}', 1);
+			*index = j + 1;
 			break ;
 		}
 	}
 	if (str[j] == '\0')
-		return (-1);
-	return (index);
+		*index = -1;
+	free(conversion_str);
+	return ;
 }
 
 static int	is_flag(char chr)

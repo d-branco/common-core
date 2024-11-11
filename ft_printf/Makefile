@@ -12,10 +12,11 @@
 
 ##########################            TEMP            ##########################
 test: all clean
-	@$(CC) main-test.c libftprintf.a \
+	@ printf "$(YELLOW)" ; norminette ft_printf.c ; printf "$(COR)" \
+	; $(CC) main-test.c libftprintf.a \
 	&& echo "$(GRAY)compiled: $(COR) main-test.c libftprintf.a" \
 	&& valgrind -q -s ./a.out \
-	; rm a.out 
+	; rm -f a.out 
 ##########################            TEMP            ##########################
 
 NAME	= libftprintf.a
@@ -63,15 +64,17 @@ re: fclean all
 	@echo "$(GRAY)redone$(COR)"
 
 .PHONY: all clean fclean re
+################################################################ Bonus Targets #
+bonus: all
 ################################################################## Build libft #
 $(LIBFT):
 	@make --no-print-directory -C libft \
 	&& echo "$(PURPLE)Library built: $(LIBFT)$(COR)"
 ###################################################################### Colors  #
-# purple
-PURPLE = \033[1;35m    
 # COlor Remove
 COR = \033[0m    
+# purple
+PURPLE = \033[1;35m    
 # purple
 GRAY = \033[1;90m    
 # yellow
