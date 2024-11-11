@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_flag-convertions.c                              :+:      :+:    :+:   */
+/*   ft_printf-small.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:44:57 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/11 20:26:32 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/11 22:07:37 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,17 @@ void	printf_string(char *conv_str, int *count, va_list ptr_args)
 		ft_putstr_fd(str, 1);
 		*count += ft_strlen(str);
 	}
+	free(str);
+}
+
+void	printf_unsigned_integer(char *conv_str, int *count, va_list ptr_args)
+{
+	char	*str;
+
+	if (!conv_str)
+		return ;
+	str = ft_itoa((unsigned int)va_arg(ptr_args, unsigned int));
+	ft_putstr_fd(str, 1);
+	*count += ft_strlen(str);
 	free(str);
 }

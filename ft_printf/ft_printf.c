@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:02:14 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/11 19:53:16 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/11 22:46:55 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,8 @@ static void	format_arg(char *conv_str, int *count, va_list ptr_args)
 		printf_string(conv_str, count, ptr_args);
 	else if (conversion_format == 'i' || conversion_format == 'd')
 		printf_integer(conv_str, count, ptr_args);
+	else if (conversion_format == 'u')
+		printf_unsigned_d(conv_str, count, ptr_args);
 	else
 	{
 		ft_putchar_fd('{', 1);

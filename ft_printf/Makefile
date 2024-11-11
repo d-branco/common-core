@@ -11,12 +11,13 @@
 # **************************************************************************** #
 
 ##########################            TEMP            ##########################
-test: all clean
+test: re clean
 	@ printf "$(YELLOW)" ; norminette $(SRCS) ; printf "$(COR)" \
 	; $(CC) main-test.c libftprintf.a \
-	&& echo "$(GRAY)compiled: $(COR) main-test.c libftprintf.a" \
+	&& echo "$(GRAY)compiled: $(COR) main-test.c libftprintf.a -g" \
 	&& valgrind -q -s ./a.out \
-	; rm -f a.out 
+
+#	; rm -f a.out 
 ##########################            TEMP            ##########################
 
 NAME	= libftprintf.a
@@ -29,7 +30,7 @@ RM		= rm -f
 ###################################################################### Arquive #
 AR		= ar rcs
 ###################################################################### Sources #
-SRCS	= ft_printf.c ft_flag-convertions.c
+SRCS	= ft_printf.c ft_printf-small.c ft_printf-large.c
 OBJS	= $(SRCS:.c=.o)
 ###################################################################### Headers #
 HEADERS	= ft_printf.h

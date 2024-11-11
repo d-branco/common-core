@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 16:19:10 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/11 20:28:18 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/11 22:27:46 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int	main(void)
 
 	ft_printf("FLAG: (none)\n");
 	ft_printf("ft_printf(): <");
-	i = ft_printf("4%s", NULL);
+	i = ft_printf("%u", (unsigned int)2147483648);
 	printf("> (return: %i)\n   printf(): <", i);
-	i = printf("4%s", NULL);
+	i = printf("%u", (unsigned int)2147483648);
 	printf("> (return: %i)\n", i);
 
 	ft_printf("FLAG: 8.4 (paddind)\n");

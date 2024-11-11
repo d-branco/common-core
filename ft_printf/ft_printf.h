@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 11:03:01 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/11 19:53:00 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/11 22:46:16 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,8 @@ int		ft_printf(const char *initial_str, ...);
 void	printf_integer(char *conv_str, int *count, va_list ptr_args);
 void	printf_character(char *conv_str, int *count, va_list ptr_args);
 void	printf_string(char *conv_str, int *count, va_list ptr_args);
+void	printf_unsigned_integer(char *conv_str, int *count, va_list ptr_args);
+void	printf_unsigned_d(char *conv_str, int *count, va_list ptr_args);
+char	*ft_ultoa(unsigned long nbr);
 
 #endif
