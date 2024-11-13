@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 11:03:01 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/13 10:28:17 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/13 15:39:02 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,7 @@ void	ft_format_alternate(char *conv_str, char **str);
 size_t	ft_format_width(char *conv_str, char **str);
 void	ft_format_precision_string(char *conv_str, char **str);
 void	ft_format_precision_numeric(char *conv_str, char **str);
+void	ft_format_precision_hexadecimal(char *conv_str, char **str);
+int		ft_hextoi(char *hex_str);
 
 #endif

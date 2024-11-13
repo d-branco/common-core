@@ -72,15 +72,15 @@ static void	ft_format_precision_numeric_add_digits(char **str, int n_padding)
 	int		j;
 	int		i;
 
-	new_str = (char *)calloc(sizeof(char), (ft_strlen(*str) + 1 + n_padding));
+	new_str = (char *)malloc(sizeof(char) * (ft_strlen(*str) + 1 + n_padding));
 	j = 0;
-	while (ft_isdigit(str[0][j]) == 0)
+	while ((ft_isalnum(str[0][j]) == 0) && (str[0][j] != '\0'))
 	{
 		new_str[j] = str[0][j];
 		j++;
 	}
 	i = 0;
-	while (n_padding > 0)
+	while ((n_padding > 0) && (str[0][j] != '\0'))
 	{
 		new_str[j + i] = '0';
 		n_padding--;
@@ -91,6 +91,62 @@ static void	ft_format_precision_numeric_add_digits(char **str, int n_padding)
 		new_str[j + i] = str[0][j];
 		j++;
 	}
+	new_str[j + i] = '\0';
 	free(*str);
 	*str = new_str;
+}
+
+void	ft_format_precision_hexadecimal(char *conv_str, char **str)
+{
+	char	*ptr_dot;
+	long	precision;
+	int		digits;
+	int		j;
+
+	if (*str[0] == '\0')
+		return ;
+	ptr_dot = ft_strchr(conv_str, '.');
+	if (ptr_dot == NULL)
+		return ;
+	ptr_dot++;
+	//ft_printf("{hex_str: %s}", *str);///////////////////////////////////////////////
+	precision = ft_atoi(ptr_dot);
+	//ft_printf("{ptr_dot[0]: %i}", ptr_dot[0]);
+	if ((precision == 0) && (ft_hextoi(*str) == 0))
+		ft_set_it_empty(str);
+	//ft_printf("{hex_str: %s}", *str);///////////////////////////////////////////////
+	j = 0;
+	digits = 0;
+	while ((*str)[j] != '\0')
+	{
+		if (ft_isalnum(str[0][j]) != 0)
+			digits++;
+		j++;
+	}
+	if (precision > digits)
+		ft_format_precision_numeric_add_digits(str, (int)(precision - digits));
+}
+
+int	ft_hextoi(char *hex_str)
+{
+	int		result;
+	int		len;
+	int		index;
+	char	chr;
+
+	index = 0;
+	result = 0;
+	len = ft_strlen(hex_str);
+	if (len >= 2 && hex_str[0] == '0' && ft_tolower(hex_str[1]) == 'x')
+		index = 2;
+	while (index < len)
+	{
+		chr = ft_tolower(hex_str[index]);
+		if (chr >= '0' && chr <= '9')
+			result = (result * 16) + (chr - '0');
+		else if (chr >= 'a' && chr <= 'f')
+			result = (result * 16) + (chr - 'a' + 10);
+		index++;
+	}
+	return (result);
 }

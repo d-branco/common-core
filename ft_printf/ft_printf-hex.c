@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 21:31:29 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/13 13:24:28 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/13 15:40:48 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	printf_hex_lower(char *conv_str, int *count, va_list ptr_args)
 		return ;
 	dec_nbr = va_arg(ptr_args, unsigned long);
 	str = ft_ultoa(dec_nbr, 16);
+	ft_format_precision_hexadecimal(conv_str, &str);
 	ft_format_alternate(conv_str, &str);
 	ft_format_width(conv_str, &str);
 	ft_putstr_fd(str, 1);
@@ -51,6 +52,7 @@ void	printf_hex_upper(char *conv_str, int *count, va_list ptr_args)
 		return ;
 	dec_nbr = (unsigned long) va_arg(ptr_args, unsigned long);
 	str = ft_ultoa(dec_nbr, 16);
+	ft_format_precision_hexadecimal(conv_str, &str);
 	ft_format_alternate(conv_str, &str);
 	j = 0;
 	while (str[j] != '\0')
