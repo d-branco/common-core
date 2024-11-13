@@ -1,5 +1,5 @@
 # Project files
-#*.zip
+*.zip
 tests/
 
 # CLion

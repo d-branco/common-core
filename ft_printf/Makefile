@@ -30,11 +30,10 @@ RM		= rm -f
 ###################################################################### Arquive #
 AR		= ar rcs
 ###################################################################### Sources #
-SRCS	= ft_printf.c ft_printf-small.c ft_printf-large.c
+SRCS	= ft_printf.c ft_printf-decimal.c ft_printf-hex.c ft_printf-conversion.c
 OBJS	= $(SRCS:.c=.o)
 ###################################################################### Headers #
 HEADERS	= ft_printf.h
-
 ######################################################################### make #
 MAKE_SILENT = $(MAKE) --no-print-directory
 ############################################################ Mandatory Targets #

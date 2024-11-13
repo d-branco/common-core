@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 16:19:10 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/11 22:27:46 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/12 18:33:34 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,17 @@
 int	main(void)
 {
 	int		i;
-/*	char	*str;
 
-	str = "As armas e os baroes assinalados";
-	ft_printf("FLAG: (none)\n");
-	ft_printf("ft_printf(): <");
-	i = ft_printf("4%8.4s", str);
-	printf("> (return: %i)\n   printf(): <", i);
-	i = printf("4%8.4s", str);
-	printf("> (return: %i)\n", i);
-*/
+	ft_printf("\n");
 
 	ft_printf("FLAG: (none)\n");
 	ft_printf("ft_printf(): <");
-	i = ft_printf("%u", (unsigned int)2147483648);
+	i = ft_printf("%.s", "hi there");
 	printf("> (return: %i)\n   printf(): <", i);
-	i = printf("%u", (unsigned int)2147483648);
+	i = printf("%.s", "hi there");
 	printf("> (return: %i)\n", i);
+
+	ft_printf("\n");
 
 	ft_printf("FLAG: 8.4 (paddind)\n");
 	ft_printf("ft_printf(): <");
@@ -100,13 +94,6 @@ int	main(void)
 }
 /*
 //###################################################################### TESTS #
-	//	notes about FLAGS ("Sinalizadores" in portuguese) 
-	//		appear IMEDIATLY after the %
-	// '-'	left alignment
-	// ' '	inserts blank space before postive numbers (see '+')
-	// '+'	exibits a plus sign in positive numbers (takes precedence over ' ')
-	// '0'	left padded with zeros
-	// '#'	alternative format ('0' for octals and '0x' for headecimals)
 	int num = 42;
 	printf("Decimal: %d\n", num);			// Output: 42
 	printf("Octal with #: %#o\n", num);		// Output: 052 (note leading 0)

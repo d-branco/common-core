@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:02:14 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/11 22:46:55 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/12 10:26:04 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,13 +113,12 @@ static void	format_arg(char *conv_str, int *count, va_list ptr_args)
 		printf_integer(conv_str, count, ptr_args);
 	else if (conversion_format == 'u')
 		printf_unsigned_d(conv_str, count, ptr_args);
-	else
-	{
-		ft_putchar_fd('{', 1);
-		ft_putstr_fd((conv_str), 1);
-		*count += ft_strlen(conv_str);
-		ft_putchar_fd('}', 1);
-	}
+	else if (conversion_format == 'x')
+		printf_hex_lower(conv_str, count, ptr_args);
+	else if (conversion_format == 'X')
+		printf_hex_upper(conv_str, count, ptr_args);
+	else if (conversion_format == 'p')
+		printf_pointer(conv_str, count, ptr_args);
 }
 
 static int	is_flag(char chr)

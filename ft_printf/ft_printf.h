@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 11:03:01 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/11 22:46:16 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/12 15:20:37 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ void	printf_character(char *conv_str, int *count, va_list ptr_args);
 void	printf_string(char *conv_str, int *count, va_list ptr_args);
 void	printf_unsigned_integer(char *conv_str, int *count, va_list ptr_args);
 void	printf_unsigned_d(char *conv_str, int *count, va_list ptr_args);
-char	*ft_ultoa(unsigned long nbr);
+char	*ft_ultoa(unsigned long nbr, unsigned int radix);
+void	printf_hex_lower(char *conv_str, int *count, va_list ptr_args);
+void	printf_hex_upper(char *conv_str, int *count, va_list ptr_args);
+void	printf_pointer(char *conv_str, int *count, va_list ptr_args);
+void	ft_format_alternate(char *conv_str, char **str);
+size_t	ft_format_width(char *conv_str, char **str);
 
 #endif
