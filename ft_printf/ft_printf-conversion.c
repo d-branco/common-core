@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:58:49 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/13 10:08:21 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/13 10:23:59 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ void	ft_format_alternate(char *conv_str, char **str)
 	return ;
 }
 
-// char	*ft_strchr(const char *s, int c)
-#include <stdio.h>
 size_t	ft_format_width(char *conv_str, char **str)
 {
 	size_t		width;
@@ -62,7 +60,6 @@ size_t	ft_format_width(char *conv_str, char **str)
 	char		*astr;
 	size_t		len;
 
-	padding = ' ';
 	width = ft_format_width_padding(conv_str, &padding);
 	len = ft_strlen(*str);
 	if (*str[0] == '\0')
@@ -76,7 +73,7 @@ size_t	ft_format_width(char *conv_str, char **str)
 			return (0);
 		}
 		ft_memset(astr, (char)padding, width);
-		if (*str[0] != '\0' || (ft_strchr(conv_str,(int) 's') == NULL))
+		if (*str[0] != '\0' || (ft_strchr(conv_str, (int) 's') == NULL))
 			ft_memcpy(astr + (width - len), *str, len);
 		free(*str);
 		*str = astr;
@@ -90,6 +87,7 @@ static size_t	ft_format_width_padding(char *conv_str, char *padding)
 	size_t	j;
 	size_t	width;
 
+	*padding = ' ';
 	width = 0;
 	j = 0;
 	while (conv_str[j] != '\0' && conv_str[j] != '.')
@@ -119,7 +117,7 @@ void	ft_format_precision_string(char *conv_str, char **str)
 	if (*str[0] == '\0')
 		return ;
 	ptr_dot = ft_strchr(conv_str, '.');
-	if (ptr_dot  == NULL)
+	if (ptr_dot == NULL)
 		return ;
 	ptr_dot++;
 	precision = ft_atoi(ptr_dot);
@@ -138,7 +136,6 @@ void	ft_format_precision_string(char *conv_str, char **str)
 	*str = new_str;
 }
 
-
 //size_t	ft_format_precision_numeric(char *conv_str, char **str)
 
 // test 491 passed
@@ -149,4 +146,5 @@ void	ft_format_precision_string(char *conv_str, char **str)
 // test 541 passed all up to basic pointers
 // test 544 passed all up to pointer with padding
 // test 690 passed all widths
+// test 712 passed string precision
 //int	ft_format_width(char *conv_str)

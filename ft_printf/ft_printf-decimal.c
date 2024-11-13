@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:44:57 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/13 09:54:23 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/13 10:14:04 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	printf_character(char *conv_str, int *count, va_list ptr_args)
 	free(ptr_chr);
 }
 
-#include <stdio.h>
 void	printf_string(char *conv_str, int *count, va_list ptr_args)
 {
 	char	*str;
