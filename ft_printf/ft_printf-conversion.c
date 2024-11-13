@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:58:49 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/13 10:23:59 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/13 13:42:20 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ size_t	ft_format_width(char *conv_str, char **str)
 			return (0);
 		}
 		ft_memset(astr, (char)padding, width);
-		if (*str[0] != '\0' || (ft_strchr(conv_str, (int) 's') == NULL))
+		if (!(*str[0] == '\0' && (ft_strchr(conv_str, (int) 'c') == NULL)))
 			ft_memcpy(astr + (width - len), *str, len);
 		free(*str);
 		*str = astr;
@@ -82,6 +82,9 @@ size_t	ft_format_width(char *conv_str, char **str)
 	return (len);
 }
 
+// NOTE
+//If a precision is given with a numeric conversion (d, i, u, x, and X),
+//the 0 flag is ignored.
 static size_t	ft_format_width_padding(char *conv_str, char *padding)
 {
 	size_t	j;
@@ -101,6 +104,12 @@ static size_t	ft_format_width_padding(char *conv_str, char *padding)
 		}
 		j++;
 	}
+	if ((ft_strchr(conv_str, (int) 'd') != NULL)
+		|| (ft_strchr(conv_str, (int) 'i') != NULL)
+		|| (ft_strchr(conv_str, (int) 'u') != NULL)
+		|| (ft_strchr(conv_str, (int) 'x') != NULL)
+		|| (ft_strchr(conv_str, (int) 'X') != NULL))
+		*padding = ' ';
 	return (width);
 }
 
@@ -135,8 +144,6 @@ void	ft_format_precision_string(char *conv_str, char **str)
 	free(*str);
 	*str = new_str;
 }
-
-//size_t	ft_format_precision_numeric(char *conv_str, char **str)
 
 // test 491 passed
 // test 507 passed (0x when 'u'  )

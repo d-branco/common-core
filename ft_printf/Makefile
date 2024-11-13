@@ -30,7 +30,10 @@ RM		= rm -f
 ###################################################################### Arquive #
 AR		= ar rcs
 ###################################################################### Sources #
-SRCS	= ft_printf.c ft_printf-decimal.c ft_printf-hex.c ft_printf-conversion.c
+SRCS	=	\
+			ft_printf.c \
+			ft_printf-decimal.c ft_printf-hex.c \
+			ft_printf-conversion.c ft_printf-conversion-numeric.c
 OBJS	= $(SRCS:.c=.o)
 ###################################################################### Headers #
 HEADERS	= ft_printf.h
