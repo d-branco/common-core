@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 16:19:10 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/12 18:33:34 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/13 09:32:45 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	main(void)
 
 	ft_printf("FLAG: (none)\n");
 	ft_printf("ft_printf(): <");
-	i = ft_printf("%.s", "hi there");
+	i = ft_printf("%1.s", "21-school.ru");
 	printf("> (return: %i)\n   printf(): <", i);
-	i = printf("%.s", "hi there");
+	i = printf("%1.s", "21-school.ru");
 	printf("> (return: %i)\n", i);
 
 	ft_printf("\n");

@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:58:49 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/13 08:21:06 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/13 10:08:21 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void	ft_format_alternate(char *conv_str, char **str)
 	return ;
 }
 
+// char	*ft_strchr(const char *s, int c)
+#include <stdio.h>
 size_t	ft_format_width(char *conv_str, char **str)
 {
 	size_t		width;
@@ -65,7 +67,7 @@ size_t	ft_format_width(char *conv_str, char **str)
 	len = ft_strlen(*str);
 	if (*str[0] == '\0')
 		len += 1;
-	if (width > len)
+	if (width >= len)
 	{
 		astr = (char *)calloc(sizeof(char), (width + 1));
 		if (!astr)
@@ -74,7 +76,8 @@ size_t	ft_format_width(char *conv_str, char **str)
 			return (0);
 		}
 		ft_memset(astr, (char)padding, width);
-		ft_memcpy(astr + (width - len), *str, len);
+		if (*str[0] != '\0' || (ft_strchr(conv_str,(int) 's') == NULL))
+			ft_memcpy(astr + (width - len), *str, len);
 		free(*str);
 		*str = astr;
 		return (width);
@@ -103,7 +106,38 @@ static size_t	ft_format_width_padding(char *conv_str, char *padding)
 	return (width);
 }
 
-//size_t	ft_format_precision_string(char *conv_str, char **str)
+// the maximum number of characters to be printed
+// char	*ft_strchr(const char *s, int c)
+// size_t strlcpy(char *dst, const char *src, size_t size);
+// int ft_memcmp(const void *s1, const void *s2, size_t n);
+void	ft_format_precision_string(char *conv_str, char **str)
+{
+	char	*ptr_dot;
+	char	*new_str;
+	long	precision;
+
+	if (*str[0] == '\0')
+		return ;
+	ptr_dot = ft_strchr(conv_str, '.');
+	if (ptr_dot  == NULL)
+		return ;
+	ptr_dot++;
+	precision = ft_atoi(ptr_dot);
+	if (ft_memcmp("(null)", *str, 7) == 0)
+	{
+		if (precision < 6)
+			precision = 0;
+	}
+	if (precision < 0)
+		precision = 0;
+	new_str = (char *)calloc(sizeof(char), (precision + 1));
+	if (!new_str)
+		return ;
+	ft_strlcpy(new_str, *str, precision + 1);
+	free(*str);
+	*str = new_str;
+}
+
 
 //size_t	ft_format_precision_numeric(char *conv_str, char **str)
 

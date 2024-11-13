@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 11:03:01 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/12 15:20:37 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/13 08:50:34 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ void	printf_hex_upper(char *conv_str, int *count, va_list ptr_args);
 void	printf_pointer(char *conv_str, int *count, va_list ptr_args);
 void	ft_format_alternate(char *conv_str, char **str);
 size_t	ft_format_width(char *conv_str, char **str);
+void	ft_format_precision_string(char *conv_str, char **str);
 
 #endif
