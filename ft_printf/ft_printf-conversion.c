@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:58:49 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/13 13:42:20 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/13 15:45:36 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,6 @@ size_t	ft_format_width(char *conv_str, char **str)
 	return (len);
 }
 
-// NOTE
-//If a precision is given with a numeric conversion (d, i, u, x, and X),
-//the 0 flag is ignored.
 static size_t	ft_format_width_padding(char *conv_str, char *padding)
 {
 	size_t	j;
@@ -104,12 +101,6 @@ static size_t	ft_format_width_padding(char *conv_str, char *padding)
 		}
 		j++;
 	}
-	if ((ft_strchr(conv_str, (int) 'd') != NULL)
-		|| (ft_strchr(conv_str, (int) 'i') != NULL)
-		|| (ft_strchr(conv_str, (int) 'u') != NULL)
-		|| (ft_strchr(conv_str, (int) 'x') != NULL)
-		|| (ft_strchr(conv_str, (int) 'X') != NULL))
-		*padding = ' ';
 	return (width);
 }
 
