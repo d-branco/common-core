@@ -1,26 +1,14 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    $(MAKE)file                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/08 17:56:00 by abessa-m          #+#    #+#              #
-#    Updated: 2024/11/09 11:54:32 by abessa-m         ###   ########.fr        #
+#    Updated: 2024/11/15 09:19:02 by abessa-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-##########################            TEMP            ##########################
-test: re clean
-	@ printf "$(YELLOW)" ; norminette $(SRCS) ; printf "$(COR)" \
-	; $(CC) main-test.c libftprintf.a \
-	&& echo "$(GRAY)compiled: $(COR) main-test.c libftprintf.a -g" \
-	&& make --no-print-directory -C libft clean \
-	&& $(RM) $(OBJS) \
-	&& valgrind -q -s ./a.out \
-
-#	; rm -f a.out 
-##########################            TEMP            ##########################
 
 NAME	= libftprintf.a
 LIBFT	= libft/libft.a
