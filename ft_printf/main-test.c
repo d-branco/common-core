@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 16:19:10 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/13 15:04:59 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/14 14:36:38 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,42 @@
 int	main(void)
 {
 	int		i;
-
+/*
 	ft_printf("\n");
 
-	ft_printf("current test: ft_printf(\"%%.0x\", (unsigned int)-1);\n");
+	ft_printf("current test: ft_printf(\"%% d\", 0)\n");
 	ft_printf("ft_printf(): <");
-	i = ft_printf("%.0x", (unsigned int)-1);
+	i = ft_printf("% d", 0);
 	printf("> (return: %i)\n   printf(): <", i);
-	i = printf("%.0x", (unsigned int)-1);
+	i = printf("% d", 0);
 	printf("> (return: %i)\n", i);
 
 	ft_printf("\n");
+	
+	ft_printf("current test: ft_printf(\"%%+i\", 0)\n");
+	ft_printf("ft_printf(): <");
+	i = ft_printf("%+i", 0);
+	printf("> (return: %i)\n   printf(): <", i);
+	i = printf("%+i", 0);
+	printf("> (return: %i)\n", i);
 
+	ft_printf("\n");
+*/
 	ft_printf("FLAG: 8.4 (paddind)\n");
 	ft_printf("ft_printf(): <");
 	i = ft_printf("4%8.4i", -2);
 	printf("> (return: %i)\n   printf(): <", i);
 	i = printf("4%8.4i", -2);
 	printf("> (return: %i)\n", i);
+/*
+	ft_printf("FLAG: 8.4 (paddind)\n");
+	ft_printf("ft_printf(): <");
+	i = ft_printf("4%+8.4i", 2);
+	printf("> (return: %i)\n   printf(): <", i);
+	i = printf("4%+8.4i", 2);
+	printf("> (return: %i)\n", i);
+
+	ft_printf("\n");
 
 	ft_printf("FLAG: .2\n");
 	ft_printf("ft_printf(): <");
@@ -91,6 +109,7 @@ int	main(void)
 	printf("> (return: %i)\n   printf(): <", i);
 	i = printf("4%+i", 2);
 	printf("> (return: %i)\n", i);
+	*/
 }
 /*
 //###################################################################### TESTS #

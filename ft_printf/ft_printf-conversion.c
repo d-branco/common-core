@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:58:49 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/13 15:45:36 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/14 15:16:44 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 #include "ft_printf.h"
 
 static size_t	ft_format_width_padding(char *conv_str, char *padding);
+static char		*ft_allocate_string(char **str, size_t width, char padding);
 
 void	ft_format_alternate(char *conv_str, char **str)
 {
@@ -66,20 +67,34 @@ size_t	ft_format_width(char *conv_str, char **str)
 		len += 1;
 	if (width >= len)
 	{
-		astr = (char *)calloc(sizeof(char), (width + 1));
+		astr = ft_allocate_string(str, width, padding);
 		if (!astr)
-		{
-			free(*str);
 			return (0);
-		}
 		ft_memset(astr, (char)padding, width);
-		if (!(*str[0] == '\0' && (ft_strchr(conv_str, (int) 'c') == NULL)))
+		if (!(*str[0] == '\0' && (ft_strchr(conv_str, (int) 'c') == NULL))
+			&& ft_strchr(conv_str, (int) '-') != NULL)
+			ft_memcpy(astr, *str, len);
+		else if (!(*str[0] == '\0' && (ft_strchr(conv_str, (int) 'c') == NULL)))
 			ft_memcpy(astr + (width - len), *str, len);
 		free(*str);
 		*str = astr;
 		return (width);
 	}
 	return (len);
+}
+
+static char	*ft_allocate_string(char **str, size_t width, char padding)
+{
+	char	*astr;
+
+	astr = (char *)calloc(sizeof(char), (width + 1));
+	if (!astr)
+	{
+		free(*str);
+		return (NULL);
+	}
+	ft_memset(astr, (char)padding, width);
+	return (astr);
 }
 
 static size_t	ft_format_width_padding(char *conv_str, char *padding)
@@ -99,6 +114,12 @@ static size_t	ft_format_width_padding(char *conv_str, char *padding)
 			width = ft_atoi(&conv_str[j]);
 			break ;
 		}
+		j++;
+	}
+	while (conv_str[j] != '\0')
+	{
+		if (conv_str[j] == '.')
+			*padding = ' ';
 		j++;
 	}
 	return (width);
@@ -135,14 +156,3 @@ void	ft_format_precision_string(char *conv_str, char **str)
 	free(*str);
 	*str = new_str;
 }
-
-// test 491 passed
-// test 507 passed (0x when 'u'  )
-// test 523 passed (0x both upper and lower)
-// test 530 passed with char width
-// test 540 passed s (with only one line added)
-// test 541 passed all up to basic pointers
-// test 544 passed all up to pointer with padding
-// test 690 passed all widths
-// test 712 passed string precision
-//int	ft_format_width(char *conv_str)

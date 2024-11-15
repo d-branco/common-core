@@ -15,6 +15,8 @@ test: re clean
 	@ printf "$(YELLOW)" ; norminette $(SRCS) ; printf "$(COR)" \
 	; $(CC) main-test.c libftprintf.a \
 	&& echo "$(GRAY)compiled: $(COR) main-test.c libftprintf.a -g" \
+	&& make --no-print-directory -C libft clean \
+	&& $(RM) $(OBJS) \
 	&& valgrind -q -s ./a.out \
 
 #	; rm -f a.out 
@@ -33,7 +35,8 @@ AR		= ar rcs
 SRCS	=	\
 			ft_printf.c \
 			ft_printf-decimal.c ft_printf-hex.c \
-			ft_printf-conversion.c ft_printf-conversion-numeric.c
+			ft_printf-conversion.c ft_printf-conversion-numeric.c \
+			ftprintf-conversion-sign.c ft_printf-conversion-precision.c 
 OBJS	= $(SRCS:.c=.o)
 ###################################################################### Headers #
 HEADERS	= ft_printf.h

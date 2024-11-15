@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 11:03:01 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/13 15:39:02 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/14 07:56:45 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ void	ft_format_precision_string(char *conv_str, char **str);
 void	ft_format_precision_numeric(char *conv_str, char **str);
 void	ft_format_precision_hexadecimal(char *conv_str, char **str);
 int		ft_hextoi(char *hex_str);
+char	ft_format_place_sign(char *conv_str, char **str);
 
 #endif

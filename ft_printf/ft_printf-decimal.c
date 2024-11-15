@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:44:57 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/13 13:19:00 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/14 14:38:44 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	printf_integer(char *conv_str, int *count, va_list ptr_args)
 	str = ft_itoa((int)va_arg(ptr_args, int));
 	ft_format_precision_numeric(conv_str, &str);
 	ft_format_width(conv_str, &str);
+	ft_format_place_sign(conv_str, &str);
 	ft_putstr_fd(str, 1);
 	*count += ft_strlen(str);
 	free(str);

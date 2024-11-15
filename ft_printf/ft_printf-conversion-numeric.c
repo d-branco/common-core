@@ -22,9 +22,8 @@
 
 #include "ft_printf.h"
 
-static void		ft_format_precision_numeric_add_digits(
-					char **str, int n_padding);
-static void		ft_set_it_empty(char **str);
+void		ft_format_precision_numeric_add_digits(char **str, int n_padding);
+static void	ft_set_it_empty(char **str);
 
 // minimun number of digits to be printed
 void	ft_format_precision_numeric(char *conv_str, char **str)
@@ -66,36 +65,6 @@ static void	ft_set_it_empty(char **str)
 	*str = new_str;
 }
 
-static void	ft_format_precision_numeric_add_digits(char **str, int n_padding)
-{
-	char	*new_str;
-	int		j;
-	int		i;
-
-	new_str = (char *)malloc(sizeof(char) * (ft_strlen(*str) + 1 + n_padding));
-	j = 0;
-	while ((ft_isalnum(str[0][j]) == 0) && (str[0][j] != '\0'))
-	{
-		new_str[j] = str[0][j];
-		j++;
-	}
-	i = 0;
-	while ((n_padding > 0) && (str[0][j] != '\0'))
-	{
-		new_str[j + i] = '0';
-		n_padding--;
-		i++;
-	}
-	while (str[0][j] != '\0')
-	{
-		new_str[j + i] = str[0][j];
-		j++;
-	}
-	new_str[j + i] = '\0';
-	free(*str);
-	*str = new_str;
-}
-
 void	ft_format_precision_hexadecimal(char *conv_str, char **str)
 {
 	char	*ptr_dot;
@@ -109,12 +78,9 @@ void	ft_format_precision_hexadecimal(char *conv_str, char **str)
 	if (ptr_dot == NULL)
 		return ;
 	ptr_dot++;
-	//ft_printf("{hex_str: %s}", *str);///////////////////////////////////////////////
 	precision = ft_atoi(ptr_dot);
-	//ft_printf("{ptr_dot[0]: %i}", ptr_dot[0]);
 	if ((precision == 0) && (ft_hextoi(*str) == 0))
 		ft_set_it_empty(str);
-	//ft_printf("{hex_str: %s}", *str);///////////////////////////////////////////////
 	j = 0;
 	digits = 0;
 	while ((*str)[j] != '\0')
