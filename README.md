@@ -1,8 +1,11 @@
 # 42 common core
 Common Core repository from 42 school
 
-## current project - ft_printf
+### current project - get_next_line
 
+
+# Rank 1
+## ft_printf - in evaluation
 #### File structure
 ```
 project_name/
@@ -17,16 +20,14 @@ project_name/
 │   └── ...
 └── subject-ft_printf.pdf
 ```
-## Rank 1
-## ft_printf
-Current project. Check above.
+## get_next_line
+current project
 
-### get_next_line
+## Born2beroot
+(not started yet)
 
-### Born2beroot
-
-## Rank 0
-### libft 
+# Rank 0
+## libft 
 Duration: circa 74 hours.
 
 #### Suggestions
