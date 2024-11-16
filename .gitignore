@@ -1,6 +1,9 @@
 # Project files
 *.zip
 tests/
+get_next_line/main-DO-NOT-DELIVER.c
+get_next_line/Makefile-DO-NOT-DELIVER
+get_next_line/evaluation.pdf
 
 # CLion
 .idea/
