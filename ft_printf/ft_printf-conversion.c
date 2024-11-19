@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:58:49 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/14 15:16:44 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/18 20:40:48 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ static size_t	ft_format_width_padding(char *conv_str, char *padding)
 	j = 0;
 	while (conv_str[j] != '\0' && conv_str[j] != '.')
 	{
-		if (conv_str[j] == '0')
+		if ((conv_str[j] == '0') && (ft_strchr(conv_str, (int) 's') == NULL))
 			*padding = '0';
 		else if (ft_isdigit(conv_str[j]) != 0)
 		{
