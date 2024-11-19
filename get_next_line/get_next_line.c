@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 09:20:57 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/16 13:56:40 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/19 10:29:46 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,17 @@ char	*get_next_line(int fd)
 	char	*buffer;
 	int		n_bytes_read;
 	
-	buffer = (char *) malloc(BUFFER_SIZE);
+	buffer = (char *) calloc(sizeof(char), (BUFFER_SIZE + 2));
 	if (!buffer)
 		return (NULL);
 	n_bytes_read = read(fd, buffer, BUFFER_SIZE);
+	if (n_bytes_read <= 0)
+	{
+		free(buffer);
+		return (NULL);
+	}
+	buffer[BUFFER_SIZE] = '|';
+	buffer[BUFFER_SIZE + 1] = '\0';
+	return (buffer);
 }
+ 
