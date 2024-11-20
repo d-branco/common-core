@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 09:20:57 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/19 10:29:46 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/11/20 08:36:11 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 char	*get_next_line(int fd)
 {
 	char	*buffer;
+	char	*linha;
 	int		n_bytes_read;
 	
 	buffer = (char *) calloc(sizeof(char), (BUFFER_SIZE + 2));
@@ -46,6 +47,8 @@ char	*get_next_line(int fd)
 	}
 	buffer[BUFFER_SIZE] = '|';
 	buffer[BUFFER_SIZE + 1] = '\0';
-	return (buffer);
+	linha = buffer;
+	free(buffer);
+	return (linha);
 }
  
