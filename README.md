@@ -3,9 +3,10 @@ Common Core repository from 42 school
 
 ### current project - get_next_line
 
-
 # Rank 1
 ## ft_printf - in evaluation
+Duration: t.b.d.
+
 #### File structure
 ```
 project_name/
