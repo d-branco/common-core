@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 09:26:14 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/12/05 10:40:29 by abessa-m         ###   ########.fr       */
+/*   Created: 2024/12/05 10:50:35 by abessa-m          #+#    #+#             */
+/*   Updated: 2024/12/05 10:50:57 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 // pre-defines BUFFER_SIZE to 42
 # ifndef BUFFER_SIZE

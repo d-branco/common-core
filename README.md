@@ -21,7 +21,7 @@ project_name/
 │   └── ...
 └── subject-ft_printf.pdf
 ```
-## get_next_line
+## get_next_line - in evaluation
 current project
 
 ## Born2beroot

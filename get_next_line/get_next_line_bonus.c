@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 09:20:57 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/12/05 10:55:34 by abessa-m         ###   ########.fr       */
+/*   Created: 2024/12/05 10:50:24 by abessa-m          #+#    #+#             */
+/*   Updated: 2024/12/05 10:56:56 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@
 
 #include "get_next_line.h"
 
-static char	*write_to_mem(int fd, char *permanent_mem);
-static char	*get_current_line(char *permanent_mem);
-static char	*trim_memory(char *permanent_mem);
+char	*write_to_mem(int fd, char *permanent_mem);
+char	*get_current_line(char *permanent_mem);
+char	*trim_memory(char *permanent_mem);
 
 char	*get_next_line(int fd)
 {
@@ -57,7 +57,7 @@ char	*get_next_line(int fd)
 }
 
 // ssize_t	read(int fd, void *buf, size_t count);
-static char	*write_to_mem(int fd, char *permanent_mem)
+char	*write_to_mem(int fd, char *permanent_mem)
 {
 	ssize_t	read_return;
 	char	*current_line;
@@ -84,7 +84,7 @@ static char	*write_to_mem(int fd, char *permanent_mem)
 	return (permanent_mem);
 }
 
-static char	*get_current_line(char *permanent_mem)
+char	*get_current_line(char *permanent_mem)
 {
 	char	*current_line;
 	size_t	i;
@@ -108,7 +108,7 @@ static char	*get_current_line(char *permanent_mem)
 	return (current_line);
 }
 
-static char	*trim_memory(char *permanent_mem)
+char	*trim_memory(char *permanent_mem)
 {
 	char	*to_save;
 	size_t	len;
