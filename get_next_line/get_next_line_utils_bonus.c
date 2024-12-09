@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/05 10:50:15 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/12/05 10:50:17 by abessa-m         ###   ########.fr       */
+/*   Created: 2024/11/15 09:31:26 by abessa-m          #+#    #+#             */
+/*   Updated: 2024/12/09 15:52:04 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_strchr(const char *s, int c)
 {

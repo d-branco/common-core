@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/05 10:50:24 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/12/05 10:56:56 by abessa-m         ###   ########.fr       */
+/*   Created: 2024/11/15 09:20:57 by abessa-m          #+#    #+#             */
+/*   Updated: 2024/12/09 15:57:40 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 //	Description
 //		Write a function that returns a line read from a file descriptor
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*write_to_mem(int fd, char *permanent_mem);
 char	*get_current_line(char *permanent_mem);
@@ -39,7 +39,7 @@ char	*get_next_line(int fd)
 	char		*current_line;
 	size_t		i;
 
-	if (BUFFER_SIZE < 1)
+	if (BUFFER_SIZE < 1 || BUFFER_SIZE > 10000000 || fd < 0 || fd >= 101010)
 		return (NULL);
 	if (permanent_mem[fd] == NULL)
 	{
@@ -95,7 +95,7 @@ char	*get_current_line(char *permanent_mem)
 	i = 0;
 	while (permanent_mem[i] != '\n' && permanent_mem[i])
 		i++;
-	current_line = malloc(i + 2 * sizeof(char));
+	current_line = malloc(sizeof(char) * (i + 2));
 	if (!current_line)
 		return (NULL);
 	j = 0;
@@ -110,7 +110,7 @@ char	*get_current_line(char *permanent_mem)
 
 char	*trim_memory(char *permanent_mem)
 {
-	char	*to_save;
+	char	*next_line;
 	size_t	len;
 
 	len = 0;
@@ -120,7 +120,7 @@ char	*trim_memory(char *permanent_mem)
 		len++;
 	if (!permanent_mem[len])
 		return (free(permanent_mem), NULL);
-	to_save = ft_strdup(permanent_mem + len + 1);
+	next_line = ft_strdup(permanent_mem + len + 1);
 	free(permanent_mem);
-	return (to_save);
+	return (next_line);
 }
