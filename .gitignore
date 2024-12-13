@@ -1,7 +1,6 @@
 # Project files
 *.zip
 tests/
-*/*DO-NOT-DELIVER*
 */evaluation.*
 
 # CLion
