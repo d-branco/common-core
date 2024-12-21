@@ -6,12 +6,12 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 08:29:05 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/12/09 14:31:35 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/12/21 15:54:40 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //usage:
-//	cc *.c *.h -D BUFFER_SIZE=2 && valgrind -s ./a.out
+//	cc get_next_line.c get_next_line.h get_next_line_utils.c *.h -D BUFFER_SIZE=2 && valgrind -s ./a.out
 //ou
 //	cc *.c *.h && valgrind --leak-check=full --show-leak-kinds=all -s --track-origins=yes ./a.out
 
@@ -37,6 +37,7 @@ int	main(void)
 		if (line)
 		{
 			printf("%s", line);
+			free(line);
 		}
 	}
 	close(fd);
