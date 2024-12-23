@@ -1,0 +1,39 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    intructions.txt                                    :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/12/19 08:49:27 by abessa-m          #+#    #+#              #
+#    Updated: 2024/12/19 08:49:36 by abessa-m         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+Install
+	(non graphic-option)
+
+Language:
+	English
+Select your location:
+	United States
+Configure your keyboard:
+	American English
+
+Configure the network:
+	Hostname: abessa-m
+	Domain name: (blank)
+Set up users and passwords
+	root password: qwerty123
+	repeat root password: qwerty123
+	Full name for.the new user: new-user
+	Username for your account: (again) new-user
+	new user password: qwerty123
+	repeat new user password: qwerty123
+Configure the clock
+	Select your time zone: Eastern
+
+Partition Disks
+	Partions method: Guided ... encrypted LVM
+	(select the only disk)
+
