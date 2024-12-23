@@ -6,7 +6,7 @@
 #    By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/08 17:56:00 by abessa-m          #+#    #+#              #
-#    Updated: 2024/11/15 09:19:02 by abessa-m         ###   ########.fr        #
+#    Updated: 2024/12/23 19:17:17 by abessa-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME	= libftprintf.a
 LIBFT	= libft/libft.a
 ########################################################### Compiler and Flags #
 CC		= cc
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -g
 ####################################################################### Remove #
 RM		= rm -f
 ###################################################################### Arquive #
@@ -24,7 +24,7 @@ SRCS	=	\
 			ft_printf.c \
 			ft_printf-decimal.c ft_printf-hex.c \
 			ft_printf-conversion.c ft_printf-conversion-numeric.c \
-			ftprintf-conversion-sign.c ft_printf-conversion-precision.c 
+			ft_printf-conversion-sign.c ft_printf-conversion-precision.c 
 OBJS	= $(SRCS:.c=.o)
 ###################################################################### Headers #
 HEADERS	= ft_printf.h

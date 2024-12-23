@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:02:14 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/12 10:26:04 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/12/23 18:18:15 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ static void	format_converted(
 	char	*conversion_str;
 
 	j = *index;
+	conversion_str = NULL;
 	while (str[j] != '\0')
 	{
 		j++;

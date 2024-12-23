@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftprintf-conversion-sign.c                         :+:      :+:    :+:   */
+/*   ft_printf-conversion-sign.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 07:31:14 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/14 16:02:58 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/12/23 19:00:49 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ char	ft_format_place_sign(char *conv_str, char **str)
 {
 	char	sign;
 
+	sign = '\0';
 	if (!ft_replaces_minus_sign(str))
 		return ('\a');
 	if (!*str)
