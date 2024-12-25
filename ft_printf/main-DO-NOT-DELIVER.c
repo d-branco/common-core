@@ -6,12 +6,12 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 16:19:10 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/12/13 16:30:51 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/12/25 12:37:16 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //usage:
-//	make re && cc main-DO-NOT-DELIVER.c libftprintf.a && ./a.out
+//	make re && cc main-DO-NOT-DELIVER.c libftprintf.a && ./a.out ; make fclean
 
 #include "ft_printf.h"
 #include <stdio.h>

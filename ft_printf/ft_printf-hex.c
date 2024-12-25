@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 21:31:29 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/12/23 22:14:14 by abessa-m         ###   ########.fr       */
+/*   Updated: 2024/12/25 12:35:54 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ static void	printf_pointer_nil(char *conv_str, int *count);
 void	printf_hex_lower(char *conv_str, int *count, va_list ptr_args)
 {
 	char			*str;
-	unsigned long	dec_nbr;
+	unsigned int	dec_nbr;
 
 	if (!conv_str)
 		return ;
-	dec_nbr = va_arg(ptr_args, unsigned long);
+	dec_nbr = va_arg(ptr_args, unsigned int);
 	str = ft_ultoa(dec_nbr, 16);
 	ft_format_precision_hexadecimal(conv_str, &str);
 	if (dec_nbr != 0)
@@ -46,12 +46,12 @@ void	printf_hex_lower(char *conv_str, int *count, va_list ptr_args)
 void	printf_hex_upper(char *conv_str, int *count, va_list ptr_args)
 {
 	char			*str;
-	unsigned long	dec_nbr;
+	unsigned int	dec_nbr;
 	int				j;
 
 	if (!conv_str)
 		return ;
-	dec_nbr = (unsigned long) va_arg(ptr_args, unsigned long);
+	dec_nbr = (unsigned int) va_arg(ptr_args, unsigned int);
 	str = ft_ultoa(dec_nbr, 16);
 	ft_format_precision_hexadecimal(conv_str, &str);
 	if (dec_nbr != 0)
