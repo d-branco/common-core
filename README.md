@@ -1,11 +1,15 @@
 # 42 common core
 Common Core repository from 42 school
 
-### current project - get_next_line
+### current project - Born2beroot
 
 # Rank 1
 ## ft_printf - in evaluation
 Duration: t.b.d.
+
+#### Suggestions
+ - add a separated folder with the bonus functions.
+ This folder ought to be used by the "make bonus" instruction of the makefile.
 
 #### File structure
 ```
@@ -21,11 +25,24 @@ project_name/
 │   └── ...
 └── subject-ft_printf.pdf
 ```
-## get_next_line - in evaluation
-current project
+## get_next_line
+Duration: circa 54 hours.
+
+#### Evaluation
+<details>
+  <summary>graded 125 on get_next_line</summary>
+
+```
+basic_tests: GNL OK | bonus_tests: GNL OK
+```
+
+<picture>
+  <img alt="Shows success. 125 out of 100." src=evaluation-libft.png>
+</picture><br>
+</details>
 
 ## Born2beroot
-(not started yet)
+currently working on.
 
 # Rank 0
 ## libft 
