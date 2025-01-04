@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:59:20 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/14 14:54:52 by abessa-m         ###   ########.fr       */
+/*   Updated: 2025/01/04 16:05:28 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*ad_malloc_cat(const char *s1, const char *s2)
 		return (NULL);
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
-	result = (char *) malloc(sizeof(char) * (len1 + len2 + 1));
+	result = ft_calloc(sizeof(char), (len1 + len2 + 1));
 	if (!result)
 		return (NULL);
 	i = 0;
