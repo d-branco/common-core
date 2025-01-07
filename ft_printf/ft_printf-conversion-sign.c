@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 07:31:14 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/12/23 19:00:49 by abessa-m         ###   ########.fr       */
+/*   Updated: 2025/01/07 13:37:51 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,15 @@ char	ft_format_place_sign(char *conv_str, char **str)
 {
 	char	sign;
 
-	sign = '\0';
+	sign = 'W';
 	if (!ft_replaces_minus_sign(str))
-		return ('\a');
+		return ('W');
 	if (!*str)
 		return (sign);
 	sign = ft_determine_sign(conv_str);
-	if (sign != '\a' && str[0][0] == '0')
+	if (sign == 'W')
+		return (ft_slide_sign_into_digit(str), sign);
+	if (str[0][0] == '0')
 		*str = ad_malloc_cat_prefix_and_free_string(&sign, *str);
 	else if (str[0][0] == '-')
 		ft_slide_sign_into_digit(str);
@@ -78,13 +80,13 @@ static char	ft_determine_sign(char *conv_str)
 	char	sign;
 	int		j;
 
-	sign = '\a';
+	sign = 'W';
 	j = 0;
 	while (conv_str[j] != '\0' && conv_str[j] != '.'
 		&& (conv_str[j] < '1' || conv_str[j] > '9'))
 	{
 		if (conv_str[j] == ' ' && sign != '+')
-			sign = ' ';
+			sign = 'W';
 		if (conv_str[j] == '+')
 			sign = '+';
 		j++;
@@ -111,4 +113,36 @@ static void	ft_slide_sign_into_digit(char **str)
 		str[0][j + 1] = temp;
 		j++;
 	}
+}
+
+// the maximum number of characters to be printed
+// char	*ft_strchr(const char *s, int c)
+// size_t strlcpy(char *dst, const char *src, size_t size);
+// int ft_memcmp(const void *s1, const void *s2, size_t n);
+void	ft_format_precision_string(char *conv_str, char **str)
+{
+	char	*ptr_dot;
+	char	*new_str;
+	long	precision;
+
+	if (*str[0] == '\0')
+		return ;
+	ptr_dot = ft_strchr(conv_str, '.');
+	if (ptr_dot == NULL)
+		return ;
+	ptr_dot++;
+	precision = ft_atoi(ptr_dot);
+	if (ft_memcmp("(null)", *str, 7) == 0)
+	{
+		if (precision < 6)
+			precision = 0;
+	}
+	if (precision < 0)
+		precision = 0;
+	new_str = (char *)calloc(sizeof(char), (precision + 1));
+	if (!new_str)
+		return ;
+	ft_strlcpy(new_str, *str, precision + 1);
+	free(*str);
+	*str = new_str;
 }
