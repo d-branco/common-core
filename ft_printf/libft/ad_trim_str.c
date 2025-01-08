@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 10:01:34 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/14 10:41:24 by abessa-m         ###   ########.fr       */
+/*   Updated: 2025/01/07 10:23:51 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ad_rm_chr(char const *str, char const *set)
 
 	if (!str || !set)
 		return (NULL);
-	cut = (char *) malloc(sizeof(char) * (ft_strlen(str) + 1));
+	cut = (char *) ft_calloc(sizeof(char), (ft_strlen(str) + 1));
 	if (!cut)
 		return (NULL);
 	i = 0;

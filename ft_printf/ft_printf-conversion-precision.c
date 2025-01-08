@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:15:34 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/14 16:25:30 by abessa-m         ###   ########.fr       */
+/*   Updated: 2025/01/07 13:54:02 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,33 @@ static void	ft_add_padding_and_copy(char **str, char *new_str,
 		(*j)++;
 	}
 	new_str[*j + i] = '\0';
+}
+
+void	ft_format_alternate(char *conv_str, char **str)
+{
+	int		j;
+	char	*astr;
+
+	j = 0;
+	while (conv_str[j] != '\0'
+		&& conv_str[j] != '.'
+		&& (conv_str[j] <= '0' || conv_str[j] > '9'))
+	{
+		if (conv_str[j] == '#')
+		{
+			astr = (char *)malloc(sizeof(char) * (2 + ft_strlen(*str) + 1));
+			if (!astr)
+			{
+				free(*str);
+				return ;
+			}
+			ft_strlcpy(astr, "0x", (2 + ft_strlen(*str) + 1));
+			ft_strlcat(astr, *str, (2 + ft_strlen(*str) + 1));
+			free(*str);
+			*str = astr;
+			return ;
+		}
+		j++;
+	}
+	return ;
 }

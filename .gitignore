@@ -1,6 +1,7 @@
 # Project files
 *.zip
-tests/
+*test*/
+*Test*/
 */evaluation.*
 *Test*/
 

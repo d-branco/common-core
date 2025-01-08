@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:58:49 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/12/23 19:05:37 by abessa-m         ###   ########.fr       */
+/*   Updated: 2025/01/07 13:54:26 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,35 +24,10 @@
 
 static size_t	ft_format_width_padding(char *conv_str, char *padding);
 static char		*ft_allocate_string(char **str, size_t width, char padding);
-
-void	ft_format_alternate(char *conv_str, char **str)
-{
-	int		j;
-	char	*astr;
-
-	j = 0;
-	while (conv_str[j] != '\0'
-		&& conv_str[j] != '.'
-		&& (conv_str[j] <= '0' || conv_str[j] > '9'))
-	{
-		if (conv_str[j] == '#')
-		{
-			astr = (char *)malloc(sizeof(char) * (2 + ft_strlen(*str) + 1));
-			if (!astr)
-			{
-				free(*str);
-				return ;
-			}
-			ft_strlcpy(astr, "0x", (2 + ft_strlen(*str) + 1));
-			ft_strlcat(astr, *str, (2 + ft_strlen(*str) + 1));
-			free(*str);
-			*str = astr;
-			return ;
-		}
-		j++;
-	}
-	return ;
-}
+static void		ft_space_for_space(char *conv_str, char **str,
+					size_t width, size_t len);
+static size_t	ft_format_width_space(char *conv_str, char **str,
+					size_t width, size_t len);
 
 size_t	ft_format_width(char *conv_str, char **str)
 {
@@ -65,6 +40,7 @@ size_t	ft_format_width(char *conv_str, char **str)
 	len = ft_strlen(*str);
 	if (*str[0] == '\0')
 		len += 1;
+	width += ft_format_width_space(conv_str, str, width, len);
 	if (width >= len)
 	{
 		astr = ft_allocate_string(str, width, padding);
@@ -76,25 +52,39 @@ size_t	ft_format_width(char *conv_str, char **str)
 			ft_memcpy(astr, *str, len);
 		else if (!(*str[0] == '\0' && (ft_strchr(conv_str, (int) 'c') == NULL)))
 			ft_memcpy(astr + (width - len), *str, len);
-		free(*str);
-		*str = astr;
-		return (width);
+		return (free(*str), *str = astr,
+			ft_space_for_space(conv_str, str, width, len), width);
 	}
-	return (len);
+	return (ft_space_for_space(conv_str, str, width, len), len);
 }
 
-static char	*ft_allocate_string(char **str, size_t width, char padding)
+static size_t	ft_format_width_space(char *conv_str, char **str,
+	size_t width, size_t len)
 {
-	char	*astr;
+	size_t	space;
 
-	astr = (char *)calloc(sizeof(char), (width + 1));
-	if (!astr)
+	space = 0;
+	if ((ft_strchr(conv_str, (int) '+') != NULL) && (width > len)
+		&& (ft_strchr(conv_str, (int) '-') != NULL) && (ft_atoi(*str) > 0))
+		space = -1;
+	return (space);
+}
+
+static void	ft_space_for_space(char *conv_str, char **str,
+	size_t width, size_t len)
+{
+	char	sign;
+
+	if ((ft_strchr(conv_str, (int) '+') == NULL)
+		&& (ft_strchr(conv_str, (int) ' ') != NULL)
+		&& (ft_atoi(*str) >= 0)
+		&& ((ft_strchr(conv_str, (int) 'd'))
+			|| (ft_strchr(conv_str, (int) 'i')))
+		&& (width <= len))
 	{
-		free(*str);
-		return (NULL);
+		sign = ' ';
+		*str = ad_malloc_cat_prefix_and_free_string(&sign, *str);
 	}
-	ft_memset(astr, (char)padding, width);
-	return (astr);
 }
 
 static size_t	ft_format_width_padding(char *conv_str, char *padding)
@@ -107,7 +97,8 @@ static size_t	ft_format_width_padding(char *conv_str, char *padding)
 	j = 0;
 	while (conv_str[j] != '\0' && conv_str[j] != '.')
 	{
-		if ((conv_str[j] == '0') && (ft_strchr(conv_str, (int) 's') == NULL))
+		if ((conv_str[j] == '0') && (ft_strchr(conv_str, (int) 's') == NULL)
+			&& (ft_strchr(conv_str, (int) '-') == NULL))
 			*padding = '0';
 		else if (ft_isdigit(conv_str[j]) != 0)
 		{
@@ -125,34 +116,16 @@ static size_t	ft_format_width_padding(char *conv_str, char *padding)
 	return (width);
 }
 
-// the maximum number of characters to be printed
-// char	*ft_strchr(const char *s, int c)
-// size_t strlcpy(char *dst, const char *src, size_t size);
-// int ft_memcmp(const void *s1, const void *s2, size_t n);
-void	ft_format_precision_string(char *conv_str, char **str)
+static char	*ft_allocate_string(char **str, size_t width, char padding)
 {
-	char	*ptr_dot;
-	char	*new_str;
-	long	precision;
+	char	*astr;
 
-	if (*str[0] == '\0')
-		return ;
-	ptr_dot = ft_strchr(conv_str, '.');
-	if (ptr_dot == NULL)
-		return ;
-	ptr_dot++;
-	precision = ft_atoi(ptr_dot);
-	if (ft_memcmp("(null)", *str, 7) == 0)
+	astr = (char *)calloc(sizeof(char), (width + 1));
+	if (!astr)
 	{
-		if (precision < 6)
-			precision = 0;
+		free(*str);
+		return (NULL);
 	}
-	if (precision < 0)
-		precision = 0;
-	new_str = (char *)calloc(sizeof(char), (precision + 1));
-	if (!new_str)
-		return ;
-	ft_strlcpy(new_str, *str, precision + 1);
-	free(*str);
-	*str = new_str;
+	ft_memset(astr, (char)padding, width);
+	return (astr);
 }
