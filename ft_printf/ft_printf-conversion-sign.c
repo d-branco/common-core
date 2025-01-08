@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 07:31:14 by abessa-m          #+#    #+#             */
-/*   Updated: 2025/01/07 13:37:51 by abessa-m         ###   ########.fr       */
+/*   Updated: 2025/01/08 17:51:51 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,30 +30,31 @@ static char	*ft_replaces_minus_sign(char **str);
 // char	*ft_strtrim(char const *s1, char const *set)
 char	ft_format_place_sign(char *conv_str, char **str)
 {
-	char	sign;
+	char	sign[2];
 
-	sign = 'W';
+	sign[0] = 'W';
+	sign[1] = '\0';
 	if (!ft_replaces_minus_sign(str))
 		return ('W');
 	if (!*str)
-		return (sign);
-	sign = ft_determine_sign(conv_str);
-	if (sign == 'W')
-		return (ft_slide_sign_into_digit(str), sign);
+		return (sign[0]);
+	sign[0] = ft_determine_sign(conv_str);
+	if (sign[0] == 'W')
+		return (ft_slide_sign_into_digit(str), sign[0]);
 	if (str[0][0] == '0')
-		*str = ad_malloc_cat_prefix_and_free_string(&sign, *str);
+		*str = ad_malloc_cat_prefix_and_free_string(&sign[0], *str);
 	else if (str[0][0] == '-')
 		ft_slide_sign_into_digit(str);
-	else if (sign == '+')
+	else if (sign[0] == '+')
 	{
-		if (ft_isdigit(str[0][0]) != 0)
-			*str = ad_malloc_cat_prefix_and_free_string(&sign, *str);
+		if (ft_isdigit(str[0][0]))
+			*str = ad_malloc_cat_prefix_and_free_string(&sign[0], *str);
 		str[0][0] = '+';
 		ft_slide_sign_into_digit(str);
 	}
 	else
-		*str = ad_malloc_cat_prefix_and_free_string(&sign, *str);
-	return (sign);
+		*str = ad_malloc_cat_prefix_and_free_string(&sign[0], *str);
+	return (sign[0]);
 }
 
 static char	*ft_replaces_minus_sign(char **str)

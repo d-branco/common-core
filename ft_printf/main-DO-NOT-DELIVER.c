@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 16:19:10 by abessa-m          #+#    #+#             */
-/*   Updated: 2025/01/07 11:48:37 by abessa-m         ###   ########.fr       */
+/*   Updated: 2025/01/08 17:04:39 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1087,27 +1087,10 @@ int	main(void)
 		printf("\033[32m(return: %i)\033[0m\n\n", j);
 	else
 		printf("\033[31m(return: %i)\033[0m\n\n", j);
+	
 	ft_printf("\n\n===================== DEBUGGED"
 			" =====================\n");
 
-	ft_printf("ft_printf(\"%%-+3d\", 10) <");
-	i = ft_printf("%-+3d", 10);
-	printf("> (return: %i)\n   printf(\"%%-+3d\", 10) <", i);
-	j = printf("%-+3d", 10);
-	printf("> ");
-	if (j == i)
-		printf("\033[32m(return: %i)\033[0m\n\n", j);
-	else
-		printf("\033[31m(return: %i)\033[0m\n\n", j);
-	ft_printf("ft_printf(\"%% #-+03d\", 10) <");
-	i = ft_printf("% #-+03d", 10);
-	printf("> (return: %i)\n   printf(\"%% #-+03d\", 10) <", i);
-	j = printf("% #-+03d", 10);
-	printf("> ");
-	if (j == i)
-		printf("\033[32m(return: %i)\033[0m\n\n", j);
-	else
-		printf("\033[31m(return: %i)\033[0m\n\n", j);
 	ft_printf("ft_printf(\"%%-+3d\", -1) <");
 	i = ft_printf("%-+3d", -1);
 	printf("> (return: %i)\n   printf(\"%%-+3d\", -1) <", i);
@@ -1200,15 +1183,6 @@ int	main(void)
 		printf("\033[32m(return: %i)\033[0m\n\n", j);
 	else
 		printf("\033[31m(return: %i)\033[0m\n\n", j);
-	ft_printf("ft_printf(\"%% #-+010d\", 225) <");
-	i = ft_printf("% #-+010d", 225);
-	printf("> (return: %i)\n   printf(\"%% #-+010d\", 225) <", i);
-	j = printf("% #-+010d", 225);
-	printf("> ");
-	if (j == i)
-		printf("\033[32m(return: %i)\033[0m\n\n", j);
-	else
-		printf("\033[31m(return: %i)\033[0m\n\n", j);
 
 	ft_printf("ft_printf(\"%% .2d\", 225) <");
 	i = ft_printf("% .2d", 225);
@@ -1230,9 +1204,6 @@ int	main(void)
 	else
 		printf("\033[31m(return: %i)\033[0m\n\n", j);
 
-	ft_printf("\n\n===================== DEBUGGING"
-			" =====================\n");
-
 	ft_printf("ft_printf(\"%% d\", 0) <");
 	i = ft_printf("% d", 0);
 	printf("> (return: %i)\n   printf(\"%% d\", 0) <", i);
@@ -1253,5 +1224,35 @@ int	main(void)
 	else
 		printf("\033[31m(return: %i)\033[0m\n\n", j);
 
+	ft_printf("\n\n===================== DEBUGGING"
+			" =====================\n");
 
+	ft_printf("ft_printf(\"%% #-+010d\", 225) <");
+	i = ft_printf("% #-+010d", 225);
+	printf("> (return: %i)\n   printf(\"%% #-+010d\", 225) <", i);
+	j = printf("% #-+010d", 225);
+	printf("> ");
+	if (j == i)
+		printf("\033[32m(return: %i)\033[0m\n\n", j);
+	else
+		printf("\033[31m(return: %i)\033[0m\n\n", j);
+
+	ft_printf("ft_printf(\"%%-+3d\", 10) <");
+	i = ft_printf("%-+3d", 10);
+	printf("> (return: %i)\n   printf(\"%%-+3d\", 10) <", i);
+	j = printf("%-+3d", 10);
+	printf("> ");
+	if (j == i)
+		printf("\033[32m(return: %i)\033[0m\n\n", j);
+	else
+		printf("\033[31m(return: %i)\033[0m\n\n", j);
+	ft_printf("ft_printf(\"%% #-+03d\", 10) <");
+	i = ft_printf("% #-+03d", 10);
+	printf("> (return: %i)\n   printf(\"%% #-+03d\", 10) <", i);
+	j = printf("% #-+03d", 10);
+	printf("> ");
+	if (j == i)
+		printf("\033[32m(return: %i)\033[0m\n\n", j);
+	else
+		printf("\033[31m(return: %i)\033[0m\n\n", j);
 }

@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:59:20 by abessa-m          #+#    #+#             */
-/*   Updated: 2025/01/04 16:05:28 by abessa-m         ###   ########.fr       */
+/*   Updated: 2025/01/08 17:45:46 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ char	*ad_malloc_cat(const char *s1, const char *s2)
 	i = 0;
 	add_printable_chr(s1, result, &i);
 	add_printable_chr(s2, result, &i);
-	result[i] = '\0';
 	return (result);
 }
 
