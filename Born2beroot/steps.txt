@@ -1,14 +1,42 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    intructions.txt                                    :+:      :+:    :+:    #
+#    steps.txt                                          :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/19 08:49:27 by abessa-m          #+#    #+#              #
-#    Updated: 2024/12/19 08:49:36 by abessa-m         ###   ########.fr        #
+#    Updated: 2025/01/08 10:52:14 by abessa-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+VirtualBox
+##########
+- Open VirtualBox.
+- On the main menu click "New".
+	- Name the virtual machine (e. g. "ByteMe").
+	- Select an approprieted directory.
+		- sgoinfre/ in the school for space.
+	- (optional) set Type to Linux (for the icon).
+	click "Next"
+- In Hardware (leave RAM at 2GB and) click Next.
+- In "Virtual Hard disk" create a disk with 32 GB (for bonus).
+	- Click "Next".
+- In Summary click "Finish".
+
+Installing Debian
+#################
+
+hotname
+	abessa-m
+Domain name
+	(leave blank)
+root password
+	42.Porto (forty two dot porto with capital P)
+
+Partionning
+###########
+- Choose "manual" and click "continue".
 
 Install
 	(non graphic-option)

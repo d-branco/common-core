@@ -3,6 +3,7 @@
 *test*/
 *Test*/
 */evaluation.*
+*ignoreme*.*
 
 # CLion
 .idea/
@@ -13,9 +14,10 @@ CMakeLists.txt
 # VSCode
 .vscode/
 
-# audio files
+# audio and video files
 *.wav
 *.mp3
+*.mp4
 
 
 # Prerequisites
