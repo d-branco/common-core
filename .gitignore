@@ -1,9 +1,5 @@
 # Project files
 *.zip
-*test*/
-*Test*/
-*/evaluation.*
-*Test*/
 *ignoreme*.*
 
 # CLion
@@ -19,7 +15,6 @@ CMakeLists.txt
 *.wav
 *.mp3
 *.mp4
-
 
 # Prerequisites
 *.d

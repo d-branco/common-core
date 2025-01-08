@@ -6,7 +6,7 @@
 #    By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/19 08:49:27 by abessa-m          #+#    #+#              #
-#    Updated: 2025/01/08 10:52:14 by abessa-m         ###   ########.fr        #
+#    Updated: 2025/01/08 19:19:00 by abessa-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,48 +20,50 @@ VirtualBox
 	- (optional) set Type to Linux (for the icon).
 	click "Next"
 - In Hardware (leave RAM at 2GB and) click Next.
-- In "Virtual Hard disk" create a disk with 32 GB (for bonus).
+- In "Virtual Hard disk" create a disk with 30 GB (for bonus).
 	- Click "Next".
 - In Summary click "Finish".
 
 Installing Debian
 #################
+- Run the Virtual Machine.
+- Select "Install".
+- Select language "English".
+	- then select "other".
+	- select "Europe", then "Portugal".
+- In Configure locales select "United States - en_US.UFT-8".
+	- to configure the Keyboard select "American English".
+- Debian will install.
 
-hotname
-	abessa-m
-Domain name
-	(leave blank)
-root password
-	42.Porto (forty two dot porto with capital P)
+Configuring the network
+-----------------------
+- For hostname use, school handle plus 42 (e. g. "abessa-m42").
+- Domain name, leave blank.
+	- Set up password (e. g. "42.Porto").
+- Set up a user with your login full name and username (e. g. abessa-m).
+	- Set up a password for the user (e. g. "42.Porto").
+- Set the clock to Lisbon time.
 
 Partionning
-###########
-- Choose "manual" and click "continue".
+-----------
+- Choose "manual".
+- Select the volume "SCSI1 (0,0,0) (sda) - 32.2 GB ATA VBOX HARDDISK".
+	- Click "Yes".
+- Select the new partition "pri/log 32.3 GB FREE SPACE".
+	- Select "Create a new partition".
+	- Set partition size to "max".
+	- Select type as "Logical".
+	- Select "Mount point:" and select "Do not mount it" to set it to "none".
+	- Finish by selecting "Done setting up the partition".
+Should display under the volume name: "#5 logical 32.2 GB f ext4".
 
-Install
-	(non graphic-option)
-
-Language:
-	English
-Select your location:
-	United States
-Configure your keyboard:
-	American English
-
-Configure the network:
-	Hostname: abessa-m
-	Domain name: (blank)
-Set up users and passwords
-	root password: qwerty123
-	repeat root password: qwerty123
-	Full name for.the new user: new-user
-	Username for your account: (again) new-user
-	new user password: qwerty123
-	repeat new user password: qwerty123
-Configure the clock
-	Select your time zone: Eastern
-
-Partition Disks
-	Partions method: Guided ... encrypted LVM
-	(select the only disk)
-
+Encrypting the Logiv Volume Manager
+-----------------------------------
+- Select "Configure Encrypted Volumes".
+- Select "Create encrypted volumes".
+- Secect the only option "/dev/sda5 (32210MB; ext4)".
+	- Select "Continue".
+- Select "Done setting up the partition".
+	- Select the option "Finish".
+	- Move to and select "Yes".
+It ought to encryt now. It may take 20 minutes.
