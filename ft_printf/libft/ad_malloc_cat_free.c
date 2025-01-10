@@ -6,14 +6,14 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:59:20 by abessa-m          #+#    #+#             */
-/*   Updated: 2025/01/08 17:45:46 by abessa-m         ###   ########.fr       */
+/*   Updated: 2025/01/09 13:59:32 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 //	stdlib.h
 
-static void	add_printable_chr(const char *src, char *dest, int *index);
+static void	add_single_chr(const char *src, char *dest, int *index);
 
 // WARNING: s1 and s2 have to be dynamicly allocated
 // (this means, they need to be allocated with malloc previously)
@@ -53,23 +53,20 @@ char	*ad_malloc_cat(const char *s1, const char *s2)
 	if (!result)
 		return (NULL);
 	i = 0;
-	add_printable_chr(s1, result, &i);
-	add_printable_chr(s2, result, &i);
+	add_single_chr(s1, result, &i);
+	add_single_chr(s2, result, &i);
 	return (result);
 }
 
-static void	add_printable_chr(const char *src, char *dest, int *index)
+static void	add_single_chr(const char *src, char *dest, int *index)
 {
 	int	j;
 
 	j = 0;
 	while (src[j] != '\0')
 	{
-		if (ft_isprint(src[j]) != 0)
-		{
-			dest[*index] = src[j];
-			(*index)++;
-		}
+		dest[*index] = src[j];
+		(*index)++;
 		j++;
 	}
 }

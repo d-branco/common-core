@@ -6,7 +6,7 @@
 #    By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/08 17:56:00 by abessa-m          #+#    #+#              #
-#    Updated: 2024/12/27 12:45:37 by abessa-m         ###   ########.fr        #
+#    Updated: 2025/01/09 15:00:23 by abessa-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,10 +21,10 @@ RM		= rm -f
 AR		= ar rcs
 ###################################################################### Sources #
 SRCS	=	\
-			ft_printf.c \
-			ft_printf-decimal.c ft_printf-hex.c \
-			ft_printf-conversion.c ft_printf-conversion-numeric.c \
-			ft_printf-conversion-sign.c ft_printf-conversion-precision.c 
+			ft_printf_bonus.c ft_printf-conversion-precision_bonus.c \
+			ft_printf-decimal_bonus.c ft_printf-hex_bonus.c \
+			ft_printf-conversion_bonus.c ft_printf-conversion-numeric_bonus.c \
+			ft_printf-conversion-sign_bonus.c 
 OBJS	= $(SRCS:.c=.o)
 ###################################################################### Headers #
 HEADERS	= ft_printf.h
