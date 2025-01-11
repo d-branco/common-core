@@ -6,7 +6,7 @@
 #    By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/19 08:49:27 by abessa-m          #+#    #+#              #
-#    Updated: 2025/01/08 19:19:00 by abessa-m         ###   ########.fr        #
+#    Updated: 2025/01/11 09:26:31 by abessa-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,23 +16,24 @@ VirtualBox
 - On the main menu click "New".
 	- Name the virtual machine (e. g. "ByteMe").
 	- Select an approprieted directory.
-		- sgoinfre/ in the school for space.
-	- (optional) set Type to Linux (for the icon).
+		- sgoinfre/ in the school (in order to have enought space).
+	- Select the debian-*.iso file in "ISO Image".
+	- Make sure to select the box "Skip Unattended Installation".
 	click "Next"
-- In Hardware (leave RAM at 2GB and) click Next.
+- In "Hardware" (leave RAM at 2GB and) click Next.
 - In "Virtual Hard disk" create a disk with 30 GB (for bonus).
 	- Click "Next".
 - In Summary click "Finish".
 
 Installing Debian
 #################
-- Run the Virtual Machine.
+- Run the Virtual Machine, by clicking in the green arrow "Start".
 - Select "Install".
 - Select language "English".
 	- then select "other".
 	- select "Europe", then "Portugal".
 - In Configure locales select "United States - en_US.UFT-8".
-	- to configure the Keyboard select "American English".
+	- in "Configure the Keyboard" select "American English".
 - Debian will install.
 
 Configuring the network
@@ -40,15 +41,17 @@ Configuring the network
 - For hostname use, school handle plus 42 (e. g. "abessa-m42").
 - Domain name, leave blank.
 	- Set up password (e. g. "42.Porto").
-- Set up a user with your login full name and username (e. g. abessa-m).
+- Set up a new user
+	- full name may be empty
+	-for the username use the login (e. g. abessa-m).
 	- Set up a password for the user (e. g. "42.Porto").
-- Set the clock to Lisbon time.
+- Set the clock to "Lisbon" time.
 
 Partionning
 -----------
-- Choose "manual".
+- Choose "Manual".
 - Select the volume "SCSI1 (0,0,0) (sda) - 32.2 GB ATA VBOX HARDDISK".
-	- Click "Yes".
+	- Change the selection to "Yes" and enter.
 - Select the new partition "pri/log 32.3 GB FREE SPACE".
 	- Select "Create a new partition".
 	- Set partition size to "max".
@@ -57,13 +60,35 @@ Partionning
 	- Finish by selecting "Done setting up the partition".
 Should display under the volume name: "#5 logical 32.2 GB f ext4".
 
-Encrypting the Logiv Volume Manager
+Encrypting the Logical Volume Manager
 -----------------------------------
-- Select "Configure Encrypted Volumes".
+- Select "Configure Encrypted Volumes". (Choose "Yes" if asked.)
 - Select "Create encrypted volumes".
 - Secect the only option "/dev/sda5 (32210MB; ext4)".
 	- Select "Continue".
-- Select "Done setting up the partition".
+- Select "Done setting up the partition". (Choose "Yes" if asked.)
 	- Select the option "Finish".
 	- Move to and select "Yes".
 It ought to encryt now. It may take 20 minutes.
+	- Choose an encryption password (e. g. "42.Porto").
+
+Setting up the partions (required for bonus)
+============================================
+- Select "Configure the Logical Volume Manager". (Choose "Yes" if asked.)
+- In "LVM configuration action" select "Create volume group".
+	- Enter the name "LVMGroup".
+	- Select "/dev/mapper/sda5_crypt (32193MB; ext4)".(Choose "Yes" if asked.)
+Setting up the partions' names
+------------------------------
+- For each of the seven partions (root, swap, home, var, srv, tmp, var--long):
+	- Click the second option "Create a Logical Volume";
+	- Select the "LVMGroup".
+	- Name it ("root", "swap", "home", "var", "srv", "tmp" and "var--long");
+	- Size it ("10G",  "2.3",  "5G",   "3G",  "3G",  "3G" and  "4G");
+- Check "Display configuration detais" and then continue.
+- Select "Finish".
+Setting up the partition's mountpoint
+-------------------------------------
+- For each of the seven partitions (root, swap, home, var, srv, tmp, var--long):
+	- Select the current partition by the line "#1 *.*GB *";
+	- 
