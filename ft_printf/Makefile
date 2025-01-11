@@ -6,7 +6,7 @@
 #    By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/08 17:56:00 by abessa-m          #+#    #+#              #
-#    Updated: 2025/01/09 15:00:23 by abessa-m         ###   ########.fr        #
+#    Updated: 2025/01/11 15:01:33 by abessa-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,11 +21,18 @@ RM		= rm -f
 AR		= ar rcs
 ###################################################################### Sources #
 SRCS	=	\
+			ft_printf.c ft_printf-conversion-precision.c \
+			ft_printf-decimal.c ft_printf-hex.c \
+			ft_printf-conversion.c ft_printf-conversion-numeric.c \
+			ft_printf-conversion-sign.c 
+OBJS	= $(SRCS:.c=.o)
+
+SRCS-BONUS	=	\
 			ft_printf_bonus.c ft_printf-conversion-precision_bonus.c \
 			ft_printf-decimal_bonus.c ft_printf-hex_bonus.c \
 			ft_printf-conversion_bonus.c ft_printf-conversion-numeric_bonus.c \
 			ft_printf-conversion-sign_bonus.c 
-OBJS	= $(SRCS:.c=.o)
+OBJS-BONUS	= $(SRCS-BONUS:.c=.o)
 ###################################################################### Headers #
 HEADERS	= ft_printf.h
 ############################################################ Mandatory Targets #
@@ -44,7 +51,7 @@ $(NAME): $(OBJS) $(LIBFT)
 
 clean:
 	@make --no-print-directory -C libft clean \
-	&& $(RM) $(OBJS) \
+	&& $(RM) $(OBJS) $(OBJS-BONUS) \
 	&& echo "$(GRAY)Objects removed$(COR)"
 
 fclean: clean
@@ -57,7 +64,12 @@ re: fclean all
 
 .PHONY: all clean fclean re
 ################################################################ Bonus Targets #
-bonus: all
+bonus: $(OBJS-BONUS) $(LIBFT)
+	@cd libft \
+	&& ar x libft.a \
+	&& cd .. \
+	&& $(AR) $(NAME) libft/*.o $(OBJS-BONUS) \
+	&& echo "$(PURPLE)Library built: $(NAME)$(COR)"
 ################################################################## Build libft #
 $(LIBFT):
 	@make --no-print-directory -C libft \

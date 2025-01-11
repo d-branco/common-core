@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:15:34 by abessa-m          #+#    #+#             */
-/*   Updated: 2025/01/11 15:00:25 by abessa-m         ###   ########.fr       */
+/*   Updated: 2025/01/09 14:45:01 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 //        [width] digit (decimal int)   | padding
 //               [.precision] . (point) | minimum number of digits
 
-#include "ft_printf_bonus.h"
+#include "ft_printf.h"
 
 static void	ft_copy_non_numeric(char **str, char *new_str, int *j);
 static void	ft_add_padding_and_copy(char **str, char *new_str,

@@ -20,7 +20,7 @@
 //        [width] digit (decimal int)   | padding
 //               [.precision] . (point) | minimum number of digits
 
-#include "ft_printf_bonus.h"
+#include "ft_printf.h"
 
 void		ft_format_precision_numeric_add_digits(char **str, int n_padding);
 static void	ft_set_it_empty(char **str);

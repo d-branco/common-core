@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:44:57 by abessa-m          #+#    #+#             */
-/*   Updated: 2025/01/11 15:00:13 by abessa-m         ###   ########.fr       */
+/*   Updated: 2025/01/09 14:45:09 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 //        [width] digit (decimal int)   | padding
 //               [.precision] . (point) | minimum number of digits
 
-#include "ft_printf_bonus.h"
+#include "ft_printf.h"
 
 void	printf_integer(char *conv_str, int *count, va_list ptr_args)
 {

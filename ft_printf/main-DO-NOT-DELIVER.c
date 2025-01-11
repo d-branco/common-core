@@ -6,19 +6,19 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 16:19:10 by abessa-m          #+#    #+#             */
-/*   Updated: 2025/01/09 14:55:31 by abessa-m         ###   ########.fr       */
+/*   Updated: 2025/01/11 15:19:57 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //usage:
-//	make re && make clean; cc main-DO-NOT-DELIVER.c libftprintf.a && ./a.out;
+//	make re;make bonus;make clean;cc main-DO-NOT-DELIVER.c libftprintf.a && ./a.out;
 
 // other tests:
 //	make re && make clean; ./0tests/tester;
 //	make re && make clean; cd 1printfTester-master/; make a; cd ..;
 
 /*    ALL TESTS
-make re; cc main-DO-NOT-DELIVER.c libftprintf.a && ./a.out; ./0tests/tester; cd 1printfTester-master/; make a; cd ..; make fclean
+make;make bonus;cc main-DO-NOT-DELIVER.c libftprintf.a && ./a.out; ./0tests/tester; cd 1printfTester-master/; make a; cd ..; make fclean
 */
 
 #include "ft_printf.h"
@@ -510,8 +510,11 @@ int	main(void)
 	if (j == i)
 		printf("\033[32m(return: %i)\033[0m\n", j);
 	else
-		printf("\033[31m(return: %i)\033[0m\n", j);	ft_printf("===================== Mandatory conversion %%X hexadecimal"
+		printf("\033[31m(return: %i)\033[0m\n", j);
+	
+	ft_printf("===================== Mandatory conversion %%X hexadecimal"
 			" =====================\n");
+
 	ft_printf("ft_printf(\"Positive unsigned integer in hex: %%X\", 42) <");
 	i = ft_printf("Positive unsigned integer in hex: %X", 42);
 	printf("> (return: %i)\n   printf(\"Positive unsigned integer in hex: %%X\", 42) <", i);
@@ -595,6 +598,7 @@ int	main(void)
 		printf("\033[31m(return: %i)\033[0m\n", j);
 	ft_printf("===================== Mandatory conversion %%"
 			" =====================\n");
+			
 	ft_printf("ft_printf(\"Printing a single percent: %%%%\") <");
 	i = ft_printf("Printing a single percent: %%");
 	printf("> (return: %i)\n   printf(\"Printing a single percent: %%%%\") <", i);
@@ -604,6 +608,7 @@ int	main(void)
 		printf("\033[32m(return: %i)\033[0m\n", j);
 	else
 		printf("\033[31m(return: %i)\033[0m\n", j);
+	
 	ft_printf("ft_printf(\"Multiple percent signs: %%%%%%%%, %%%%%%%%, %%%%%%%%\") <");
 	i = ft_printf("Multiple percent signs: %%%%, %%%%, %%%%");
 	printf("> (return: %i)\n   printf(\"Multiple percent signs: %%%%%%%%, %%%%%%%%, %%%%%%%%\") <", i);
@@ -613,6 +618,7 @@ int	main(void)
 		printf("\033[32m(return: %i)\033[0m\n", j);
 	else
 		printf("\033[31m(return: %i)\033[0m\n", j);
+	
 	ft_printf("ft_printf(\"Percent with text: %%%% is the percent sign\") <");
 	i = ft_printf("Percent with text: %% is the percent sign");
 	printf("> (return: %i)\n   printf(\"Percent with text: %%%% is the percent sign\") <", i);
@@ -723,6 +729,14 @@ int	main(void)
 		printf("\033[32m(return: %i)\033[0m\n", j);
 	else
 		printf("\033[31m(return: %i)\033[0m\n", j);
+
+/*
+################################################################################
+#                                                                              #
+#                                                                      # BONUS #
+#                                                                              #
+################################################################################
+*/
 
 	ft_printf("===================== Bonus %%-d with INT_MIN =====================\n");
 	ft_printf("ft_printf(\"Left-justified INT_MIN: %%-d\", INT_MIN) <");

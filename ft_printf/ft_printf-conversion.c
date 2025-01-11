@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:58:49 by abessa-m          #+#    #+#             */
-/*   Updated: 2025/01/11 15:00:31 by abessa-m         ###   ########.fr       */
+/*   Updated: 2025/01/11 14:49:21 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 //        [width] digit (decimal int)   | padding
 //               [.precision] . (point) | minimum number of digits
 
-#include "ft_printf_bonus.h"
+#include "ft_printf.h"
 
 static size_t	ft_format_width_padding(char *conv_str, char *padding);
 static char		*ft_allocate_string(char **str, size_t width, char padding);
