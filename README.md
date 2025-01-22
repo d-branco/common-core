@@ -4,12 +4,11 @@ Common Core repository from 42 school
 ### current project - Born2beroot
 
 # Rank 1
-## ft_printf - in evaluation
-Duration: t.b.d.
+## ft_printf
+Duration: circa 96 hours.
 
 #### Suggestions
- - add a separated folder with the bonus functions.
- This folder ought to be used by the "make bonus" instruction of the makefile.
+ - Don't do the bonus part unless you have a lot of time. It's fun, though.
 
 #### File structure
 ```
@@ -25,8 +24,25 @@ project_name/
 │   └── ...
 └── subject-ft_printf.pdf
 ```
+#### Evaluation
+<details>
+  <summary>graded 125 on ft_printf</summary>
+
+```
+test_spdxiucpercent: 8/8 correct functions
+bonus_one: 3/3 correct functions
+bonus_two: 3/3 correct functions
+```
+<picture>
+  <img alt="Shows success. 125 out of 100." src=evaluation-libft.png>
+</picture><br>
+</details>
+
 ## get_next_line
 Duration: circa 54 hours.
+
+#### Suggestions
+Do the bonus. There's a trivial way to do it.
 
 #### Evaluation
 <details>

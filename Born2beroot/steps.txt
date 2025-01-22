@@ -6,7 +6,7 @@
 #    By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/19 08:49:27 by abessa-m          #+#    #+#              #
-#    Updated: 2025/01/11 09:26:31 by abessa-m         ###   ########.fr        #
+#    Updated: 2025/01/22 11:22:27 by abessa-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,3 +92,6 @@ Setting up the partition's mountpoint
 - For each of the seven partitions (root, swap, home, var, srv, tmp, var--long):
 	- Select the current partition by the line "#1 *.*GB *";
 	- 
+
+New pass:
+Qwerty2025
