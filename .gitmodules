@@ -4,3 +4,6 @@
 [submodule "pipex"]
 	path = pipex
 	url = git@github.com:d-branco/pipex-42.git
+[submodule "libft"]
+	path = libft
+	url = git@github.com:d-branco/libft-42.git
