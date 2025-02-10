@@ -7,3 +7,6 @@
 [submodule "libft"]
 	path = libft
 	url = git@github.com:d-branco/libft-42.git
+[submodule "FdF"]
+	path = FdF
+	url = git@github.com:d-branco/wireframe_model-42.git
