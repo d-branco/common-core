@@ -6,11 +6,11 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 17:07:07 by abessa-m          #+#    #+#             */
-/*   Updated: 2024/11/06 14:36:22 by abessa-m         ###   ########.fr       */
+/*   Updated: 2025/02/16 17:12:50 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// reimplements calloc()
+// reimplements ft_calloc()
 
 //	NAME
 //		calloc - allocate and free dynamic
@@ -20,20 +20,20 @@
 
 //	SYNOPSIS
 //		#include <stdlib.h>
-//		void *calloc(size_t nmemb, size_t size);
+//		void *ft_calloc(size_t nmemb, size_t size);
 
 //	DESCRIPTION
-//		calloc()
-//		The calloc() function allocates memory for an array of nmemb elements
+//		ft_calloc()
+//		The ft_calloc() function allocates memory for an array of nmemb elements
 //	of size bytes each and returns a pointer to the allocated memory. The
-//	memory is set to zero. If nmemb or size is 0, then calloc() returns a
+//	memory is set to zero. If nmemb or size is 0, then ft_calloc() returns a
 //	unique pointer value that can later be successfully passed to free().
 //	
 //		If the multiplication of nmemb and size would result in integer over‐
-//	flow, then calloc() returns an error.
+//	flow, then ft_calloc() returns an error.
 
 //	RETURN VALUE
-//		The malloc(), calloc(), realloc(), and reallocarray() functions return
+//		The malloc(), ft_calloc(), realloc(), and reallocarray() functions return
 //	a pointer to the allocated memory, which is suitably aligned for any
 //	type that fits into the requested size or less. On error, these func‐
 //	tions return NULL and set errno. Attempting to allocate more than
@@ -41,7 +41,7 @@
 //	cause later pointer subtraction to overflow.
 
 //	ERRORS
-//		calloc(), malloc(), realloc(), and reallocarray() can fail with the
+//		ft_calloc(), malloc(), realloc(), and reallocarray() can fail with the
 //	following error:
 
 //	ENOMEM Out of memory. Possibly, the application hit the RLIMIT_AS or
