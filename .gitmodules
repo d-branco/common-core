@@ -10,3 +10,6 @@
 [submodule "FdF"]
 	path = FdF
 	url = git@github.com:d-branco/wireframe_model-42.git
+[submodule "Philosophers"]
+	path = Philosophers
+	url = git@github.com:d-branco/Philosophers-42.git
