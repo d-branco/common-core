@@ -58,7 +58,7 @@ static void	ft_set_it_empty(char **str)
 {
 	char	*new_str;
 
-	new_str = (char *)calloc(sizeof(char), 1);
+	new_str = (char *)ft_calloc(sizeof(char), 1);
 	if (!new_str)
 		return ;
 	free(*str);

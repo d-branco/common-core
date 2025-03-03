@@ -6,7 +6,7 @@
 /*   By: abessa-m <abessa-m@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 07:31:14 by abessa-m          #+#    #+#             */
-/*   Updated: 2025/01/11 15:00:16 by abessa-m         ###   ########.fr       */
+/*   Updated: 2025/02/16 17:12:50 by abessa-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ void	ft_format_precision_string(char *conv_str, char **str)
 	}
 	if (precision < 0)
 		precision = 0;
-	new_str = (char *)calloc(sizeof(char), (precision + 1));
+	new_str = (char *)ft_calloc(sizeof(char), (precision + 1));
 	if (!new_str)
 		return ;
 	ft_strlcpy(new_str, *str, precision + 1);
